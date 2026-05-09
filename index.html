@@ -2142,7 +2142,7 @@ function buildVocab(){
       <span class="kpb">${sec.kp}</span><span class="kpn">${sec.root}</span><span class="kpnt">${sec.note}</span></div>`;
     for(const w of sec.words){
       h+=`<div class="wrow"><div class="wtop">
-        <span class="wen" data-text="${ae(w.en)}" onclick="speak(this.dataset.text)" title="🔊">${rM(w.mm)}</span>
+        <span class="wen" data-text="${ae(w.en)}" onclick="speak(this.dataset.text)" title="🔊">${w.mm&&w.mm.length?rM(w.mm):w.en}</span>
         <span class="wtp">${w.type}</span>
         <span class="wzh${hideZh?' hd':''}" onclick="this.classList.remove('hd')">${w.zh}</span>
         <button class="bstar" data-star="${ae(w.en)}" onclick="togBM('${ae(w.en)}')">${isBM(w.en)?'⭐':'☆'}</button>
