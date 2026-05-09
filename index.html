@@ -92,6 +92,8 @@
 .pw-btn{padding:10px 36px;font-size:1rem;border:none;border-radius:8px;background:#fff;color:#1e5c30;font-weight:700;cursor:pointer;transition:opacity .15s}
 .pw-btn:hover{opacity:.85}
 .pw-err{color:#ffcdd2;font-size:.85rem;min-height:1.2em;text-align:center}
+.pw-title{color:#fff;font-size:1.6rem;font-weight:900;letter-spacing:2px;text-shadow:0 2px 8px rgba(0,0,0,.2)}
+.pw-chrome-note{color:rgba(255,255,200,.9);font-size:.78rem;text-align:center;background:rgba(0,0,0,.28);padding:8px 16px;border-radius:8px;line-height:1.75;border:1px solid rgba(255,255,255,.18)}
 
 /* ══════ BASE ══════ */
 *{box-sizing:border-box;margin:0;padding:0}
@@ -352,6 +354,8 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 <!-- PASSWORD GATE -->
 <div id="pw-gate">
   <div class="pw-box">
+    <div class="pw-title">🦉 字根字首</div>
+    <div class="pw-chrome-note">⚠ 請使用 <strong>Chrome 瀏覽器</strong> 開啟<br>其他瀏覽器部分功能可能無法正常運作</div>
     <input class="pw-input" id="pwInput" type="password" maxlength="8" placeholder="••••" onkeydown="if(event.key==='Enter')checkPW()">
     <button class="pw-btn" onclick="checkPW()">確認</button>
     <div class="pw-err" id="pwErr"></div>
@@ -420,11 +424,11 @@ const UNITS=[
   {n:2,chs:[{id:'u2i',sec:'I',words:25,kps:'KP01–12',open:true},{id:'u2ii',sec:'II',words:28,kps:'KP13–22',open:true},{id:'u2iii',sec:'III',words:42,kps:'KP23–29',open:true}]},
   {n:3,chs:[{id:'u3i',sec:'I',words:8,kps:'KP01–02',open:true},{id:'u3ii',sec:'II',open:false},{id:'u3iii',sec:'III',words:14,kps:'KP06–08',open:true},{id:'u3iv',sec:'IV',words:19,kps:'KP09–12',open:true}]},
   {n:4,chs:[{id:'u4i',sec:'I',words:12,kps:'KP01–02',open:true},{id:'u4ii',sec:'II',words:17,kps:'KP03–05',open:true},{id:'u4iii',sec:'III',words:15,kps:'KP06–07',open:true}]},
-  {n:5,chs:[{id:'u5i',sec:'I',words:9,kps:'KP01–02',open:true},{id:'u5ii',sec:'II',open:false}]},
-  {n:6,chs:[{id:'u6i',sec:'I',open:false},{id:'u6ii',sec:'II',open:false},{id:'u6iii',sec:'III',open:false}]},
-  {n:7,chs:[{id:'u7',sec:'',open:false}]},
-  {n:8,chs:[{id:'u8i',sec:'I',open:false},{id:'u8ii',sec:'II',open:false}]},
-  {n:9,chs:[{id:'u9i',sec:'I',open:false},{id:'u9ii',sec:'II',open:false}]},
+  {n:5,chs:[{id:'u5i',sec:'I',words:9,kps:'KP01–02',open:true},{id:'u5ii',sec:'II',words:21,kps:'KP03–06',open:true}]},
+  {n:6,chs:[{id:'u6i',sec:'I',words:21,kps:'KP01–03',open:true},{id:'u6ii',sec:'II',words:20,kps:'KP04–07',open:true},{id:'u6iii',sec:'III',words:31,kps:'KP08–12',open:true}]},
+  {n:7,chs:[{id:'u7',sec:'',open:true}]},
+  {n:8,chs:[{id:'u8i',sec:'I',open:true},{id:'u8ii',sec:'II',open:true}]},
+  {n:9,chs:[{id:'u9i',sec:'I',words:17,kps:'KP01–04',open:true},{id:'u9ii',sec:'II',words:25,kps:'KP05–11',open:true}]},
 ];
 
 /* ══════ VOCAB DATA ══════ */
@@ -1384,6 +1388,598 @@ const QS_U5I=[
   {before:'The backpacker',after:'of the tour guide the way to the aquarium.',word:'inquired',hint:'i_______',zh:'背包客詢問導遊到水族館的路。',kp:'KP02 字根 -quire'},
 ];
 
+const VOCAB_U5II=[
+  {kp:'KP03', root:'字根 -scribe', note:'-scribe 有「寫」(write, written) 的意思',
+   words:[
+     {en:'ascribe', mm:[{t:'a',m:'p'},{t:'scribe',m:'r'}], type:'(v.)', zh:'歸因於；認為...有關', ex:[{en:"The manager ascribed the success of the project to her employees' hard work.",zh:'經理將計畫成功的功勞，歸於下屬的努力。'}]},
+     {en:'describe', mm:[{t:'de',m:'p'},{t:'scribe',m:'r'}], type:'(v.)', zh:'描述；形容', ex:[{en:'The poet described falling leaves vividly with personification.',zh:'詩人用擬人法來描述飄落中的葉子。'}]},
+     {en:'inscribe', mm:[{t:'in',m:'p'},{t:'scribe',m:'r'}], type:'(v.)', zh:'刻記；銘記', ex:[{en:'Jim inscribed his emotion to his wife by writing her name on his ring.',zh:'Jim 將老婆的名字刻在他的戒指上，表達對她的愛。'}]},
+     {en:'prescribe', mm:[{t:'pre',m:'p'},{t:'scribe',m:'r'}], type:'(v.)', zh:'開藥方；官方規定', ex:[]},
+     {en:'subscribe', mm:[{t:'sub',m:'p'},{t:'scribe',m:'r'}], type:'(v.)', zh:'捐款；訂閱', ex:[{en:'Tom subscribed a large sum to the local orphanage.',zh:'Tom 捐贈大筆費款給當地的孤兒院。'}]},
+     {en:'transcribe', mm:[{t:'trans',m:'p'},{t:'scribe',m:'r'}], type:'(v.)', zh:'抄寫；記下；轉譯', ex:[]},
+   ]
+  },
+  {kp:'KP04', root:'字根 -serve', note:'-serve 有「保存」(save, keep) 的意思',
+   words:[
+     {en:'serve', mm:[{t:'serve',m:'r'}], type:'(v.)', zh:'為...服務；供應（飯菜）；發球', ex:[{en:"The mothers serve the students who can't afford tuition free lunch.",zh:'那群媽媽們提供無法繳學費的學生免費午餐。'}]},
+     {en:'conserve', mm:[{t:'con',m:'p'},{t:'serve',m:'r'}], type:'(v.)', zh:'保護；保育；節約', ex:[{en:'In order to conserve water, I am used to watering flowers with mopping water.',zh:'為了節約用水，我習慣用擦地水來澆花。'}]},
+     {en:'deserve', mm:[{t:'de',m:'p'},{t:'serve',m:'r'}], type:'(v.)', zh:'應受；應得', ex:[]},
+     {en:'observe', mm:[{t:'ob',m:'p'},{t:'serve',m:'r'}], type:'(v.)', zh:'看到；遵守；觀察', ex:[]},
+     {en:'preserve', mm:[{t:'pre',m:'p'},{t:'serve',m:'r'}], type:'(v./n.)', zh:'保存；保護；防腐；蜜餞', ex:[{en:'The Japanese buildings in Taiwan have been preserved much well in professional ways.',zh:'在台灣的日式建築以專業方式維護得很好。'}]},
+     {en:'reserve', mm:[{t:'re',m:'p'},{t:'serve',m:'r'}], type:'(v.)', zh:'保留；預訂', ex:[{en:'You should probably reserve a room in advance since there will be a four-day holiday next month.',zh:'因為下個月有四天連假，你最好事先訂房。'}]},
+   ]
+  },
+  {kp:'KP05', root:'字根 -seque', note:'-seque 有「跟隨」(follow) 的意思',
+   words:[
+     {en:'sequence', mm:[{t:'seque',m:'r'},{t:'nce',m:'s'}], type:'(n.)', zh:'順序；連續；一連串', ex:[]},
+     {en:'consequence', mm:[{t:'con',m:'p'},{t:'seque',m:'r'},{t:'nce',m:'s'}], type:'(n.)', zh:'結果；重要性', ex:[{en:'Emma should accept the consequence of failing the entrance exam of her ideal university though she has prepared for it for three years.',zh:'儘管 Emma 為了進入理想大學準備了三年，但她還是要接受落榜的結果。'}]},
+     {en:'subsequence', mm:[{t:'sub',m:'p'},{t:'seque',m:'r'},{t:'nce',m:'s'}], type:'(n.)', zh:'隨後；繼起的事', ex:[{en:"The president is thinking how to calm down the employees' aggressive emotion with the subsequence of the strike.",zh:'董事長正在想辦法如何安撫罷工事件隨之而來的員工情緒。'}]},
+   ]
+  },
+  {kp:'KP06', root:'字根 -sign', note:'-sign 有「標記」(sign, mark, seal) 的意思',
+   words:[
+     {en:'sign', mm:[{t:'sign',m:'r'}], type:'(v./n.)', zh:'簽名；署名；標示；記號；兆頭', ex:[{en:'Please sign on the dotted line to prove that you are in agreement on the contract.',zh:'請在虛線上簽名以證明你同意這份合約。'}]},
+     {en:'assign', mm:[{t:'as',m:'p'},{t:'sign',m:'r'}], type:'(v.)', zh:'分配；指定；委任', ex:[{en:'I was assigned to finish the project on my own in two days.',zh:'我被指派一個人要在兩天內完成這份任務。'}]},
+     {en:'consign', mm:[{t:'con',m:'p'},{t:'sign',m:'r'}], type:'(v.)', zh:'把...交付；托運', ex:[]},
+     {en:'design', mm:[{t:'de',m:'p'},{t:'sign',m:'r'}], type:'(v./n.)', zh:'設計；計畫', ex:[]},
+     {en:'resign', mm:[{t:'re',m:'p'},{t:'sign',m:'r'}], type:'(v.)', zh:'辭去；委託；屈服', ex:[{en:'In some countries, people are born to resign themselves to their president.',zh:'在一些國家，人民生而服從他們的統領者。'}]},
+     {en:'signal', mm:[{t:'sign',m:'r'},{t:'al',m:'s'}], type:'(n./adj.)', zh:'信號；信號燈；顯著的', ex:[]},
+   ]
+  },
+];
+const QS_U5II=[
+  {before:'An autopsy eventually',after:'the baby\'s death to sudden infant death syndrome.',word:'ascribes',hint:'a_______',zh:'驗屍後的結果最終將嬰兒的死亡原因歸因於嬰兒猝死症。',kp:'KP03 字根 -scribe'},
+  {before:'He',after:"the expression 'survival of the fittest' to Charles Darwin.",word:'ascribed',hint:'a_______',zh:'他認為「適者生存」的說法和達爾文有關。',kp:'KP03 字根 -scribe'},
+  {before:'One of them was',after:'by the police as a leading terrorist.',word:'described',hint:'d________',zh:'他們其中一個人被警方描述為恐怖份子的首腦。',kp:'KP03 字根 -scribe'},
+  {before:'The judge asked me to',after:'exactly what happened on that day.',word:'describe',hint:'d_______',zh:'法官要求我仔細地敘述那天發生了什麼事。',kp:'KP03 字根 -scribe'},
+  {before:'Some galleries commemorate donors by',after:'their names on the walls.',word:'inscribing',hint:'i_________',zh:'有一些藝廊會將捐贈者的名字刻在牆上來紀念他們。',kp:'KP03 字根 -scribe'},
+  {before:'The doctor diagnosed a throat infection and',after:'a course of antibiotics to kill the bacteria.',word:'prescribed',hint:'p_________',zh:'醫師診斷出喉嚨感染並開了抗生素療程來對抗細菌。',kp:'KP03 字根 -scribe'},
+  {before:'Hanson',after:'a large sum to charities.',word:'subscribed',hint:'s_________',zh:'Hanson 捐贈巨資給慈善機構。',kp:'KP03 字根 -scribe'},
+  {before:'My main reason for',after:'Apple Daily is to keep myself informed about latest news.',word:'subscribing',hint:'s__________',zh:'我訂蘋果日報最主要的理由是想讓自己掌握時事新聞。',kp:'KP03 字根 -scribe'},
+  {before:'Every telephone conversation will be recorded and',after:'in the war.',word:'transcribed',hint:'t__________',zh:'在戰爭時，每一個電話交談的內容都會被記錄並謄寫出來。',kp:'KP03 字根 -scribe'},
+  {before:'David',after:'me a piece of cake.',word:'served',hint:'s_____',zh:'David 給我上了一塊蛋糕。',kp:'KP04 字根 -serve'},
+  {before:'You must',after:'your energy if you want to win this series.',word:'preserve',hint:'p_______',zh:'如果你想贏得這場系列賽，你必須保存體力。',kp:'KP04 字根 -serve'},
+  {before:"You don't",after:'my heart because you already have David.',word:'deserve',hint:'d______',zh:'你不值得得到我的愛，因為你已經擁有 David 了。',kp:'KP04 字根 -serve'},
+  {before:'Ben',after:'a stranger hanging around the bank.',word:'observed',hint:'o_______',zh:'Ben 注意到一個陌生人在銀行附近閒晃。',kp:'KP04 字根 -serve'},
+  {before:'They are',after:'the behavior of the panda Albert.',word:'observing',hint:'o________',zh:'他們在觀察熊貓 Albert 的生活習性。',kp:'KP04 字根 -serve'},
+  {before:'We have taken effective measures to',after:'our historic monuments.',word:'preserve',hint:'p_______',zh:'我們已採取有效的措施來保護我們的歷史古蹟。',kp:'KP04 字根 -serve'},
+  {before:'I will have some fruit',after:'when I feel thirsty.',word:'preserves',hint:'p________',zh:'當我口渴的時候，我會吃一些水果蜜餞。',kp:'KP04 字根 -serve'},
+  {before:'They have',after:'a room at W Hotel.',word:'reserved',hint:'r_______',zh:'他們已經在 W 大飯店預定了一個房間。',kp:'KP04 字根 -serve'},
+  {before:"On the cover of the reference book by Hanson, it says, All rights",after:'.',word:'reserved',hint:'r_______',zh:'在 Hanson 的參考書封面上寫著：「版權所有（轉載必究）。」',kp:'KP04 字根 -serve'},
+  {before:'He had to take the',after:'of his carelessness.',word:'consequence',hint:'c__________',zh:'他必須承受他粗心大意的後果。',kp:'KP05 字根 -seque'},
+  {before:'It is a matter of no',after:'.',word:'consequences',hint:'c___________',zh:'這是一件不重要的事。',kp:'KP05 字根 -seque'},
+  {before:'The',after:'of events showed that I was right.',word:'subsequence',hint:'s__________',zh:'隨後發生的事情證明我是對的。',kp:'KP05 字根 -seque'},
+  {before:'Jay was',after:'to the assembly section of the factory.',word:'assigned',hint:'a_______',zh:'Jay 分配到工廠的裝配部門。',kp:'KP06 字根 -sign'},
+  {before:'Hanson got a painting with a',after:'of beautiful landscape on it.',word:'design',hint:'d_____',zh:'Hanson 得到一塊有美麗風景圖案的油畫。',kp:'KP06 字根 -sign'},
+  {before:'The celebrated general',after:'his commission at sixty-five.',word:'resigned',hint:'r_______',zh:'當他六十五歲時，這位卓著的將軍告別了軍旅生涯。',kp:'KP06 字根 -sign'},
+  {before:'When going shopping, Ben always',after:'his child to babysitters.',word:'consigned',hint:'c________',zh:'當 Ben 去購物時，總是把小孩托付給保姆。',kp:'KP06 字根 -sign'},
+  {before:'His inability to afford as much work as before and his tendency toward becoming nagging are the',after:'of aging.',word:'signals',hint:'s______',zh:'他無法負擔同之前一樣多的工作，而且逐漸愛嘮叨，這都是老化的徵兆。',kp:'KP06 字根 -sign'},
+  {before:'The traffic',after:'were broken, and thus the traffic this morning was in chaos.',word:'signals',hint:'s______',zh:'交通號誌故障，導致今早的交通秩序一團混亂。',kp:'KP06 字根 -sign'},
+];
+
+const VOCAB_U6I=[
+  {kp:'KP01', root:'字根 -sist', note:'-sist 為字根的字有「站；承受；組成」(stand, withstand, make up) 的意思',
+   words:[
+     {en:'assist', mm:[{t:'as',m:'p'},{t:'sist',m:'r'}], type:'(v.)', zh:'幫助', ex:[{en:'Hanson will assist you in finding some ways to learn English efficiently.',zh:'Hanson 幫助你找到有效率學習英文的方法。'}]},
+     {en:'consist', mm:[{t:'con',m:'p'},{t:'sist',m:'r'}], type:'(v.)', zh:'包含；存在；一致；符合', ex:[{en:'A leap year consists of 366 days.',zh:'閏年有三百六十六天。'}]},
+     {en:'desist', mm:[{t:'de',m:'p'},{t:'sist',m:'r'}], type:'(v.)', zh:'停止；結束', ex:[{en:'Jack has desisted from becoming a national basketball player since he broke his leg in a serious car accident.',zh:'因為一場嚴重車禍斷了腿，Jack 打消成為籃球選手的念頭。'}]},
+     {en:'exist', mm:[{t:'ex',m:'p'},{t:'ist',m:'r'}], type:'(v.)', zh:'存在；（在困境或貧困中）生存', ex:[{en:'Unicorn is a kind of imaginary creature. It does not exist in the real world.',zh:'獨角獸是一種想像的生物，牠並不存在真實世界裡。'}]},
+     {en:'insist', mm:[{t:'in',m:'p'},{t:'sist',m:'r'}], type:'(v.)', zh:'堅持要求', ex:[{en:'The chairperson insists that all employees (should) work as a team.',zh:'主席堅持所有員工應以團隊模式工作。'}]},
+     {en:'persist', mm:[{t:'per',m:'p'},{t:'sist',m:'r'}], type:'(v.)', zh:'執意要做…（有頑固或有人反對的事）', ex:[{en:'Edward persisted in studying abroad and even had a severe fight with his parents.',zh:'Edward 執意到國外留學，甚至與他的父母大吵一架。'}]},
+     {en:'resist', mm:[{t:'re',m:'p'},{t:'sist',m:'r'}], type:'(v.)', zh:'抵抗；耐住；抗拒', ex:[{en:"You will never become slim if you can't resist eating fast food.",zh:'如果你忍不住吃速食，你永遠不會變瘦的。'}]},
+     {en:'subsist', mm:[{t:'sub',m:'p'},{t:'sist',m:'r'}], type:'(v.)', zh:'依靠；活下去', ex:[{en:'The poor old man has subsisted on the government subsidies because he has no families.',zh:'因為沒有家人，那個可憐的老人一直靠著政府補助金過日。'}]},
+   ]
+  },
+  {kp:'KP02', root:'字根 -solve', note:'-solve 為字根的字有「鬆開」(loosen) 的意思',
+   words:[
+     {en:'dissolve', mm:[{t:'dis',m:'p'},{t:'solve',m:'r'}], type:'(v.)', zh:'溶解；消散；解散', ex:[{en:'The Soviet government dissolved in 1991.',zh:'蘇聯政府在 1991 年瓦解。'}]},
+     {en:'resolve', mm:[{t:'re',m:'p'},{t:'solve',m:'r'}], type:'(v.)', zh:'下決心；解決', ex:[{en:'Linda resolves to build a school in the country for the disabled children.',zh:'Linda 下定決心在鄉下蓋學校給身障孩童就讀。'}]},
+     {en:'solve', mm:[{t:'solve',m:'r'}], type:'(v.)', zh:'解決', ex:[{en:'The person who can solve the crossword puzzle in 2 minutes will get a car.',zh:'能在兩分鐘內解出這道填字遊戲字謎的人可以獲得一台車。'}]},
+   ]
+  },
+  {kp:'KP03', root:'字根 -spec', note:'-spec 為字根的字有「看」(see, look) 的意思',
+   words:[
+     {en:'aspect', mm:[{t:'a',m:'p'},{t:'spect',m:'r'}], type:'(n.)', zh:'方面；外觀；面向', ex:[]},
+     {en:'expect', mm:[{t:'ex',m:'p'},{t:'pect',m:'r'}], type:'(v.)', zh:'期待；期望', ex:[]},
+     {en:'inspect', mm:[{t:'in',m:'p'},{t:'spect',m:'r'}], type:'(v.)', zh:'詳看；審視；（官方的）檢查', ex:[{en:"Customs officers carefully inspect passengers' baggages to make sure if there are any illegal items.",zh:'海關仔細地檢查旅客行李，以確認有無違法品。'}]},
+     {en:'perspective', mm:[{t:'per',m:'p'},{t:'spect',m:'r'},{t:'ive',m:'s'}], type:'(n.)', zh:'觀點；視角', ex:[]},
+     {en:'prospect', mm:[{t:'pro',m:'p'},{t:'spect',m:'r'}], type:'(n.)', zh:'展望；前景；可能性', ex:[{en:'Tina looks forward to the prospect of being admitted to her ideal college.',zh:'Tina 期盼可以就讀理想大學的可能性。'}]},
+     {en:'respect', mm:[{t:'re',m:'p'},{t:'spect',m:'r'}], type:'(v./n.)', zh:'尊敬；尊重；遵守', ex:[{en:'I respect Emma for doing all the good deeds.',zh:'因 Emma 的種種善行，我非常尊敬她。'}]},
+     {en:'suspect', mm:[{t:'su',m:'p'},{t:'spect',m:'r'}], type:'(v./n.)', zh:'懷疑；猜疑；嫌疑犯', ex:[]},
+     {en:'spectacle', mm:[{t:'spect',m:'r'},{t:'acle',m:'s'}], type:'(n.)', zh:'展示；奇觀；景象', ex:[]},
+     {en:'spectacular', mm:[{t:'spect',m:'r'},{t:'acular',m:'s'}], type:'(adj.)', zh:'壯觀的；雄偉的', ex:[]},
+     {en:'spectator', mm:[{t:'spect',m:'r'},{t:'ator',m:'s'}], type:'(n.)', zh:'（運動比賽、表演的）觀眾；旁觀者', ex:[{en:'The TV program may include violent scenes that are not suitable for spectators below 16 years old.',zh:'這邊電視節目可能包含暴力影像，不適合 16 歲以下觀看。'}]},
+   ]
+  },
+];
+const QS_U6I=[
+  {before:'A leap year',after:'of 366 days.',word:'consists',hint:'c_______',zh:'閏年有三百六十六天。',kp:'KP01 字根 -sist'},
+  {before:'Happiness',after:'in contentment.',word:'consists',hint:'c_______',zh:'知足常樂。',kp:'KP01 字根 -sist'},
+  {before:'Health doesn\'t',after:'with intemperance.',word:'consist',hint:'c______',zh:'健康與放縱兩者無法相容。',kp:'KP01 字根 -sist'},
+  {before:'I',after:'that he (should) pay.',word:'insist',hint:'i_____',zh:'我堅持他應該要付錢。',kp:'KP01 字根 -sist'},
+  {before:'Hanson persists in his faith that a',after:'effort is necessary if one wants to make it.',word:'persistent',hint:'p_________',zh:'Hanson 執著於自己的理念—人想要成功，不屈不撓的努力是必需的。',kp:'KP01 字根 -sist'},
+  {before:'The temptation of Facebook is so strong that nobody could',after:'it.',word:'resist',hint:'r_____',zh:'臉書的誘惑太大了，無人能抗拒它。',kp:'KP01 字根 -sist'},
+  {before:'The girl is so poor that she couldn\'t but',after:'on charity.',word:'subsist',hint:'s______',zh:'那個女孩是如此的窮以致於不得不依靠救濟過日子。',kp:'KP01 字根 -sist'},
+  {before:'Hanson will',after:'you in finding some ways to learn English efficiently.',word:'assist',hint:'a_____',zh:'Hanson 幫助你找到有效率學習英文的方法。',kp:'KP01 字根 -sist'},
+  {before:'The terrorists won\'t',after:'from killing a hostage every hour unless they get what they have demanded.',word:'desist',hint:'d_____',zh:'這些恐怖份子不會停止每小時殺死一名人質，除非他們得到所要求的條件。',kp:'KP01 字根 -sist'},
+  {before:'Unicorn is a kind of imaginary creature. It does not',after:'in the real world.',word:'exist',hint:'e____',zh:'獨角獸是一種想像的生物，牠並不存在真實世界裡。',kp:'KP01 字根 -sist'},
+  {before:'We',after:'the salt in hot water.',word:'dissolved',hint:'d________',zh:'我們把鹽溶在熱水裡。',kp:'KP02 字根 -solve'},
+  {before:'I',after:'to make a fresh start.',word:'resolved',hint:'r_______',zh:'我決心重新再來。',kp:'KP02 字根 -solve'},
+  {before:'Water can be',after:'into oxygen and hydrogen.',word:'resolved',hint:'r_______',zh:'水能分解成氧和氫。',kp:'KP02 字根 -solve'},
+  {before:'It is difficult to',after:'all the questions in one go.',word:'solve',hint:'s____',zh:'要一次解決所有的題目很困難。',kp:'KP02 字根 -solve'},
+  {before:'An',after:'was appointed to examine the factory.',word:'inspector',hint:'i________',zh:'一位稽查員被指派去檢查這家工廠。',kp:'KP03 字根 -spec'},
+  {before:'All the',after:'at the show got excited.',word:'spectators',hint:'s_________',zh:'這場表演的所有觀眾都非常興奮。',kp:'KP03 字根 -spec'},
+  {before:'The',after:'hoped to profit from the business.',word:'speculator',hint:'s_________',zh:'投機業者希望能從這筆生意中獲利。',kp:'KP03 字根 -spec'},
+  {before:'He worked as a',after:'in the oil company.',word:'prospector',hint:'p_________',zh:'他擔任石油公司的勘探員上班。',kp:'KP03 字根 -spec'},
+  {before:'Hanson is poor, but',after:'.',word:'respectable',hint:'r__________',zh:'Hanson 雖窮，但人品端正。',kp:'KP03 字根 -spec'},
+  {before:'Such behavior is hardly',after:'.',word:'respectable',hint:'r__________',zh:'那種行為是不值得尊重的。',kp:'KP03 字根 -spec'},
+  {before:'The three men were given work according to their',after:'.',word:'respective',hint:'r_________',zh:'那三名各按其才能被分派工作。',kp:'KP03 字根 -spec'},
+];
+
+const VOCAB_U6II=[
+  {kp:'KP04',root:'字根 -spire',note:'-spire 有「呼吸」(breathe) 的意思',words:[
+    {en:'aspire',type:'(v.)',zh:'渴望'},
+    {en:'conspire',type:'(v.)',zh:'密謀；圖謀'},
+    {en:'expire',type:'(v.)',zh:'期滿；過期；失效；死亡'},
+    {en:'inspire',type:'(v.)',zh:'鼓舞；給予靈感；激起；喚起'},
+    {en:'perspire',type:'(v.)',zh:'流汗'},
+    {en:'respire',type:'(v.)',zh:'呼吸'},
+    {en:'transpire',type:'(v.)',zh:'透漏；發生'},
+  ]},
+  {kp:'KP05',root:'字根 -stinct',note:'-stinct- 有「辨別；告知」(prick) 的意思',words:[
+    {en:'distinct',type:'(adj.)',zh:'有區別的；不同的；清晰的'},
+    {en:'extinct',type:'(adj.)',zh:'滅種的；絕跡的；不再活動的'},
+    {en:'instinct',type:'(n.)',zh:'本能；直覺'},
+    {en:'distinguish',type:'(v.)',zh:'區分'},
+    {en:'extinguish',type:'(v.)',zh:'熄滅；破滅；滅絕'},
+  ]},
+  {kp:'KP06',root:'字根 -sume',note:'-sume 有「拿；用；浪費」(take, use, waste) 的意思',words:[
+    {en:'assume',type:'(v.)',zh:'假定；承擔；就任'},
+    {en:'consume',type:'(v.)',zh:'消耗；消費'},
+    {en:'presume',type:'(v.)',zh:'假定；擅自做'},
+    {en:'resume',type:'(v.)',zh:'重新開始；恢復'},
+  ]},
+  {kp:'KP07',root:'字根 -sure',note:'-sure 有「安全」(safe, secure) 的意思',words:[
+    {en:'sure',type:'(adj.)',zh:'確定的；肯定的'},
+    {en:'assure',type:'(v.)',zh:'使確信'},
+    {en:'ensure',type:'(v.)',zh:'確保；保證'},
+    {en:'insure',type:'(v.)',zh:'投保；保險'},
+  ]},
+];
+const QS_U6II=[
+  {before:'The little boy',after:'to become an architect; therefore, going to Barcelona has long been his hope and aspiration.',word:'aspires',hint:'a______',zh:'小男孩渴望成為一個建築師，因此去巴賽隆納一直都是他最大的夢望。',kp:'KP04 字根 -spire'},
+  {before:'The little boy aspires to become an architect; therefore, going to Barcelona has long been his hope and',after:'.',word:'aspiration',hint:'a_________',zh:'小男孩渴望成為一個建築師，因此去巴賽隆納一直都是他最大的夢望。',kp:'KP04 字根 -spire'},
+  {before:'The touching movie',after:'me a lot to realize my dream of becoming an actor.',word:'inspires',hint:'i_______',zh:'那部感人電影大大激發我完成當演員的夢想。',kp:'KP04 字根 -spire'},
+  {before:'She has lived illegally in the United States for three years after her visa',after:'.',word:'expired',hint:'e______',zh:'在她簽證過期後，她已經在美國非法居留了三年。',kp:'KP04 字根 -spire'},
+  {before:'The trade agreement between the two countries will',after:'next year.',word:'expire',hint:'e_____',zh:'這兩個國家的貿易協議即將在明年到期。',kp:'KP04 字根 -spire'},
+  {before:'If you',after:'excessively, you get dehydrated, so be sure to drink lots of fluids.',word:'perspire',hint:'p_______',zh:'如果你流了太多汗，你會脫水，所以務必要補充大量水份。',kp:'KP04 字根 -spire'},
+  {before:'Movements in the chest show that the lion is still',after:', so we know it is still alive.',word:'respiring',hint:'r________',zh:'獅子胸前的起伏表示牠仍在呼吸，因此我們知道牠還活著。',kp:'KP04 字根 -spire'},
+  {before:'The generals',after:'with each other to overthrow the government but their conspiracy was finally crushed.',word:'conspired',hint:'c________',zh:'這些將軍彼此共謀推翻政府大計，但最後他們的陰謀卻失敗了。',kp:'KP04 字根 -spire'},
+  {before:'The generals conspired with each other to overthrow the government but their',after:'was finally crushed.',word:'conspiracy',hint:'c_________',zh:'這些將軍彼此共謀推翻政府大計，但最後他們的陰謀卻失敗了。',kp:'KP04 字根 -spire'},
+  {before:'We conducted an experiment to prove that the water within plants would',after:'through the leaves.',word:'transpire',hint:'t________',zh:'我們作這個實驗為了證明植物中的水分會透過葉子發散。',kp:'KP04 字根 -spire'},
+  {before:'The two ideas are quite',after:'from each other.',word:'distinct',hint:'d_______',zh:'這兩個想法十分不同。',kp:'KP05 字根 -stinct'},
+  {before:'The twin brothers are as alike as two peas in a pod. I can hardly',after:'one from the other.',word:'distinguish',hint:'d__________',zh:'這對孿生兄弟非常相像，我幾乎分不出來。',kp:'KP05 字根 -stinct'},
+  {before:'Most parents protect their children by',after:'.',word:'instinct',hint:'i_______',zh:'大部份的父母親保護自己的小孩是基於本能。',kp:'KP05 字根 -stinct'},
+  {before:'Scientists agreed that the strange species of monster had been',after:'for millions of years.',word:'extinct',hint:'e______',zh:'科學家們同意這怪物已絕種數百萬年了。',kp:'KP05 字根 -stinct'},
+  {before:'Her spark of hope was',after:'.',word:'extinguished',hint:'e___________',zh:'她希望的火苗被熄滅了。',kp:'KP05 字根 -stinct'},
+  {before:'I',after:'from your speech that you are a foreigner.',word:'assume',hint:'a_____',zh:'從你的談話，我以為你是外國人。',kp:'KP06 字根 -sume'},
+  {before:'I',after:'that Hanson is a tall guy.',word:'presumed',hint:'p_______',zh:'我以為 Hanson 是個高個子呢。',kp:'KP06 字根 -sume'},
+  {before:'Let us',after:'reading where we left off.',word:'resume',hint:'r_____',zh:'讓我們從之前停頓的地方繼續讀。',kp:'KP06 字根 -sume'},
+  {before:'Rae decides to reduce the amount of red meat she',after:'.',word:'consumes',hint:'c_______',zh:'Rae 決定要少吃紅肉了。',kp:'KP06 字根 -sume'},
+  {before:'The captain of the "Titanic"',after:'the passengers that there was no danger sailing among the icebergs.',word:'assured',hint:'a______',zh:'鐵達尼號的船長向乘客保證在冰山間航行沒有危險。',kp:'KP07 字根 -sure'},
+  {before:'No one can',after:'success.',word:'ensure',hint:'e_____',zh:'沒有人可保證成功。',kp:'KP07 字根 -sure'},
+  {before:'David wants to',after:'his life for $50,000,000.',word:'insure',hint:'i_____',zh:'David 想要為他自己投保五千萬。',kp:'KP07 字根 -sure'},
+  {before:'The employee',after:'me of his hearty assistance.',word:'assured',hint:'a______',zh:'這位員工使我相信他真心的協助。',kp:'KP07 字根 -sure'},
+];
+
+const VOCAB_U6III=[
+  {kp:'KP08',root:'字根 -tain',note:'-tain 有「拿；抓住；保存」(hold, keep) 的意思',words:[
+    {en:'abstain',type:'(v.)',zh:'戒除'},
+    {en:'attain',type:'(v.)',zh:'達到；獲得'},
+    {en:'contain',type:'(v.)',zh:'包含；容納'},
+    {en:'detain',type:'(v.)',zh:'滯留；拘留'},
+    {en:'entertain',type:'(v.)',zh:'使娛樂；款待'},
+    {en:'maintain',type:'(v.)',zh:'維持；保養；扶養'},
+    {en:'obtain',type:'(v.)',zh:'得到；獲得'},
+    {en:'pertain',type:'(v.)',zh:'關於；屬於；與…有關'},
+    {en:'retain',type:'(v.)',zh:'保留；保有'},
+    {en:'sustain',type:'(v.)',zh:'支撐；支持；維持（生命、精力）'},
+  ]},
+  {kp:'KP09',root:'字根 -tribute',note:'-tribute 有「給予」(give) 的意思',words:[
+    {en:'tribute',type:'(n.)',zh:'貢品；敬意；尊崇'},
+    {en:'attribute',type:'(v.)',zh:'歸因（功/咎）於；認為（某作品）屬某人'},
+    {en:'contribute',type:'(v.)',zh:'貢獻；捐助'},
+    {en:'distribute',type:'(v.)',zh:'分發；分配；散佈'},
+  ]},
+  {kp:'KP10',root:'字根 -tude',note:'-tude 有「狀態；程度」(status, condition) 的意思',words:[
+    {en:'attitude',type:'(n.)',zh:'態度；看法'},
+    {en:'altitude',type:'(n.)',zh:'高度（海拔）'},
+    {en:'aptitude',type:'(n.)',zh:'天賦'},
+    {en:'latitude',type:'(n.)',zh:'緯度'},
+    {en:'longitude',type:'(n.)',zh:'經度'},
+    {en:'gratitude',type:'(n.)',zh:'感激之意'},
+    {en:'solitude',type:'(n.)',zh:'獨處；獨居'},
+    {en:'magnitude',type:'(n.)',zh:'大小；規模；重要性'},
+    {en:'multitude',type:'(n.)',zh:'大量；眾多；群眾'},
+    {en:'similitude',type:'(n.)',zh:'相似；類似'},
+  ]},
+  {kp:'KP11',root:'字根 -volve',note:'-volve 有「轉動」(roll) 的意思',words:[
+    {en:'evolve',type:'(v.)',zh:'發展；演進；（生物）進化'},
+    {en:'involve',type:'(v.)',zh:'包含；牽涉；連累；使參與'},
+    {en:'revolve',type:'(v.)',zh:'旋轉'},
+  ]},
+  {kp:'KP12',root:'字根 -voke',note:'-voke 有「呼喚」(call) 的意思',words:[
+    {en:'evoke',type:'(v.)',zh:'喚起（心中的回憶、情緒）'},
+    {en:'invoke',type:'(v.)',zh:'訴諸；喚起'},
+    {en:'provoke',type:'(v.)',zh:'挑釁；激起；引發'},
+    {en:'revoke',type:'(v.)',zh:'正式廢除；取消'},
+  ]},
+];
+const QS_U6III=[
+  {before:'His doctor told him to',after:'from beer and wine.',word:'abstain',hint:'a______',zh:'他的醫生告訴他要少喝啤酒。',kp:'KP08 字根 -tain'},
+  {before:'This book',after:'a good bibliography.',word:'contains',hint:'c_______',zh:'這本書含有一份很好的參考書目。',kp:'KP08 字根 -tain'},
+  {before:'The police',after:'the suspected thief for further questioning.',word:'detained',hint:'d_______',zh:'警方將竊嫌拘留，以便進一步質詢。',kp:'KP08 字根 -tain'},
+  {before:'We were',after:'with refreshments.',word:'entertained',hint:'e__________',zh:'我們受到茶點招待。',kp:'KP08 字根 -tain'},
+  {before:'They have',after:'friendly relations with each other for more than decades.',word:'maintained',hint:'m_________',zh:'他們彼此之間保持友好關係達數十年。',kp:'KP08 字根 -tain'},
+  {before:'Knowledge may be',after:'through reading.',word:'obtained',hint:'o_______',zh:'知識可由閱讀中獲得。',kp:'KP08 字根 -tain'},
+  {before:'Will this light shelf',after:'all these books?',word:'sustain',hint:'s______',zh:'這麼輕的書架可以承受這些書的重量嗎？',kp:'KP08 字根 -tain'},
+  {before:'Hope',after:'us in our misery.',word:'sustains',hint:'s_______',zh:'希望讓我們在困境中支撐下去。',kp:'KP08 字根 -tain'},
+  {before:'The old church',after:'the Gothic style.',word:'retained',hint:'r_______',zh:'那個老教堂保留哥德式的風格。',kp:'KP08 字根 -tain'},
+  {before:'The rich man always',after:'clothing, food and money to the relief of the poor.',word:'contributes',hint:'c__________',zh:'那有錢人總是捐贈衣物、食物及金錢救濟貧民。',kp:'KP09 字根 -tribute'},
+  {before:'Hanson',after:'his success to hard work and the support from his family.',word:'attributes',hint:'a_________',zh:'Hanson 將他的成功歸因於他的努力與家人的支持。',kp:'KP09 字根 -tribute'},
+  {before:'The store',after:'free samples to the passersby.',word:'distributed',hint:'d__________',zh:'這間商店將分發免費試用品給路人。',kp:'KP09 字根 -tribute'},
+  {before:'The villagers paid',after:'to the brave hero, who defeated the enemy.',word:'tribute',hint:'t______',zh:'鄉民向這位勇敢的英雄致意，他成功擊退敵人。',kp:'KP09 字根 -tribute'},
+  {before:'The Mirage 2000 can fly at the',after:'of 35,000 feet.',word:'altitude',hint:'a_______',zh:'幻象 2000 可以在三萬五千英呎的高度飛行。',kp:'KP10 字根 -tude'},
+  {before:'David has a(n)',after:'for singing, while Hanson, for sports.',word:'aptitude',hint:'a_______',zh:'David 天生有歌唱的天賦，然而翰陛是在運動方面。',kp:'KP10 字根 -tude'},
+  {before:'It is necessary for the parents to take a firm',after:'toward their children.',word:'attitude',hint:'a_______',zh:'家長對小孩應採取堅定的態度。',kp:'KP10 字根 -tude'},
+  {before:'President Ma expressed his',after:'to me for my help.',word:'gratitude',hint:'g________',zh:'因為我的幫助，馬總統向我表示謝意。',kp:'KP10 字根 -tude'},
+  {before:'The Green Island is near 23 degrees north',after:'.',word:'latitude',hint:'l_______',zh:'綠島位於北緯 23 度附近。',kp:'KP10 字根 -tude'},
+  {before:'The typhoon is now near 100 degrees east',after:'.',word:'longitude',hint:'l________',zh:'颱風現在在東經 100 度附近。',kp:'KP10 字根 -tude'},
+  {before:'Superman enjoyed his',after:'in the North Pole.',word:'solitude',hint:'s_______',zh:'超人在北極享受獨居的生活。',kp:'KP10 字根 -tude'},
+  {before:'A new industry',after:'from the invention of the television.',word:'evolved',hint:'e______',zh:'由於電視的發明而發展出一項新的工業。',kp:'KP11 字根 -volve'},
+  {before:'The councilor was',after:'in the scandal.',word:'involved',hint:'i_______',zh:'議員被捲入那件醜聞事件中。',kp:'KP11 字根 -volve'},
+  {before:'On the one hand, the earth',after:'on its axis; on the other hand, it revolves around the sun.',word:'revolves',hint:'r_______',zh:'一方面，地球以地軸為中心而旋轉（自轉）；另一方面他繞太陽旋轉（公轉）。',kp:'KP11 字根 -volve'},
+  {before:'Her beautiful voice',after:'admiration and applause from the audience.',word:'evoked',hint:'e_____',zh:'她美妙的歌聲引起聽眾的讚賞和掌聲。',kp:'KP12 字根 -voke'},
+  {before:'The government will',after:'the power of law to prevent crimes.',word:'invoke',hint:'i_____',zh:'政府將藉助法律力量來防止罪案。',kp:'KP12 字根 -voke'},
+  {before:'Mandy was',after:"by Sam's rudeness.",word:'provoked',hint:'p_______',zh:"Mandy 被 Sam 的無禮所激怒。",kp:'KP12 字根 -voke'},
+  {before:"John's driver's license was",after:"because he didn't pay the fine.",word:'revoked',hint:'r______',zh:"John 的駕駛執照被取消因為他沒繳罰金。",kp:'KP12 字根 -voke'},
+];
+
+const VOCAB_U7=[
+  {kp:'KP01',root:'字根 -board',note:'-board 有「板；木板」的意思',words:[
+    {en:'board',type:'(n./v.)',zh:'木板；董事會；膳食；上車；上船；上機'},
+    {en:'aboard',type:'(adv.)',zh:'在船、飛機、火車、汽車上'},
+    {en:'abroad',type:'(adv.)',zh:'在國外；到國外'},
+  ]},
+  {kp:'KP02',root:'字根 -cident',note:'-cident 有「落下；發生」的意思',words:[
+    {en:'accident',type:'(n.)',zh:'意外事件'},
+    {en:'incident',type:'(n.)',zh:'事件'},
+    {en:'occident',type:'(n.)',zh:'西方'},
+    {en:'coincidence',type:'(n.)',zh:'巧合'},
+  ]},
+  {kp:'KP03',root:'字根 -mulate',note:'-mulate 有「堆積；模仿；刺激」的意思',words:[
+    {en:'accumulate',type:'(v.)',zh:'累積'},
+    {en:'simulate',type:'(v.)',zh:'假裝；模擬'},
+    {en:'stimulate',type:'(v.)',zh:'刺激；激勵'},
+  ]},
+  {kp:'KP04',root:'字根 -lusion',note:'-lusion 有「玩耍；欺騙」的意思',words:[
+    {en:'allusion',type:'(n.)',zh:'間接提到'},
+    {en:'delusion',type:'(n.)',zh:'妄想；錯誤的想法；幻想'},
+    {en:'disillusion',type:'(v.)',zh:'使醒悟；使幻想破滅'},
+    {en:'illusion',type:'(n.)',zh:'幻覺；幻想；假象'},
+  ]},
+  {kp:'KP05',root:'字根 -loud-',note:'-loud- 有「聲響」的意思',words:[
+    {en:'aloud',type:'(adv.)',zh:'高聲地；喧嘩地'},
+    {en:'loud',type:'(adj./adv.)',zh:'聲音響亮的；大聲的；高聲地'},
+    {en:'loudly',type:'(adv.)',zh:'高聲地；喧嘩地'},
+  ]},
+  {kp:'KP06',root:'字根 alter-',note:'alter- 有「其他；交替」的意思',words:[
+    {en:'alternate',type:'(v./adj./n.)',zh:'輪流交替；輪流交替的；候補；代理者'},
+    {en:'alternative',type:'(n./adj.)',zh:'另一個選擇；可選擇的'},
+    {en:'alternation',type:'(n.)',zh:'輪流'},
+    {en:'alteration',type:'(n.)',zh:'改變；修改'},
+  ]},
+  {kp:'KP07',root:'字根 -rise',note:'-rise 有「升起；出現」的意思',words:[
+    {en:'rise',type:'(v./n.)',zh:'上升；起床；上升'},
+    {en:'arise',type:'(v.)',zh:'產生；出現'},
+    {en:'arouse',type:'(v.)',zh:'喚起（意識）'},
+    {en:'raise',type:'(v.)',zh:'舉起；提高；籌款；養育；提出'},
+    {en:'rouse',type:'(v.)',zh:'叫醒；喚起；激勵；激起'},
+  ]},
+  {kp:'KP08',root:'字根 -wait',note:'-wait 有「等候」的意思',words:[
+    {en:'await',type:'(v.)',zh:'等候；等待'},
+    {en:'wait',type:'(v.)',zh:'等候；等待'},
+  ]},
+  {kp:'KP09',root:'字根 -wake-',note:'-wake- 有「醒來」的意思',words:[
+    {en:'wake',type:'(v.)',zh:'叫醒；醒來；喚起（記憶）'},
+    {en:'waken',type:'(v.)',zh:'（人）醒來；叫醒'},
+    {en:'awake',type:'(adj./v.)',zh:'醒著的；叫醒；醒來'},
+    {en:'awaken',type:'(v.)',zh:'喚起；叫醒；醒來'},
+  ]},
+  {kp:'KP10',root:'字根 -ward',note:'-ward 有「看守；守護」的意思',words:[
+    {en:'award',type:'(n./v.)',zh:'獎；獎品；授予（獎）'},
+    {en:'reward',type:'(n./v.)',zh:'報酬；獎勵；報答；獎賞'},
+  ]},
+];
+const QS_U7=[
+  {before:'The floor of the dancing room is made of',after:'.',word:'boards',hint:'b_____',zh:'舞蹈教室的地板是木板做成的。',kp:'KP01 字根 -board'},
+  {before:'Each freshman pays six thousand dollars a month for',after:'and lodging.',word:'board',hint:'b____',zh:'每月新生付六千元膳宿費。',kp:'KP01 字根 -board'},
+  {before:'Welcome',after:'.',word:'aboard',hint:'a_____',zh:'歡迎搭乘本機（艦、車…）。',kp:'KP01 字根 -board'},
+  {before:'The aircraft has 120 passengers and crew on',after:'.',word:'board',hint:'b____',zh:'飛機上共有120名乘客跟機組人員。',kp:'KP01 字根 -board'},
+  {before:'Socrates is to the',after:'what Confucius is to the Orient.',word:'Occident',hint:'O_______',zh:'蘇格拉底之於西方世界就如同孔夫子之於東方世界。',kp:'KP02 字根 -cident'},
+  {before:'The firefighter had been met with an',after:'when putting out the fire.',word:'accident',hint:'a_______',zh:'這個消防員在滅火時出了意外。',kp:'KP02 字根 -cident'},
+  {before:'This is such a dangerous',after:"that I can't help trembling.",word:'incident',hint:'i_______',zh:'這件事真是太危險了，我忍不住發抖。',kp:'KP02 字根 -cident'},
+  {before:'It was such a',after:'that I ran into my neighbor overseas.',word:'coincidence',hint:'c__________',zh:'在國外遇見我的鄰居真是太巧了。',kp:'KP02 字根 -cident'},
+  {before:'A large amount of sand in the river',after:'to finally become a large delta.',word:'accumulated',hint:'a__________',zh:'河中大量泥沙累積最後形成一個大三角洲。',kp:'KP03 字根 -mulate'},
+  {before:"The statesman's praise",after:'the councilor into new efforts.',word:'stimulated',hint:'s_________',zh:'那位政治家的稱讚促使議員作進一步努力。',kp:'KP03 字根 -mulate'},
+  {before:'In this online game, scenes',after:'real battles are provided to present a sense of reality.',word:'simulating',hint:'s_________',zh:'這個線上遊戲藉由模擬真實的戰鬥來提供玩家真實感。',kp:'KP03 字根 -mulate'},
+  {before:'',after:'games, usually abbreviated as "SIM", are very popular nowadays, such as The Sims Social.',word:'Simulation',hint:'S_________',zh:'模擬遊戲一般縮寫成「SIM」，最近很受歡迎例如「模擬市民」。',kp:'KP03 字根 -mulate'},
+  {before:'The attorney made an',after:"to the suspect's misconduct.",word:'allusion',hint:'a_______',zh:'律師暗指嫌犯有不良行為。',kp:'KP04 字根 -lusion'},
+  {before:'The mirrors create the',after:'that the room is very large.',word:'illusion',hint:'i_______',zh:'鏡子造成了這房間好像很大的錯覺。',kp:'KP04 字根 -lusion'},
+  {before:'The baseball player',after:'his fans by his sloppy play.',word:'disillusioned',hint:'d____________',zh:'這個棒球選手糟糕的表現使他的球迷們幻想破滅。',kp:'KP04 字根 -lusion'},
+  {before:'Hanson is under the',after:'that he is the greatest composer in the world.',word:'illusion',hint:'i_______',zh:'Hanson 沉浸在他是全世界最偉大作曲家的幻想當中。',kp:'KP04 字根 -lusion'},
+  {before:'Hanson has a',after:'voice.',word:'loud',hint:'l___',zh:'Hanson 的嗓子很宏亮。',kp:'KP05 字根 -loud-'},
+  {before:'Speak',after:"! I can't hear you.",word:'louder',hint:'l_____',zh:'說大聲一點！我聽不到你的聲音。',kp:'KP05 字根 -loud-'},
+  {before:'Speak more',after:"! I can't hear you.",word:'loudly',hint:'l_____',zh:'說大聲一點！我聽不到你的聲音。',kp:'KP05 字根 -loud-'},
+  {before:'It is much better to read',after:'than to read in silence.',word:'aloud',hint:'a____',zh:'朗讀遠勝默讀。',kp:'KP05 字根 -loud-'},
+  {before:'Someone knocked',after:'on the door.',word:'loudly',hint:'l_____',zh:'有人大聲敲門。',kp:'KP05 字根 -loud-'},
+  {before:'The workers',after:'complained of being ill-treated.',word:'loudly',hint:'l_____',zh:'工人們大聲埋怨他們所受的虐待。',kp:'KP05 字根 -loud-'},
+  {before:'The bomb exploded with a',after:'noise.',word:'loud',hint:'l___',zh:'炸彈轟地爆炸了。',kp:'KP05 字根 -loud-'},
+  {before:'He called',after:'for help.',word:'loudly',hint:'l_____',zh:'他大聲呼救。',kp:'KP05 字根 -loud-'},
+  {before:'Days',after:'with nights.',word:'alternate',hint:'a________',zh:'日夜交替。',kp:'KP06 字根 alter-'},
+  {before:'She and her sister',after:'taking care of the homeless.',word:'alternated',hint:'a_________',zh:'她和她的妹妹輪流照顧無家可歸的人。',kp:'KP06 字根 alter-'},
+  {before:"That's the only",after:'.',word:'alternative',hint:'a__________',zh:'那是唯一可行的路。',kp:'KP06 字根 alter-'},
+  {before:'I had no',after:'but to pay the cost.',word:'alternative',hint:'a__________',zh:'我不得不付清這個費用。',kp:'KP06 字根 alter-'},
+  {before:'Hanson',after:'kindness with severity.',word:'alternates',hint:'a_________',zh:'Hanson 時而和藹，時而嚴肅。',kp:'KP06 字根 alter-'},
+  {before:'The',after:'of peace and war made the refugees flee away from their mother country.',word:'alternation',hint:'a__________',zh:'戰爭與和平的交替使得這些難民逃離家園。',kp:'KP06 字根 alter-'},
+  {before:'The chairman',after:'to welcome his guests.',word:'arose',hint:'a____',zh:'主席起身歡迎客人到來。',kp:'KP07 字根 -rise'},
+  {before:'Accidents often',after:'from carelessness.',word:'arise',hint:'a____',zh:'意外常常是因為不小心造成的。',kp:'KP07 字根 -rise'},
+  {before:'Many great men have',after:'from humble beginnings.',word:'arisen',hint:'a_____',zh:'很多偉大的人來自於卑微的出身。',kp:'KP07 字根 -rise'},
+  {before:'Freeze!',after:'your hands.',word:'Raise',hint:'R____',zh:'不要動！把手舉起來。',kp:'KP07 字根 -rise'},
+  {before:'The rich farmer',after:'crops and cattle.',word:'raised',hint:'r_____',zh:'有錢的農民種植農作物及飼養家畜。',kp:'KP07 字根 -rise'},
+  {before:'She',after:'a large family by making handicraft.',word:'raises',hint:'r_____',zh:'她藉著做手工藝來供養一大家子人。',kp:'KP07 字根 -rise'},
+  {before:'The humble teacher is',after:'funds for charity to help those in need.',word:'raising',hint:'r______',zh:'那個清寒教師為了幫助那些需要幫助的人，正在籌募資金給慈善團體。',kp:'KP07 字根 -rise'},
+  {before:'The sudden sound',after:'him from reflections.',word:'roused',hint:'r_____',zh:'意外的聲響使他從沉思中驚醒。',kp:'KP07 字根 -rise'},
+  {before:'I was',after:'by the doorbell.',word:'roused',hint:'r_____',zh:'我被門鈴吵醒。',kp:'KP07 字根 -rise'},
+  {before:'The insult',after:'him to anger.',word:'aroused',hint:'a______',zh:'那侮辱使他生氣。',kp:'KP07 字根 -rise'},
+  {before:'Their terrible suffering',after:'our pity.',word:'aroused',hint:'a______',zh:'可怕的遭遇激起了我們的同情。',kp:'KP07 字根 -rise'},
+  {before:'The mountain',after:'1,000 M above the sea.',word:'rises',hint:'r____',zh:'這座山海拔1,000公尺。',kp:'KP07 字根 -rise'},
+  {before:'Albert was',after:'for the bus to come.',word:'waiting',hint:'w______',zh:'Albert 還在等公共汽車。',kp:'KP08 字根 -wait'},
+  {before:'The children',after:'impatiently for the vacation.',word:'waited',hint:'w_____',zh:'孩子們不耐煩地期待著假期的到來。',kp:'KP08 字根 -wait'},
+  {before:'Hanson is',after:'your answer.',word:'awaiting',hint:'a_______',zh:'Hanson 正在等著你的答案。',kp:'KP08 字根 -wait'},
+  {before:"I'm sorry to have kept you",after:'.',word:'waiting',hint:'w______',zh:'對不起，讓你久等了。',kp:'KP08 字根 -wait'},
+  {before:'I am anxiously',after:'your reply.',word:'awaiting',hint:'a_______',zh:'我正急切地等著你的回音。',kp:'KP08 字根 -wait'},
+  {before:'Hanson',after:'up at five every morning to deliver goat milk.',word:'wakes',hint:'w____',zh:'Hanson 每天清晨五點起床送羊乳。',kp:'KP09 字根 -wake-'},
+  {before:'The national spirit',after:'and a new country was founded.',word:'awoke',hint:'a____',zh:'民族精神覺醒後，一個新國家隨之誕生。',kp:'KP09 字根 -wake-'},
+  {before:'The national spirit was',after:'and a new country was founded.',word:'awakened',hint:'a_______',zh:'民族精神覺醒後，一個新國家隨之誕生。',kp:'KP09 字根 -wake-'},
+  {before:'I was wide',after:'all night.',word:'awake',hint:'a____',zh:'我徹夜難眠。',kp:'KP09 字根 -wake-'},
+  {before:'The selfish girl is always',after:'to her own interest.',word:'awake',hint:'a____',zh:'那個自私的女孩總是特別注意自己的利益。',kp:'KP09 字根 -wake-'},
+  {before:'The gold medal was',after:'to the decathlon champion.',word:'awarded',hint:'a______',zh:'金牌授予十項運動冠軍。',kp:'KP10 字根 -ward'},
+  {before:'The success is the',after:'of his hard work.',word:'reward',hint:'r_____',zh:'成功是他努力工作的結果所得。',kp:'KP10 字根 -ward'},
+];
+
+const VOCAB_U8I=[
+  {kp:'KP01',root:'字根 com-',note:'com- 有「一起；強調」的意思',words:[
+    {en:'command',type:'(v./n.)',zh:'命令；博得；指揮、控制；俯瞰；精通（語言）'},
+    {en:'commend',type:'(v.)',zh:'稱讚；推薦'},
+    {en:'commence',type:'(v.)',zh:'開始；著手'},
+    {en:'comment',type:'(v./n.)',zh:'批評、評論；註釋'},
+  ]},
+  {kp:'KP02',root:'campaign, champagne, champion',note:'字形相近易混淆的三個單字',words:[
+    {en:'campaign',type:'(n./v.)',zh:'戰役；運動、競選活動；從事活動'},
+    {en:'champagne',type:'(n.)',zh:'香檳酒'},
+    {en:'champion',type:'(n.)',zh:'優勝者；冠軍；擁護者；鬥士'},
+  ]},
+  {kp:'KP03',root:'complaint, compliant',note:'字形相近易混淆的兩個單字',words:[
+    {en:'complaint',type:'(n.)',zh:'抱怨；不滿；牢騷；疾病'},
+    {en:'compliant',type:'(adj.)',zh:'順從的'},
+  ]},
+  {kp:'KP04',root:'字根 -pliment/-plement',note:'-pliment/-plement 有「填滿；補足」的意思',words:[
+    {en:'compliment',type:'(n./v.)',zh:'恭維；讚美'},
+    {en:'complement',type:'(n./v.)',zh:'補足物；增添物；補語；補足；互補'},
+    {en:'implement',type:'(n./v.)',zh:'工具；實施（計畫、政策、提案等）'},
+    {en:'supplement',type:'(n.)',zh:'補充物；副刊；補給品'},
+  ]},
+];
+const QS_U8I=[
+  {before:'The teacher',after:'his student to keep silent.',word:'commanded',hint:'c________',zh:'老師命令他的學生保持安靜。',kp:'KP01 字根 com-'},
+  {before:'The teacher',after:'that his students (should) keep silent.',word:'commanded',hint:'c________',zh:'老師命令他的學生保持安靜。',kp:'KP01 字根 com-'},
+  {before:'The teacher',after:"his student's respect.",word:'commands',hint:'c_______',zh:'那位老師博得他學生的尊敬。',kp:'KP01 字根 com-'},
+  {before:'When he was eighteen, he',after:'studying law.',word:'commenced',hint:'c________',zh:'他十八歲時開始研究法律。',kp:'KP01 字根 com-'},
+  {before:'Our service has always been very highly',after:'.',word:'commended',hint:'c________',zh:'我們的服務一直受到高度稱讚。',kp:'KP01 字根 com-'},
+  {before:'The judges made some useful',after:'on the English oratorical contest.',word:'comments',hint:'c_______',zh:'裁判對這次英語演說比賽做了一些建設性的評論。',kp:'KP01 字根 com-'},
+  {before:'They began a',after:'to raise funds for an orphanage.',word:'campaign',hint:'c_______',zh:'他們開始一個孤兒院籌募基金的活動。',kp:'KP02 campaign, champagne, champion'},
+  {before:'David poured himself another glass of',after:'.',word:'champagne',hint:'c________',zh:'David 替自己又倒了一杯香檳酒。',kp:'KP02 campaign, champagne, champion'},
+  {before:"His father was the world's judo",after:'.',word:'champion',hint:'c_______',zh:'他父親曾是世界柔道冠軍。',kp:'KP02 campaign, champagne, champion'},
+  {before:"Due to the waiter's bad attitude, my family intended to make a",after:'.',word:'complaint',hint:'c________',zh:'因為服務生的態度不良，我家人想要提出申訴。',kp:'KP03 complaint, compliant'},
+  {before:'Those who are too',after:'are not respected.',word:'compliant',hint:'c________',zh:'百依百順的人是不會受尊敬的。',kp:'KP03 complaint, compliant'},
+  {before:'A fine wine is a',after:'to a good meal.',word:'complement',hint:'c_________',zh:'美食配上美酒就更加分了。',kp:'KP04 字根 -pliment/-plement'},
+  {before:"Ingrid's classmates",after:'her on her beautiful dress and hairstyle.',word:'complimented',hint:'c___________',zh:'Ingrid 的同學稱讚她美麗的衣服和髮型。',kp:'KP04 字根 -pliment/-plement'},
+  {before:'I want to buy some gardening',after:'.',word:'implements',hint:'i_________',zh:'我想買些園藝工具。',kp:'KP04 字根 -pliment/-plement'},
+  {before:'People unable to keep balanced diet are recommended to take vitamin',after:'every day.',word:'supplements',hint:'s__________',zh:'無法維持飲食均衡的人建議每天攝取維他命補充錠。',kp:'KP04 字根 -pliment/-plement'},
+];
+
+const VOCAB_U8II=[
+  {kp:'KP05',root:'conscience, conscious, consensus',note:'三字字形相近，意思各異',words:[
+    {en:'conscience',type:'(n.)',zh:'良心；良知'},
+    {en:'conscious',type:'(adj.)',zh:'體認到；有意識的；清醒的；能察覺的'},
+    {en:'consensus',type:'(n.)',zh:'共識'},
+  ]},
+  {kp:'KP06',root:'字根 -stitute',note:'-stitute 有「站立；設立」的意思',words:[
+    {en:'constitute',type:'(v.)',zh:'組成；構成'},
+    {en:'destitute',type:'(adj.)',zh:'缺乏（食物、金錢）的；欠缺的'},
+    {en:'institute',type:'(v./n.)',zh:'創立；設立；開始；研究機構'},
+    {en:'substitute',type:'(n./v.)',zh:'替代品；代理人；以…代用；代替；代理'},
+    {en:'prostitute',type:'(v.)',zh:'賣淫；（為了賺錢）濫用才能或技術'},
+  ]},
+  {kp:'KP07',root:'consul, council, counsel',note:'三字字形相近，意思各異',words:[
+    {en:'consul',type:'(n.)',zh:'領事'},
+    {en:'council',type:'(n.)',zh:'政務會；議會；協調會'},
+    {en:'counsel',type:'(n./v.)',zh:'忠告；律師；建議；勸告'},
+  ]},
+  {kp:'KP08',root:'contact, contract, contrast',note:'三字字形相近，意思各異',words:[
+    {en:'contact',type:'(n./v.)',zh:'接觸；（與某人）接觸'},
+    {en:'contract',type:'(n./v.)',zh:'契約；合同；收縮；訂立合約；感染（疾病）'},
+    {en:'contrast',type:'(n./v.)',zh:'對照；對比；明顯差異；顯出差異'},
+  ]},
+  {kp:'KP09',root:'contend, content',note:'兩字字形相近，意思各異',words:[
+    {en:'contend',type:'(v.)',zh:'宣稱…為事實；競爭；鬥爭'},
+    {en:'content',type:'(n./v./adj.)',zh:'內容物；使滿足；感到滿足的'},
+  ]},
+  {kp:'KP10',root:'cooperation, corporation',note:'兩字字形相近，意思各異',words:[
+    {en:'cooperation',type:'(n.)',zh:'協力；合作'},
+    {en:'corporation',type:'(n.)',zh:'（社團）法人；（股份有限）公司'},
+  ]},
+];
+const QS_U8II=[
+  {before:'His',after:'has troubled him since he stole the money.',word:'conscience',hint:'c_________',zh:'自從他偷了錢之後，他的良心一直不安。',kp:'KP05 conscience, conscious, consensus'},
+  {before:"He isn't",after:'of the danger.',word:'conscious',hint:'c________',zh:'他沒察覺到危險性。',kp:'KP05 conscience, conscious, consensus'},
+  {before:"He isn't",after:'that there is a danger.',word:'conscious',hint:'c________',zh:'他沒察覺到危險性。',kp:'KP05 conscience, conscious, consensus'},
+  {before:'Twenty members',after:'the club.',word:'constitute',hint:'c_________',zh:'二十個會員組成這個俱樂部。',kp:'KP06 字根 -stitute'},
+  {before:'The king was very cruel; he was',after:'of sympathy.',word:'destitute',hint:'d________',zh:'這個國王非常殘忍，他毫無憐憫之心。',kp:'KP06 字根 -stitute'},
+  {before:'MIT stands for Massachusetts',after:'of Technology.',word:'Institute',hint:'I________',zh:'MIT 代表「麻省理工學院」。',kp:'KP06 字根 -stitute'},
+  {before:'Hanson',after:'for our English teacher who was away on holiday.',word:'substituted',hint:'s__________',zh:'Hanson 幫忙因休假而不在的英文老師代課。',kp:'KP06 字根 -stitute'},
+  {before:'Mr. Lee was the',after:'general of China in San Francisco.',word:'consul',hint:'c_____',zh:'李先生是中國駐舊金山的總領事。',kp:'KP07 consul, council, counsel'},
+  {before:'Mr. Chang was elected as the chairman of Taipei City',after:'.',word:'Council',hint:'C______',zh:'張先生被選為台北市議會的主席。',kp:'KP07 consul, council, counsel'},
+  {before:"The mischievous pupil refused to listen to the teacher's",after:'.',word:'counsel',hint:'c______',zh:'這頑皮的學生拒絕聽老師的忠告。',kp:'KP07 consul, council, counsel'},
+  {before:'The politician comes into',after:'with people in every walk of life.',word:'contact',hint:'c______',zh:'這位從政者與各行各業的人們均有接觸。',kp:'KP08 contact, contract, contrast'},
+  {before:'David has signed a six-year',after:'with the Warner Music Taiwan Ltd.',word:'contract',hint:'c_______',zh:'David 與臺灣滾那音樂股份有限公司簽了六年約。',kp:'KP08 contact, contract, contrast'},
+  {before:'Jason',after:'a serious illness last year.',word:'contracted',hint:'c_________',zh:'Jason 去年感染了重病。',kp:'KP08 contact, contract, contrast'},
+  {before:'The green mountains',after:'finely with the blue sky.',word:'contrast',hint:'c_______',zh:'綠色的山與藍色的天形成很美好的對比。',kp:'KP08 contact, contract, contrast'},
+  {before:'The last two countries qualified to',after:'for the championship are Japan and Cuba.',word:'contend',hint:'c______',zh:'最後兩個有資格競爭冠軍的國家為日本與古巴。',kp:'KP09 contend, content'},
+  {before:'The government',after:'that the difficulties they faced were too severe.',word:'contended',hint:'c________',zh:'政府宣稱他們所面臨的困難太大了。',kp:'KP09 contend, content'},
+  {before:'I am',after:'with what I have now.',word:'content',hint:'c______',zh:'我滿足於現在所擁有的一切。',kp:'KP09 contend, content'},
+  {before:'What are the',after:'of the bag?',word:'contents',hint:'c_______',zh:'這袋子裡裝的是什麼？',kp:'KP09 contend, content'},
+  {before:'I need your',after:'in this matter.',word:'cooperation',hint:'c__________',zh:'這件事我需要你的協助。',kp:'KP10 cooperation, corporation'},
+  {before:'After graduation from college, John has worked for a large American chemical',after:'for three years.',word:'corporation',hint:'c__________',zh:'大學畢業後 John 已經替一家美國大化學公司工作了三年。',kp:'KP10 cooperation, corporation'},
+];
+
+const VOCAB_U9I=[
+  {kp:'KP01',root:'對手；敵人',note:'',words:[
+    {en:'adversary',type:'(n.)',zh:'死敵；強敵'},
+    {en:'antagonist',type:'(n.)',zh:'對手；敵手'},
+    {en:'competitor',type:'(n.)',zh:'競爭者'},
+    {en:'enemy',type:'(n.)',zh:'敵人'},
+    {en:'foe',type:'(n.)',zh:'仇敵；敵人'},
+    {en:'opponent',type:'(n.)',zh:'對手；競爭者'},
+    {en:'rival',type:'(n.)',zh:'競爭對手；情敵'},
+  ]},
+  {kp:'KP02',root:'避免',note:'',words:[
+    {en:'avoid',type:'(v.)',zh:'避免；躲避'},
+    {en:'prevent',type:'(v.)',zh:'預防；阻止'},
+  ]},
+  {kp:'KP03',root:'報仇',note:'',words:[
+    {en:'avenge',type:'(v.)',zh:'替…報仇；為…復仇'},
+    {en:'revenge',type:'(n./v.)',zh:'復仇；報仇'},
+  ]},
+  {kp:'KP04',root:'人格；個性',note:'',words:[
+    {en:'character',type:'(n.)',zh:'品格；個性；人物'},
+    {en:'disposition',type:'(n.)',zh:'氣質；性情；傾向'},
+    {en:'individuality',type:'(n.)',zh:'個性；個人特徵'},
+    {en:'nature',type:'(n.)',zh:'天性；本性'},
+    {en:'personality',type:'(n.)',zh:'個性；性格'},
+    {en:'temper',type:'(n.)',zh:'脾氣；性情'},
+  ]},
+];
+const QS_U9I=[
+  {before:'The two men become best friends after a chess tournament in which they were',after:'.',word:'opponents',hint:'o________',zh:'這兩人在之前一場棋賽中是競爭對手，之後他們卻成為了好友。',kp:'KP01 對手；敵人'},
+  {before:'Hamlet and his uncle were',after:'.',word:'antagonists',hint:'a__________',zh:'哈姆雷特和他叔叔是權力爭奪的對手。',kp:'KP01 對手；敵人'},
+  {before:'Gamblers found a formidable',after:', the new district prosecutor.',word:'adversary',hint:'a________',zh:'新的地方法院檢察官是賭徒的死敵。',kp:'KP01 對手；敵人'},
+  {before:'The two countries were ancient',after:'and had met more than once on the field of battle.',word:'enemies',hint:'e______',zh:'這兩個國家是世仇，已多次在戰場上交鋒。',kp:'KP01 對手；敵人'},
+  {before:"The small shop's owner welcomes nearby",after:'to stimulate business.',word:'competitors',hint:'c__________',zh:'這位小店主歡迎鄰近的競爭者來刺激他的業務。',kp:'KP01 對手；敵人'},
+  {before:'The two men were not only',after:'for the same position but also for the same girl, a situation which caused an extreme hatred between them.',word:'rivals',hint:'r_____',zh:'那兩個男子不單是爭取同個職位的敵手，而且還追求同一個女孩，這情形使他們之間產生極大仇隙。',kp:'KP01 對手；敵人'},
+  {before:'Smog is the',after:'of healthy lungs.',word:'enemy',hint:'e____',zh:'煙霧是健康的肺的敵人。',kp:'KP01 對手；敵人'},
+  {before:'Britain and Germany were bitter',after:'in the two world wars.',word:'enemies',hint:'e______',zh:'英國和德國在兩次世界大戰中皆為不共戴天之敵人。',kp:'KP01 對手；敵人'},
+  {before:'Ignorance is a',after:'of progress.',word:'foe',hint:'f__',zh:'無知乃進步之大敵。',kp:'KP01 對手；敵人'},
+  {before:'A good student should',after:'talking during the lesson.',word:'avoid',hint:'a____',zh:'一個好學生上課中應該避免講話。',kp:'KP02 避免'},
+  {before:'The firefighters tried to',after:'the fire from spreading.',word:'prevent',hint:'p______',zh:'消防員嘗試阻止火勢蔓延。',kp:'KP02 避免'},
+  {before:'',after:'is better than cure.',word:'Prevention',hint:'P_________',zh:'預防勝於治療。',kp:'KP02 避免'},
+  {before:'The rain prevented him',after:'leaving.',word:'from',hint:'f___',zh:'大雨讓他無法離去。',kp:'KP02 避免'},
+  {before:'Hamlet planned to',after:"his father's death.",word:'avenge',hint:'a_____',zh:'哈姆雷特計畫為他父親被謀殺一事復仇。',kp:'KP03 報仇'},
+  {before:'He swears that he will',after:'himself on you for your insult.',word:'avenge',hint:'a_____',zh:'他發誓會洗刷你加諸在他身上的恥辱。',kp:'KP03 報仇'},
+  {before:'I resolve to',after:'myself on him for his betray.',word:'avenge',hint:'a_____',zh:'因為他對我的背叛，我決定向他報仇。',kp:'KP03 報仇'},
+  {before:'David has an artistic',after:'.',word:'disposition',hint:'d__________',zh:'David 擁有藝術家的氣質。',kp:'KP04 人格；個性'},
+  {before:'I found Dennis having a good',after:'.',word:'temper',hint:'t_____',zh:'我發現 Dennis 脾氣很好。',kp:'KP04 人格；個性'},
+  {before:'Ben has a quick',after:'.',word:'temper',hint:'t_____',zh:'Ben 性情急躁。',kp:'KP04 人格；個性'},
+  {before:'Hanson has a cheerful',after:'.',word:'disposition',hint:'d__________',zh:'Hanson 生性爽朗。',kp:'KP04 人格；個性'},
+  {before:'Albert is a man of',after:'.',word:'character',hint:'c________',zh:'Albert 是個有品德的人。',kp:'KP04 人格；個性'},
+  {before:'The kids all have different',after:'.',word:'personalities',hint:'p____________',zh:'這些小孩的個性截然不同。',kp:'KP04 人格；個性'},
+  {before:'Jess has a weak',after:', but a winning personality and great individuality.',word:'character',hint:'c________',zh:'Jess 的品德雖然不高尚，但個性討喜且與眾不同。',kp:'KP04 人格；個性'},
+  {before:'Jess has a weak character, but a winning',after:'and great individuality.',word:'personality',hint:'p__________',zh:'Jess 的品德雖然不高尚，但個性討喜且與眾不同。',kp:'KP04 人格；個性'},
+  {before:'Jess has a weak character, but a winning personality and great',after:'.',word:'individuality',hint:'i____________',zh:'Jess 的品德雖然不高尚，但個性討喜且與眾不同。',kp:'KP04 人格；個性'},
+  {before:'He is by',after:'a timid little man of mediocre intelligence.',word:'nature',hint:'n_____',zh:'他天生是個智力平庸的怯懦小人物。',kp:'KP04 人格；個性'},
+];
+
+/* ══════ UNIT 9 SECTION II DATA ══════ */
+const VOCAB_U9II=[
+  {kp:'KP05',root:'氣旋；颶風；颱風；龍捲風',note:'',words:[
+    {en:'cyclone',type:'(n.)',zh:'氣旋，強度大，通常帶來暴雨和強大摧毀力'},
+    {en:'hurricane',type:'(n.)',zh:'颶風，發生在西太平洋、東太平洋'},
+    {en:'monsoon',type:'(n.)',zh:'①雨季（印度附近四月至十月）②季風（印度洋上夏季由西南、冬季由東北吹來）'},
+    {en:'tornado',type:'(n.)',zh:'龍捲風，形狀似管狀，掃經狹窄陸地'},
+    {en:'typhoon',type:'(n.)',zh:'颱風，發生在西太平洋'},
+    {en:'waterspout',type:'(n.)',zh:'水龍捲，掃經水面的龍捲風'},
+  ]},
+  {kp:'KP06',root:'無知的；天真的',note:'',words:[
+    {en:'ignorant',type:'(adj.)',zh:'（人）無知的、愚昧的'},
+    {en:'innocent',type:'(adj./n.)',zh:'天真的；無罪的、無辜的 / 天真的人'},
+  ]},
+  {kp:'KP07',root:'值錢的',note:'',words:[
+    {en:'invaluable',type:'(adj.)',zh:'珍貴的、無價之寶的（= priceless）'},
+    {en:'valuable',type:'(adj.)',zh:'值錢的；重要的、有用的'},
+    {en:'valued',type:'(adj.)',zh:'受重視的'},
+    {en:'valueless',type:'(adj.)',zh:'不值錢的（= worthless）；無用的'},
+  ]},
+  {kp:'KP08',root:'旅行',note:'',words:[
+    {en:'excursion',type:'(n.)',zh:'娛樂性質的短期旅行（最多一天），例如：校外教學或踏青'},
+    {en:'expedition',type:'(n.)',zh:'有計劃、具特定目的的行程，像是考察某地或某物'},
+    {en:'journey',type:'(n.)',zh:'指長時間的旅途，旅途的範圍廣大'},
+    {en:'tour',type:'(n.)',zh:'旅遊期間會同時參觀好幾個地方或含有導覽意思；距離可長可短'},
+    {en:'trip',type:'(n.)',zh:'指短程或有目的的旅行，又可指一小段路程'},
+    {en:'voyage',type:'(n.)',zh:'長期旅程或航行，特指乘船之旅'},
+  ]},
+  {kp:'KP09',root:'關係',note:'',words:[
+    {en:'relation',type:'(n.)',zh:'（人、國、組織）關係；關聯；親戚'},
+    {en:'relationship',type:'(n.)',zh:'（人、國、組織）關係；關聯；情愛關係'},
+    {en:'interrelationship',type:'(n.)',zh:'（人事物）相互關係'},
+  ]},
+  {kp:'KP10',root:'代替',note:'replace A with/by B = substitute B for A = A be replaced/substituted with/by B',words:[
+    {en:'replace',type:'(v.)',zh:'取代；把…放回原處'},
+    {en:'substitute',type:'(v./n.)',zh:'代替；替代品'},
+  ]},
+  {kp:'KP11',root:'生病的',note:'',words:[
+    {en:'ill',type:'(adj./adv.)',zh:'（生理或心理上）有病的；邪惡的、有害的 / 惡劣地；不利地'},
+    {en:'sick',type:'(adj.)',zh:'身體不適的；變態的、噁心的；be sick of = 對…感到厭倦'},
+  ]},
+];
+const QS_U9II=[
+  {before:'The',after:'did considerable damage to this island.',word:'typhoon',hint:'t______',zh:'颱風對於本島造成相當的傷害。',kp:'KP05 氣旋；颶風；颱風；龍捲風'},
+  {before:'The unusual view of a',after:'amazed the residents living ashore.',word:'waterspout',hint:'w_________',zh:'罕見的水龍捲景象讓住在岸邊的居民都感到非常驚奇。',kp:'KP05 氣旋；颶風；颱風；龍捲風'},
+  {before:'After one of the busiest years for',after:'last year, the number this year came to a historic low.',word:'tornadoes',hint:'t________',zh:'在去年龍捲風盛行的一年過去後，今年龍捲風的數量降到歷史新低。',kp:'KP05 氣旋；颶風；颱風；龍捲風'},
+  {before:'As a parent, you should not make your children feel',after:'.',word:'ignorant',hint:'i_______',zh:'身為父母，你不該讓你的小孩感到自己是愚昧的。',kp:'KP06 無知的；天真的'},
+  {before:'I believe a person is',after:'until found guilty.',word:'innocent',hint:'i_______',zh:'我相信一個人在被發現有罪之前都是無辜的。',kp:'KP06 無知的；天真的'},
+  {before:"Hanson's suggestion is",after:'.',word:'valuable',hint:'v_______',zh:'Hanson 的建議很有用。',kp:'KP07 值錢的'},
+  {before:'Jimmy is a highly',after:'friend.',word:'valued',hint:'v_____',zh:'Jimmy 是個很受重視的朋友。',kp:'KP07 值錢的'},
+  {before:"Rae's advice is",after:'to me.',word:'invaluable',hint:'i_________',zh:'Rae 的忠告對我而言是個無價之寶。',kp:'KP07 值錢的'},
+  {before:'What he did is',after:'.',word:'valueless',hint:'v________',zh:'他所做的一切都無用。',kp:'KP07 值錢的'},
+  {before:'Penny made a',after:'to the corner store.',word:'trip',hint:'t___',zh:'Penny 到街角的商店去轉了一圈。',kp:'KP08 旅行'},
+  {before:'It was a long',after:'across several European countries.',word:'journey',hint:'j______',zh:'這是一趟走訪各大歐洲國家的長途旅行。',kp:'KP08 旅行'},
+  {before:'Kevin went on a three-day sightseeing',after:'around Taitung.',word:'tour',hint:'t___',zh:'Kevin 去了一趟三天兩夜的台東觀光之旅。',kp:'KP08 旅行'},
+  {before:'Did you get seasick during the',after:'?',word:'voyage',hint:'v_____',zh:'你在坐船時暈船嗎？',kp:'KP08 旅行'},
+  {before:'Our class is going on the weekend',after:'to the National Palace Museum.',word:'excursion',hint:'e________',zh:'我們班準備週末去故宮博物院一遊。',kp:'KP08 旅行'},
+  {before:'Mandy took part in a small',after:'to photograph wild animals in Africa.',word:'expedition',hint:'e_________',zh:'Mandy 參加一個小型探索隊好去拍攝非洲的野生動物。',kp:'KP08 旅行'},
+  {before:'The friendly',after:'between America and China.',word:'relations',hint:'r________',zh:'中美之間友誼關係。',kp:'KP09 關係'},
+  {before:'They had no business',after:'with the firm.',word:'relations',hint:'r________',zh:'他們跟那公司沒有商業來往。',kp:'KP09 關係'},
+  {before:'Ben has been in a',after:'with Grace for three years.',word:'relationship',hint:'r___________',zh:'Ben 跟 Grace 已經交往三年了。',kp:'KP09 關係'},
+  {before:'The',after:'between smoking and respiratory diseases is self-evident.',word:'interrelationship',hint:'i________________',zh:'吸煙與呼吸道疾病之間的相互關係是不證自明的。',kp:'KP09 關係'},
+  {before:'David',after:'the book on the shelf.',word:'replaced',hint:'r_______',zh:'David 把書放回到書架上。',kp:'KP10 代替'},
+  {before:'We have',after:'labors with machines.',word:'replaced',hint:'r_______',zh:'我們以機器取代人工。',kp:'KP10 代替'},
+  {before:'She spoke',after:'of him behind his back.',word:'ill',hint:'i__',zh:'她在他背後說他壞話。',kp:'KP11 生病的'},
+  {before:'I feel',after:'to my stomach.',word:'sick',hint:'s___',zh:'我覺得我要嘔吐了。',kp:'KP11 生病的'},
+  {before:'He has been mentally',after:'for years.',word:'ill',hint:'i__',zh:'他患有精神上的疾病已經好幾年了。',kp:'KP11 生病的'},
+  {before:'I am so',after:'of his nagging.',word:'sick',hint:'s___',zh:'我對他的嘮叨感到非常厭煩。',kp:'KP11 生病的'},
+];
+
 const CHAPTERS_DATA={
   'u1i':{vocab:VOCAB_U1I,qs:QS_U1I,title:'Unit 1 · Section I',kpsInfo:'KP01–09 · 27個單字'},
   'u1ii':{vocab:VOCAB_U1II,qs:QS_U1II,title:'Unit 1 · Section II',kpsInfo:'KP10–25 · 42個單字'},
@@ -1398,6 +1994,15 @@ const CHAPTERS_DATA={
   'u4ii':{vocab:VOCAB_U4II,qs:QS_U4II,title:'Unit 4 · Section II',kpsInfo:'KP03–05 · 17個單字'},
   'u4iii':{vocab:VOCAB_U4III,qs:QS_U4III,title:'Unit 4 · Section III',kpsInfo:'KP06–07 · 15個單字'},
   'u5i':{vocab:VOCAB_U5I,qs:QS_U5I,title:'Unit 5 · Section I',kpsInfo:'KP01–02 · 9個單字'},
+  'u5ii':{vocab:VOCAB_U5II,qs:QS_U5II,title:'Unit 5 · Section II',kpsInfo:'KP03–06 · 21個單字'},
+  'u6i':{vocab:VOCAB_U6I,qs:QS_U6I,title:'Unit 6 · Section I',kpsInfo:'KP01–03 · 21個單字'},
+  'u6ii':{vocab:VOCAB_U6II,qs:QS_U6II,title:'Unit 6 · Section II',kpsInfo:'KP04–07 · 20個單字'},
+  'u6iii':{vocab:VOCAB_U6III,qs:QS_U6III,title:'Unit 6 · Section III',kpsInfo:'KP08–12 · 31個單字'},
+  'u7':{vocab:VOCAB_U7,qs:QS_U7,title:'Unit 7',kpsInfo:'KP01–10 · 34個單字'},
+  'u8i':{vocab:VOCAB_U8I,qs:QS_U8I,title:'Unit 8 · Section I',kpsInfo:'KP01–04 · 13個單字'},
+  'u8ii':{vocab:VOCAB_U8II,qs:QS_U8II,title:'Unit 8 · Section II',kpsInfo:'KP05–10 · 18個單字'},
+  'u9i':{vocab:VOCAB_U9I,qs:QS_U9I,title:'Unit 9 · Section I',kpsInfo:'KP01–04 · 17個單字'},
+  'u9ii':{vocab:VOCAB_U9II,qs:QS_U9II,title:'Unit 9 · Section II',kpsInfo:'KP05–11 · 25個單字'},
 };
 let currentChId='u1i';
 
@@ -1859,9 +2464,17 @@ function renderSpell(){
     <div class="sp-acts">
       <button class="btn bsc" onclick="speak('${ae(w.en)}')">🔊 聽單字</button>
       <button class="btn bsc" onclick="skipSpell()">跳過 ›</button>
+      <button class="btn bsc" onclick="document.getElementById('spellInput')?.focus()" style="font-size:.75rem">📱 點此打字</button>
     </div>
-  </div>`;
+  </div>
+  <input id="spellInput" type="text" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" style="position:fixed;top:-200px;left:0;width:1px;height:1px;opacity:0;border:none;outline:none;" aria-hidden="true">`;
   initBoxes(w.en);
+  const _si=document.getElementById('spellInput');
+  if(_si){
+    _si.oninput=function(){const v=_si.value;if(v){handleSpellKey(v[v.length-1]);_si.value='';}};
+    setTimeout(()=>_si.focus(),80);
+  }
+  document.getElementById('lboxes')?.addEventListener('click',()=>document.getElementById('spellInput')?.focus());
 }
 
 function setSnd(btn,s){sndStyle=s;localStorage.setItem('snd',s);document.querySelectorAll('.sndbtn').forEach(b=>b.classList.toggle('on',b===btn));}
