@@ -152,11 +152,12 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 .hero-sn{font-size:1.5rem;font-weight:900;color:var(--ac)}
 .hero-sl{font-size:.72rem;color:var(--tx2)}
 
-.unit-list{display:flex;flex-direction:column;gap:22px}
-.unit-grp{}
+.unit-list{display:flex;flex-direction:column;gap:22px;align-items:center}
+.unit-grp{width:100%;max-width:582px}
 .unit-lbl{font-size:.7rem;font-weight:700;color:var(--tx2);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:8px}
 .unit-lbl::after{content:'';flex:1;height:1px;background:var(--bd)}
-.ch-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px}
+.ch-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media(max-width:480px){.ch-row{grid-template-columns:repeat(2,1fr)}}
 
 .ch-card{background:var(--sur);border-radius:18px;padding:16px 14px;border:1.5px solid var(--bd);box-shadow:var(--cs);display:flex;flex-direction:column;gap:5px;min-height:108px;transition:transform .18s,box-shadow .18s,border-color .18s}
 .ch-card.open{cursor:pointer}
@@ -423,8 +424,8 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
   </div>
   <div class="tabbar">
     <button class="on" onclick="switchTab('vocab')">📚 單字</button>
-    <button onclick="switchTab('practice')">✏️ 打字</button>
-    <button onclick="switchTab('speech')">🎤 口說</button>
+    <button onclick="switchTab('practice')" style="display:none">✏️ 打字</button>
+    <button onclick="switchTab('speech')" style="display:none">🎤 口說</button>
     <button onclick="switchTab('spell')">⌨️ 拼字</button>
     <button onclick="switchTab('bookmark')">⭐ 收藏</button>
   </div>
@@ -2463,7 +2464,7 @@ function showSF(pg){
 /* ══════ WEB AUDIO — MUSICAL SOUNDS ══════ */
 let _ac=null;
 function AC(){if(!_ac)_ac=new(window.AudioContext||window.webkitAudioContext)();if(_ac.state==='suspended')_ac.resume();return _ac;}
-let sndStyle=localStorage.getItem('snd')||'mech';
+let sndStyle=(()=>{const s=localStorage.getItem('snd');return(!s||s==='mech'||s==='typer')?'soft':s;})();
 // Pentatonic scale (C major): two octaves
 const PENTA=[261.6,293.7,329.6,392.0,440.0,523.3,587.3,659.3,784.0,880.0];
 // For 8-bit: C major scale for melodic sequence
@@ -2618,7 +2619,7 @@ function initSpell(){
 function renderSpell(){
   const pg=document.getElementById('pg-spell');
   if(spIdx>=spList.length){showSpellF(pg);return;}
-  const w=spList[spIdx];spPos=1;spMist=0;
+  const w=spList[spIdx];spPos=0;spMist=0;
   retroSeq=Math.floor(Math.random()*CSCALE.length); // start random position for melody
   const re=new RegExp(w.en.replace(/[-[\]{}()*+?.,\\^$|#\s]/g,'\\$&'),'gi');
   let exHtml='';
@@ -2642,14 +2643,11 @@ function renderSpell(){
       ${exHtml}
     </div>
     <div class="sp-hint">
-      <div class="sp-first">${w.en[0].toUpperCase()}</div>
       <span class="sp-lentag">${w.en.length} 個字母</span>
     </div>
     <div class="lboxes${w.en.length>7?' lw':''}" id="lboxes"></div>
     <div class="sp-fb" id="spFb"></div>
     <div class="snd-row">
-      <button class="sndbtn${sndStyle==='mech'?' on':''}" onclick="setSnd(this,'mech')">🎹 機械</button>
-      <button class="sndbtn${sndStyle==='typer'?' on':''}" onclick="setSnd(this,'typer')">🖊️ 打字機</button>
       <button class="sndbtn${sndStyle==='retro'?' on':''}" onclick="setSnd(this,'retro')">👾 8-bit</button>
       <button class="sndbtn${sndStyle==='soft'?' on':''}" onclick="setSnd(this,'soft')">🍃 柔和</button>
       <button class="sndbtn${sndStyle==='scifi'?' on':''}" onclick="setSnd(this,'scifi')">🚀 科幻</button>
@@ -2664,7 +2662,13 @@ function renderSpell(){
   initBoxes(w.en);
   const _si=document.getElementById('spellInput');
   if(_si){
-    _si.oninput=function(){const v=_si.value;if(v){handleSpellKey(v[v.length-1]);_si.value='';}};
+    _si.value='x';
+    _si.oninput=function(){
+      const v=_si.value;
+      if(v.length===0){handleSpellBack();}
+      else if(v.length>1){handleSpellKey(v[v.length-1]);}
+      _si.value='x';
+    };
     setTimeout(()=>_si.focus(),80);
   }
   document.getElementById('lboxes')?.addEventListener('click',()=>document.getElementById('spellInput')?.focus());
@@ -2675,8 +2679,8 @@ function setSnd(btn,s){sndStyle=s;localStorage.setItem('snd',s);document.querySe
 function initBoxes(word){
   const c=document.getElementById('lboxes');if(!c)return;c.innerHTML='';
   for(let i=0;i<word.length;i++){
-    const d=document.createElement('div');d.id='lb'+i;d.className='lb '+(i===0?'hint':i===1?'cur':'empty');
-    d.textContent=i===0?word[0].toUpperCase():'';c.appendChild(d);
+    const d=document.createElement('div');d.id='lb'+i;d.className='lb '+(i===0?'cur':'');
+    d.textContent='';c.appendChild(d);
   }
 }
 function gB(i){return document.getElementById('lb'+i);}
@@ -2685,7 +2689,9 @@ document.addEventListener('keydown',function(e){
   if(!document.getElementById('pg-spell').classList.contains('on'))return;
   if(e.ctrlKey||e.metaKey||e.altKey)return;
   const ae2=document.activeElement;
+  if(ae2&&ae2.id==='spellInput')return; // oninput handles all input when spellInput focused
   if(ae2&&(ae2.tagName==='SELECT'||ae2.tagName==='INPUT'||ae2.tagName==='TEXTAREA'))return;
+  if(e.key==='Backspace'){e.preventDefault();handleSpellBack();return;}
   if(e.key.length!==1)return;
   e.preventDefault();handleSpellKey(e.key);
 });
@@ -2709,18 +2715,24 @@ function handleSpellKey(key){
   }
 }
 
+function handleSpellBack(){
+  if(spIdx>=spList.length||spPos<=0)return;
+  const cur=gB(spPos);if(cur){cur.className='lb';cur.textContent='';}
+  spPos--;
+  const box=gB(spPos);if(box){box.className='lb cur';box.textContent='';}
+}
+
 function wordDone(){
-  const w=spList[spIdx];spellTotal++;
-  const ok=spMist===0;if(ok){spellScore++;spellCombo++;}else spellCombo=0;
-  // Reveal with animation
+  const w=spList[spIdx];spellTotal++;spellScore++;
+  const perfect=spMist===0;if(perfect)spellCombo++;else spellCombo=0;
   for(let i=0;i<w.en.length;i++){const b=gB(i);if(!b)continue;b.style.animationDelay=(i*.07)+'s';b.className='lb rev';b.textContent=w.en[i].toUpperCase();}
   let msg='';
-  if(ok&&spellCombo>=10)msg='🌊 十連勝！';
-  else if(ok&&spellCombo>=5)msg='⚡ 五連勝！';
-  else if(ok&&spellCombo>=3)msg='🔥 三連勝！';
-  else if(ok)msg='✅ 完美！';
-  else msg='💪 完成（錯'+spMist+'次）';
-  const fb=document.getElementById('spFb');if(fb)fb.innerHTML=`<span class="${ok?'srok':'srsk'}">${msg}</span>`;
+  if(perfect&&spellCombo>=10)msg='🌊 十連勝！';
+  else if(perfect&&spellCombo>=5)msg='⚡ 五連勝！';
+  else if(perfect&&spellCombo>=3)msg='🔥 三連勝！';
+  else if(perfect)msg='✅ 完美！';
+  else msg='✅ 完成！';
+  const fb=document.getElementById('spFb');if(fb)fb.innerHTML=`<span class="srok">${msg}</span>`;
   playSound('done',spPos,w.en.length);speak(w.en);
   setTimeout(()=>{spIdx++;renderSpell();},2000);
 }
