@@ -9,15 +9,18 @@
 :root{
   --bg:#edf5ed;--sur:#fff;--sur2:#f0f9f3;
   --h1:#1e5c30;--h2:#3a8a50;
-  --tb:#174e28;--tt:rgba(255,255,255,.6);
-  --ta-bg:#edf5ed;--ta-fg:#174e28;
+  --tb:#fff;--tt:#888;
+  --ta-bg:transparent;--ta-fg:#1e5c30;
   --tx:#333;--tx2:#777;--tx3:#bbb;
   --ac:#3a8a50;--ac-d:#1e5c30;--ac-l:#e8f5e9;
   --bk:#f5a623;--bd:#e0e0e0;
   --pc:#1565C0;--pb:#E3F2FD;
   --rc:#2E7D32;--rb:#E8F5E9;
   --sc:#E65100;--sb:#FFF3E0;
-  --cs:0 2px 8px rgba(0,0,0,.07);
+  --cs:0 2px 4px rgba(30,92,48,.04),0 8px 24px -4px rgba(0,0,0,.09);
+  --tab-on-bb:2px solid var(--ac);--tab-on-mb:-1.5px;
+  --tab-bar-bb:1px solid var(--bd);
+  --tab-hov:var(--ac-l);--tab-hov-c:var(--ac);
 }
 [data-theme=minimal]{
   --bg:#F7F7F7;--sur:#fff;--sur2:#F2F2F2;
@@ -31,6 +34,9 @@
   --rc:#006B40;--rb:#E5F5EE;
   --sc:#B54000;--sb:#FFF2EA;
   --cs:0 1px 3px rgba(0,0,0,.08);
+  --tab-on-bb:3px solid transparent;--tab-on-mb:0;
+  --tab-bar-bb:none;
+  --tab-hov:rgba(255,255,255,.09);--tab-hov-c:rgba(255,255,255,.9);
 }
 [data-theme=retro]{
   --bg:#F2E1C1;--sur:#FFF9EE;--sur2:#F5E8D0;
@@ -44,6 +50,9 @@
   --rc:#6B4226;--rb:#EFE2CC;
   --sc:#9B4F25;--sb:#F5E0CC;
   --cs:0 2px 6px rgba(80,40,10,.12);
+  --tab-on-bb:3px solid transparent;--tab-on-mb:0;
+  --tab-bar-bb:none;
+  --tab-hov:rgba(255,255,255,.09);--tab-hov-c:rgba(255,255,255,.9);
 }
 [data-theme=cyber]{
   --bg:#07071A;--sur:#0E0E26;--sur2:#141435;
@@ -57,6 +66,9 @@
   --rc:#00FFD1;--rb:rgba(0,255,209,.1);
   --sc:#FF9A3C;--sb:rgba(255,154,60,.12);
   --cs:0 0 20px rgba(0,255,209,.06);
+  --tab-on-bb:3px solid transparent;--tab-on-mb:0;
+  --tab-bar-bb:none;
+  --tab-hov:rgba(255,255,255,.09);--tab-hov-c:rgba(255,255,255,.9);
 }
 [data-theme=earthy]{
   --bg:#F4EDE0;--sur:#FFFAF4;--sur2:#EDE4D4;
@@ -70,6 +82,9 @@
   --rc:#547230;--rb:#E8F0D8;
   --sc:#C4682A;--sb:#FAE8D8;
   --cs:0 2px 8px rgba(60,40,20,.1);
+  --tab-on-bb:3px solid transparent;--tab-on-mb:0;
+  --tab-bar-bb:none;
+  --tab-hov:rgba(255,255,255,.09);--tab-hov-c:rgba(255,255,255,.9);
 }
 [data-theme=corp]{
   --bg:#EDF2F8;--sur:#fff;--sur2:#F2F6FC;
@@ -83,6 +98,9 @@
   --rc:#1A7030;--rb:#E5F5EA;
   --sc:#B04400;--sb:#FFF0E5;
   --cs:0 1px 4px rgba(0,0,0,.09);
+  --tab-on-bb:3px solid transparent;--tab-on-mb:0;
+  --tab-bar-bb:none;
+  --tab-hov:rgba(255,255,255,.09);--tab-hov-c:rgba(255,255,255,.9);
 }
 
 /* ══════ PASSWORD GATE ══════ */
@@ -129,8 +147,8 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 .hero-ttl{font-size:2rem;font-weight:900;color:var(--ac-d);letter-spacing:1px}
 [data-theme=cyber] .hero-ttl{color:var(--ac);text-shadow:0 0 16px rgba(0,255,209,.4)}
 .hero-sub{font-size:.88rem;color:var(--tx2);margin-top:5px}
-.hero-bar{display:flex;justify-content:center;gap:22px;margin-top:14px;flex-wrap:wrap}
-.hero-stat{text-align:center}
+.hero-bar{display:flex;justify-content:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+.hero-stat{text-align:center;background:var(--sur);border-radius:18px;padding:14px 22px;box-shadow:var(--cs);border:1px solid var(--bd);min-width:82px}
 .hero-sn{font-size:1.5rem;font-weight:900;color:var(--ac)}
 .hero-sl{font-size:.72rem;color:var(--tx2)}
 
@@ -140,9 +158,9 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 .unit-lbl::after{content:'';flex:1;height:1px;background:var(--bd)}
 .ch-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:9px}
 
-.ch-card{background:var(--sur);border-radius:12px;padding:14px 12px;border:1.5px solid var(--bd);box-shadow:var(--cs);display:flex;flex-direction:column;gap:5px;min-height:106px;transition:transform .18s,box-shadow .18s,border-color .18s}
+.ch-card{background:var(--sur);border-radius:18px;padding:16px 14px;border:1.5px solid var(--bd);box-shadow:var(--cs);display:flex;flex-direction:column;gap:5px;min-height:108px;transition:transform .18s,box-shadow .18s,border-color .18s}
 .ch-card.open{cursor:pointer}
-.ch-card.open:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.13);border-color:var(--ac)}
+.ch-card.open:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.13);border-color:var(--ac)}
 [data-theme=cyber] .ch-card.open:hover{box-shadow:0 0 20px rgba(0,255,209,.2)}
 .ch-card.locked{opacity:.45;cursor:default}
 .ch-tag{font-size:.65rem;font-weight:700;background:var(--ac-l);color:var(--ac-d);padding:2px 7px;border-radius:4px;align-self:flex-start;letter-spacing:.5px}
@@ -160,17 +178,17 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 /* ══════ STUDY VIEW ══════ */
 #view-study{display:none}
 .study-topbar{background:var(--sur);border-bottom:1.5px solid var(--bd);padding:8px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:46px;z-index:150}
-.study-back{background:none;border:1.5px solid var(--bd);border-radius:6px;padding:4px 10px;font-size:.78rem;color:var(--tx2);cursor:pointer;font-family:inherit;transition:all .2s}
-.study-back:hover{border-color:var(--ac);color:var(--ac)}
+.study-back{background:var(--ac-l);border:none;border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--ac-d);cursor:pointer;font-family:inherit;font-weight:600;transition:all .2s}
+.study-back:hover{background:var(--ac);color:#fff;transform:translateY(-1px)}
 .study-ttl{font-size:.88rem;font-weight:600;color:var(--tx);flex:1}
 .study-kps{font-size:.75rem;color:var(--tx2)}
 
 /* ══════ TABS ══════ */
-.tabbar{display:flex;background:var(--tb);overflow-x:auto;scrollbar-width:none;position:sticky;top:88px;z-index:100}
+.tabbar{display:flex;background:var(--tb);overflow-x:auto;scrollbar-width:none;position:sticky;top:88px;z-index:100;border-bottom:var(--tab-bar-bb)}
 .tabbar::-webkit-scrollbar{display:none}
-.tabbar button{flex:1;min-width:62px;padding:10px 5px;border:none;background:transparent;color:var(--tt);font-size:.82rem;cursor:pointer;font-family:inherit;font-weight:500;white-space:nowrap;transition:all .2s}
-.tabbar button.on{background:var(--ta-bg);color:var(--ta-fg);font-weight:700}
-.tabbar button:hover:not(.on){background:rgba(255,255,255,.09);color:rgba(255,255,255,.9)}
+.tabbar button{flex:1;min-width:56px;padding:7px 5px;border:none;border-bottom:2px solid transparent;background:transparent;color:var(--tt);font-size:.74rem;cursor:pointer;font-family:inherit;font-weight:400;white-space:nowrap;transition:all .2s;letter-spacing:.3px}
+.tabbar button.on{background:var(--ta-bg);color:var(--ta-fg);font-weight:600;border-bottom:var(--tab-on-bb);margin-bottom:var(--tab-on-mb)}
+.tabbar button:hover:not(.on){background:var(--tab-hov);color:var(--tab-hov-c)}
 [data-theme=cyber] .tabbar button.on{text-shadow:0 0 8px var(--ac)}
 
 /* ══════ PAGES ══════ */
@@ -186,14 +204,13 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 .cbtn{padding:6px 13px;border:1.5px solid var(--ac);border-radius:18px;background:var(--sur);color:var(--ac);cursor:pointer;font-size:.8rem;font-family:inherit;transition:all .2s}
 .cbtn.on{background:var(--ac);color:#fff}
 .cbtn:hover:not(.on){background:var(--ac-l)}
-.kpc{background:var(--sur);border-radius:11px;margin-bottom:12px;overflow:hidden;box-shadow:var(--cs);border:1px solid var(--bd)}
+.kpc{background:var(--sur);border-radius:16px;margin-bottom:14px;overflow:hidden;box-shadow:var(--cs);border:1px solid var(--bd)}
 [data-theme=cyber] .kpc{border-color:rgba(0,255,209,.18)}
 .kph{background:var(--ac-d);color:#fff;padding:9px 15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 [data-theme=cyber] .kph{background:linear-gradient(90deg,#0D1B35,#1A0A3E);border-bottom:1px solid rgba(0,255,209,.25)}
 [data-theme=retro] .kph{background:linear-gradient(135deg,#5C3317,#7B4A2A)}
-.kpb{background:var(--bk);color:#fff;padding:2px 8px;border-radius:4px;font-size:.72rem;font-weight:700}
 .kpn{font-size:.9rem;font-weight:700}
-.kpnt{font-size:.73rem;opacity:.68;margin-left:auto}
+.kpnt{font-size:.82rem;color:var(--tx2);padding:5px 15px 6px;background:var(--sur2);border-bottom:1px solid var(--bd)}
 .wrow{border-bottom:1px dotted var(--bd);padding:9px 15px}
 .wrow:last-child{border-bottom:none}
 .wtop{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -216,7 +233,7 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 .exzh{font-size:.76rem;color:var(--tx3);margin-top:2px}
 
 /* ══════ PRACTICE SHARED ══════ */
-.pbox{background:var(--sur);border-radius:13px;padding:20px 17px;box-shadow:var(--cs);margin-bottom:12px;border:1px solid var(--bd)}
+.pbox{background:var(--sur);border-radius:18px;padding:22px 18px;box-shadow:var(--cs);margin-bottom:12px;border:1px solid var(--bd)}
 [data-theme=cyber] .pbox{border-color:rgba(0,255,209,.15);box-shadow:0 0 22px rgba(0,255,209,.05)}
 .prow{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
 .plbl{font-size:.8rem;color:var(--tx2)}
@@ -234,13 +251,13 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 .hnote{font-size:.75rem;color:var(--tx3);margin-bottom:7px}
 .irow{display:flex;gap:7px;margin-bottom:10px;flex-wrap:wrap}
 .ains{flex:1;min-width:140px;padding:9px 12px;font-size:.93rem;border:2px solid var(--bd);border-radius:7px;outline:none;font-family:inherit;background:var(--sur);color:var(--tx);transition:border-color .25s}
-.ains:focus{border-color:var(--ac)}
+.ains:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(58,138,80,.15)}
 .ains.ok{border-color:#43a047;background:#f1fff4}
 .ains.ng{border-color:#e53935;background:#fff1f1}
 [data-theme=cyber] .ains.ok{background:rgba(0,255,100,.07);border-color:#00FF88}
 [data-theme=cyber] .ains.ng{background:rgba(255,0,80,.07);border-color:#FF3060}
-.btn{padding:9px 15px;font-size:.86rem;border:none;border-radius:7px;cursor:pointer;font-weight:700;font-family:inherit;transition:opacity .2s,transform .1s}
-.btn:hover{opacity:.88}.btn:active{transform:scale(.97)}
+.btn{padding:9px 16px;font-size:.86rem;border:none;border-radius:12px;cursor:pointer;font-weight:700;font-family:inherit;transition:opacity .2s,transform .15s,box-shadow .2s}
+.btn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}.btn:active{transform:scale(.97)}
 .bck{background:var(--ac);color:#fff}
 .bnx{background:var(--bk);color:#fff}
 .brs{background:var(--ac-d);color:#fff;padding:11px 26px;font-size:.93rem}
@@ -274,9 +291,10 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 @keyframes cpop{0%{transform:scale(1.6)}100%{transform:scale(1)}}
 .sp-pbar{height:5px;background:var(--bd);border-radius:5px;margin-bottom:12px;overflow:hidden}
 .sp-pfill{height:100%;background:linear-gradient(90deg,var(--ac-d),var(--ac));border-radius:5px;transition:width .5s}
-.sp-card{background:var(--sur);border-radius:13px;padding:18px 16px;box-shadow:var(--cs);margin-bottom:12px;text-align:center;border:1px solid var(--bd)}
+.sp-card{background:var(--sur);border-radius:18px;padding:20px 18px;box-shadow:var(--cs);margin-bottom:12px;text-align:center;border:1px solid var(--bd)}
 [data-theme=cyber] .sp-card{border-color:rgba(0,255,209,.18);box-shadow:0 0 20px rgba(0,255,209,.06)}
-.sp-zh{font-size:1.9rem;font-weight:900;color:var(--ac-d);margin-bottom:2px;line-height:1.2}
+.sp-en{font-size:1.6rem;font-weight:900;letter-spacing:.06em;margin-bottom:4px;line-height:1.2}
+.sp-zh{font-size:1.1rem;font-weight:700;color:var(--ac-d);margin-bottom:2px;line-height:1.3}
 [data-theme=cyber] .sp-zh{color:var(--ac);text-shadow:0 0 12px rgba(0,255,209,.4)}
 .sp-pos{font-size:.85rem;color:var(--tx2);margin-bottom:11px}
 .sp-ex{background:var(--sur2);border-radius:7px;padding:9px 12px;text-align:left;border-left:3px solid var(--ac);margin-top:4px}
@@ -344,7 +362,8 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
   .irow{flex-direction:column}
   .sentbox{font-size:.92rem}
   .lb{width:35px;height:44px;font-size:1.1rem}
-  .sp-zh{font-size:1.5rem}
+  .sp-en{font-size:1.3rem}
+  .sp-zh{font-size:.95rem}
   .ch-row{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
 }
 </style>
@@ -422,12 +441,12 @@ const UNITS=[
     {id:'u1i',sec:'I',words:27,kps:'KP01–09',open:true},
     {id:'u1ii',sec:'II',words:42,kps:'KP10–25',open:true},{id:'u1iii',sec:'III',words:20,kps:'KP26–28',open:true}]},
   {n:2,chs:[{id:'u2i',sec:'I',words:25,kps:'KP01–12',open:true},{id:'u2ii',sec:'II',words:28,kps:'KP13–22',open:true},{id:'u2iii',sec:'III',words:42,kps:'KP23–29',open:true}]},
-  {n:3,chs:[{id:'u3i',sec:'I',words:8,kps:'KP01–02',open:true},{id:'u3ii',sec:'II',open:false},{id:'u3iii',sec:'III',words:14,kps:'KP06–08',open:true},{id:'u3iv',sec:'IV',words:19,kps:'KP09–12',open:true}]},
+  {n:3,chs:[{id:'u3i',sec:'I',words:8,kps:'KP01–02',open:true},{id:'u3iii',sec:'II',words:14,kps:'KP06–08',open:true},{id:'u3iv',sec:'III',words:19,kps:'KP09–12',open:true}]},
   {n:4,chs:[{id:'u4i',sec:'I',words:12,kps:'KP01–02',open:true},{id:'u4ii',sec:'II',words:17,kps:'KP03–05',open:true},{id:'u4iii',sec:'III',words:15,kps:'KP06–07',open:true}]},
   {n:5,chs:[{id:'u5i',sec:'I',words:9,kps:'KP01–02',open:true},{id:'u5ii',sec:'II',words:21,kps:'KP03–06',open:true}]},
   {n:6,chs:[{id:'u6i',sec:'I',words:21,kps:'KP01–03',open:true},{id:'u6ii',sec:'II',words:20,kps:'KP04–07',open:true},{id:'u6iii',sec:'III',words:31,kps:'KP08–12',open:true}]},
-  {n:7,chs:[{id:'u7',sec:'',open:true}]},
-  {n:8,chs:[{id:'u8i',sec:'I',open:true},{id:'u8ii',sec:'II',open:true}]},
+  {n:7,chs:[{id:'u7',sec:'',words:34,open:true}]},
+  {n:8,chs:[{id:'u8i',sec:'I',words:13,open:true},{id:'u8ii',sec:'II',words:18,open:true}]},
   {n:9,chs:[{id:'u9i',sec:'I',words:17,kps:'KP01–04',open:true},{id:'u9ii',sec:'II',words:25,kps:'KP05–11',open:true}]},
 ];
 
@@ -1647,58 +1666,92 @@ const QS_U6III=[
 
 const VOCAB_U7=[
   {kp:'KP01',root:'字根 -board',note:'-board 有「板；木板」的意思',words:[
-    {en:'board',type:'(n./v.)',zh:'木板；董事會；膳食；上車；上船；上機'},
-    {en:'aboard',type:'(adv.)',zh:'在船、飛機、火車、汽車上'},
-    {en:'abroad',type:'(adv.)',zh:'在國外；到國外'},
+    {en:'board',mm:[{t:'board',m:'r'}],type:'(n./v.)',zh:'木板；董事會；膳食；上車；上船；上機',
+     ex:[{en:'The board of directors held an emergency meeting.',zh:'董事會召開了緊急會議。'},{en:'The workers replaced the broken floor board.',zh:'工人換掉了那塊壞掉的地板。'}]},
+    {en:'aboard',mm:[{t:'a',m:'p'},{t:'board',m:'r'}],type:'(adv.)',zh:'在船、飛機、火車、汽車上',
+     ex:[{en:'All passengers are now aboard the flight.',zh:'所有乘客現在都已登機。'},{en:'Welcome aboard our ship!',zh:'歡迎登上我們的船！'}]},
+    {en:'abroad',mm:[{t:'a',m:'p'},{t:'broad',m:'r'}],type:'(adv.)',zh:'在國外；到國外',
+     ex:[{en:'She studied abroad for two years in Germany.',zh:'她在德國留學了兩年。'},{en:'Many students dream of going abroad after graduation.',zh:'許多學生夢想畢業後出國。'}]},
   ]},
   {kp:'KP02',root:'字根 -cident',note:'-cident 有「落下；發生」的意思',words:[
-    {en:'accident',type:'(n.)',zh:'意外事件'},
-    {en:'incident',type:'(n.)',zh:'事件'},
-    {en:'occident',type:'(n.)',zh:'西方'},
-    {en:'coincidence',type:'(n.)',zh:'巧合'},
+    {en:'accident',mm:[{t:'ac',m:'p'},{t:'cident',m:'r'}],type:'(n.)',zh:'意外事件',
+     ex:[{en:'He was badly injured in a car accident.',zh:'他在一場車禍中受了重傷。'},{en:'Please be careful so no accident occurs.',zh:'請小心，不要發生意外。'}]},
+    {en:'incident',mm:[{t:'in',m:'p'},{t:'cident',m:'r'}],type:'(n.)',zh:'事件',
+     ex:[{en:'The police investigated the incident carefully.',zh:'警察仔細調查了這起事件。'},{en:'Several unusual incidents occurred last week.',zh:'上週發生了幾起不尋常的事件。'}]},
+    {en:'occident',mm:[{t:'oc',m:'p'},{t:'cident',m:'r'}],type:'(n.)',zh:'西方',
+     ex:[{en:'Western civilization is often called the culture of the Occident.',zh:'西方文明常被稱為西方世界的文化。'},{en:'The philosophy of the Occident differs greatly from that of the Orient.',zh:'西方哲學和東方哲學差異甚大。'}]},
+    {en:'coincidence',mm:[{t:'co',m:'p'},{t:'in',m:'p'},{t:'cid',m:'r'},{t:'ence',m:'s'}],type:'(n.)',zh:'巧合',
+     ex:[{en:'By coincidence, we both arrived at the same time.',zh:'真是巧合，我們倆同時到達。'},{en:'It was a strange coincidence that they shared the same birthday.',zh:'他們生日相同，真是奇妙的巧合。'}]},
   ]},
   {kp:'KP03',root:'字根 -mulate',note:'-mulate 有「堆積；模仿；刺激」的意思',words:[
-    {en:'accumulate',type:'(v.)',zh:'累積'},
-    {en:'simulate',type:'(v.)',zh:'假裝；模擬'},
-    {en:'stimulate',type:'(v.)',zh:'刺激；激勵'},
+    {en:'accumulate',mm:[{t:'ac',m:'p'},{t:'cumul',m:'r'},{t:'ate',m:'s'}],type:'(v.)',zh:'累積',
+     ex:[{en:'Dust tends to accumulate in corners.',zh:'灰塵容易在角落堆積。'},{en:'He has accumulated great wealth over the years.',zh:'他多年來積累了大量財富。'}]},
+    {en:'simulate',mm:[{t:'simul',m:'r'},{t:'ate',m:'s'}],type:'(v.)',zh:'假裝；模擬',
+     ex:[{en:'Pilots train in machines that simulate flying.',zh:'飛行員在模擬飛行的機器中訓練。'},{en:'The children simulated a battle scene with toy soldiers.',zh:'孩子們用玩具士兵模擬戰鬥場景。'}]},
+    {en:'stimulate',mm:[{t:'stimul',m:'r'},{t:'ate',m:'s'}],type:'(v.)',zh:'刺激；激勵',
+     ex:[{en:'Exercise can stimulate the release of endorphins.',zh:'運動能刺激腦內啡的釋放。'},{en:'The teacher tried to stimulate students\' interest in science.',zh:'老師試著激發學生對科學的興趣。'}]},
   ]},
   {kp:'KP04',root:'字根 -lusion',note:'-lusion 有「玩耍；欺騙」的意思',words:[
-    {en:'allusion',type:'(n.)',zh:'間接提到'},
-    {en:'delusion',type:'(n.)',zh:'妄想；錯誤的想法；幻想'},
-    {en:'disillusion',type:'(v.)',zh:'使醒悟；使幻想破滅'},
-    {en:'illusion',type:'(n.)',zh:'幻覺；幻想；假象'},
+    {en:'allusion',mm:[{t:'al',m:'p'},{t:'lusion',m:'r'}],type:'(n.)',zh:'間接提到',
+     ex:[{en:'The poem contains many allusions to Greek mythology.',zh:'這首詩含有許多對希臘神話的間接典故。'},{en:'The speaker made a brief allusion to the recent scandal.',zh:'演講者簡短地暗指最近的醜聞。'}]},
+    {en:'delusion',mm:[{t:'de',m:'p'},{t:'lusion',m:'r'}],type:'(n.)',zh:'妄想；錯誤的想法；幻想',
+     ex:[{en:'He is under the delusion that he is a famous singer.',zh:'他妄想自己是個著名歌手。'},{en:'Such delusions can be dangerous if left untreated.',zh:'這類妄想若不治療可能很危險。'}]},
+    {en:'disillusion',mm:[{t:'dis',m:'p'},{t:'il',m:'p'},{t:'lusion',m:'r'}],type:'(v.)',zh:'使醒悟；使幻想破滅',
+     ex:[{en:'Losing the election disillusioned him completely.',zh:'選舉失敗讓他完全幻滅了。'},{en:'Many young people were disillusioned by the government\'s promises.',zh:'許多年輕人對政府的承諾感到幻滅。'}]},
+    {en:'illusion',mm:[{t:'il',m:'p'},{t:'lusion',m:'r'}],type:'(n.)',zh:'幻覺；幻想；假象',
+     ex:[{en:'The magician created the illusion that the coin had disappeared.',zh:'魔術師製造了硬幣消失的幻象。'},{en:'Do not live under the illusion that success comes without effort.',zh:'別活在不努力也能成功的幻想中。'}]},
   ]},
   {kp:'KP05',root:'字根 -loud-',note:'-loud- 有「聲響」的意思',words:[
-    {en:'aloud',type:'(adv.)',zh:'高聲地；喧嘩地'},
-    {en:'loud',type:'(adj./adv.)',zh:'聲音響亮的；大聲的；高聲地'},
-    {en:'loudly',type:'(adv.)',zh:'高聲地；喧嘩地'},
+    {en:'aloud',mm:[{t:'a',m:'p'},{t:'loud',m:'r'}],type:'(adv.)',zh:'高聲地；喧嘩地',
+     ex:[{en:'The teacher asked everyone to read the passage aloud.',zh:'老師要大家大聲朗讀這段文章。'},{en:'She was thinking aloud while solving the problem.',zh:'她在解題時喃喃自語。'}]},
+    {en:'loud',mm:[{t:'loud',m:'r'}],type:'(adj./adv.)',zh:'聲音響亮的；大聲的；高聲地',
+     ex:[{en:'The music was so loud that we could not talk.',zh:'音樂聲太大，我們無法交談。'},{en:'He gave a loud cheer when his team scored.',zh:'他的球隊得分時他大聲歡呼。'}]},
+    {en:'loudly',mm:[{t:'loud',m:'r'},{t:'ly',m:'s'}],type:'(adv.)',zh:'高聲地；喧嘩地',
+     ex:[{en:'The fans cheered loudly for their favorite team.',zh:'球迷大聲為他們最愛的球隊歡呼。'},{en:'She knocked loudly on the door but nobody answered.',zh:'她大力敲門，但沒有人應門。'}]},
   ]},
   {kp:'KP06',root:'字根 alter-',note:'alter- 有「其他；交替」的意思',words:[
-    {en:'alternate',type:'(v./adj./n.)',zh:'輪流交替；輪流交替的；候補；代理者'},
-    {en:'alternative',type:'(n./adj.)',zh:'另一個選擇；可選擇的'},
-    {en:'alternation',type:'(n.)',zh:'輪流'},
-    {en:'alteration',type:'(n.)',zh:'改變；修改'},
+    {en:'alternate',mm:[{t:'alter',m:'r'},{t:'nate',m:'s'}],type:'(v./adj./n.)',zh:'輪流交替；輪流交替的；候補；代理者',
+     ex:[{en:'The two teams will alternate between offense and defense.',zh:'兩隊將輪流攻守。'},{en:'He goes jogging on alternate days.',zh:'他每隔一天慢跑一次。'}]},
+    {en:'alternative',mm:[{t:'altern',m:'r'},{t:'ative',m:'s'}],type:'(n./adj.)',zh:'另一個選擇；可選擇的',
+     ex:[{en:'If you don\'t like coffee, tea is a good alternative.',zh:'如果你不喜歡咖啡，茶是個不錯的替代選擇。'},{en:'There is no alternative but to accept the terms.',zh:'除了接受條款外別無選擇。'}]},
+    {en:'alternation',mm:[{t:'altern',m:'r'},{t:'ation',m:'s'}],type:'(n.)',zh:'輪流',
+     ex:[{en:'The alternation of the seasons affects our daily lives.',zh:'季節的交替影響著我們的日常生活。'},{en:'The alternation of wet and dry weather damaged the crops.',zh:'乾溼天氣的交替損壞了農作物。'}]},
+    {en:'alteration',mm:[{t:'alter',m:'r'},{t:'ation',m:'s'}],type:'(n.)',zh:'改變；修改',
+     ex:[{en:'The tailor made a small alteration to the dress.',zh:'裁縫師對禮服做了小幅修改。'},{en:'Any alteration to the contract must be agreed upon by both parties.',zh:'合約的任何修改都需雙方同意。'}]},
   ]},
   {kp:'KP07',root:'字根 -rise',note:'-rise 有「升起；出現」的意思',words:[
-    {en:'rise',type:'(v./n.)',zh:'上升；起床；上升'},
-    {en:'arise',type:'(v.)',zh:'產生；出現'},
-    {en:'arouse',type:'(v.)',zh:'喚起（意識）'},
-    {en:'raise',type:'(v.)',zh:'舉起；提高；籌款；養育；提出'},
-    {en:'rouse',type:'(v.)',zh:'叫醒；喚起；激勵；激起'},
+    {en:'rise',mm:[{t:'rise',m:'r'}],type:'(v./n.)',zh:'上升；起床；上升',
+     ex:[{en:'The sun rises in the east and sets in the west.',zh:'太陽從東方升起，從西方落下。'},{en:'Prices tend to rise every year.',zh:'物價每年都有上漲的趨勢。'}]},
+    {en:'arise',mm:[{t:'a',m:'p'},{t:'rise',m:'r'}],type:'(v.)',zh:'產生；出現',
+     ex:[{en:'Many problems arise when people lack communication.',zh:'當人們缺乏溝通時，問題就會產生。'},{en:'Please contact us if any difficulty arises.',zh:'若有任何困難產生，請聯絡我們。'}]},
+    {en:'arouse',mm:[{t:'a',m:'p'},{t:'rouse',m:'r'}],type:'(v.)',zh:'喚起（意識）',
+     ex:[{en:'The teacher\'s words aroused the students\' curiosity.',zh:'老師的話喚起了學生的好奇心。'},{en:'His strange behavior aroused suspicion.',zh:'他奇怪的行為引起了懷疑。'}]},
+    {en:'raise',mm:[{t:'raise',m:'r'}],type:'(v.)',zh:'舉起；提高；籌款；養育；提出',
+     ex:[{en:'The teacher raised her hand to ask for silence.',zh:'老師舉起手要求大家安靜。'},{en:'The charity is trying to raise money for the flood victims.',zh:'慈善機構正努力為洪水受災者籌款。'}]},
+    {en:'rouse',mm:[{t:'rouse',m:'r'}],type:'(v.)',zh:'叫醒；喚起；激勵；激起',
+     ex:[{en:'The loud alarm clock roused him from deep sleep.',zh:'響亮的鬧鐘把他從深度睡眠中驚醒。'},{en:'The coach\'s speech roused the team\'s fighting spirit.',zh:'教練的一番話激起了球隊的鬥志。'}]},
   ]},
   {kp:'KP08',root:'字根 -wait',note:'-wait 有「等候」的意思',words:[
-    {en:'await',type:'(v.)',zh:'等候；等待'},
-    {en:'wait',type:'(v.)',zh:'等候；等待'},
+    {en:'await',mm:[{t:'a',m:'p'},{t:'wait',m:'r'}],type:'(v.)',zh:'等候；等待',
+     ex:[{en:'A great opportunity awaits those who work hard.',zh:'努力工作的人等待著大好機會。'},{en:'He is anxiously awaiting the results of the exam.',zh:'他焦急地等待著考試結果。'}]},
+    {en:'wait',mm:[{t:'wait',m:'r'}],type:'(v.)',zh:'等候；等待',
+     ex:[{en:'Please wait a moment while I check the information.',zh:'請稍等，我去查一下資料。'},{en:'We waited for two hours before the doctor could see us.',zh:'我們等了兩個小時才見到醫生。'}]},
   ]},
   {kp:'KP09',root:'字根 -wake-',note:'-wake- 有「醒來」的意思',words:[
-    {en:'wake',type:'(v.)',zh:'叫醒；醒來；喚起（記憶）'},
-    {en:'waken',type:'(v.)',zh:'（人）醒來；叫醒'},
-    {en:'awake',type:'(adj./v.)',zh:'醒著的；叫醒；醒來'},
-    {en:'awaken',type:'(v.)',zh:'喚起；叫醒；醒來'},
+    {en:'wake',mm:[{t:'wake',m:'r'}],type:'(v.)',zh:'叫醒；醒來；喚起（記憶）',
+     ex:[{en:'She woke up early to prepare breakfast.',zh:'她早起準備早餐。'},{en:'The good news woke everyone\'s spirit.',zh:'這個好消息振奮了每個人的精神。'}]},
+    {en:'waken',mm:[{t:'wake',m:'r'},{t:'n',m:'s'}],type:'(v.)',zh:'（人）醒來；叫醒',
+     ex:[{en:'The bird\'s singing wakened her softly.',zh:'鳥鳴聲輕輕地把她喚醒。'},{en:'Loud thunder wakened the whole neighborhood.',zh:'震耳欲聾的雷聲把整個社區的人都吵醒了。'}]},
+    {en:'awake',mm:[{t:'a',m:'p'},{t:'wake',m:'r'}],type:'(adj./v.)',zh:'醒著的；叫醒；醒來',
+     ex:[{en:'He lay awake in bed thinking about his future.',zh:'他躺在床上睡不著，思索著自己的未來。'},{en:'Are you awake? It is already seven o\'clock.',zh:'你醒了嗎？已經七點了。'}]},
+    {en:'awaken',mm:[{t:'a',m:'p'},{t:'wake',m:'r'},{t:'n',m:'s'}],type:'(v.)',zh:'喚起；叫醒；醒來',
+     ex:[{en:'The disaster awakened the public\'s awareness of safety.',zh:'這場災難喚起了公眾的安全意識。'},{en:'The smell of coffee awakened her senses.',zh:'咖啡的香味喚醒了她的感官。'}]},
   ]},
   {kp:'KP10',root:'字根 -ward',note:'-ward 有「看守；守護」的意思',words:[
-    {en:'award',type:'(n./v.)',zh:'獎；獎品；授予（獎）'},
-    {en:'reward',type:'(n./v.)',zh:'報酬；獎勵；報答；獎賞'},
+    {en:'award',mm:[{t:'a',m:'p'},{t:'ward',m:'r'}],type:'(n./v.)',zh:'獎；獎品；授予（獎）',
+     ex:[{en:'She was awarded first prize in the writing competition.',zh:'她在寫作比賽中獲得了第一名。'},{en:'The award was given to the most creative student.',zh:'這個獎項頒給了最具創意的學生。'}]},
+    {en:'reward',mm:[{t:'re',m:'p'},{t:'ward',m:'r'}],type:'(n./v.)',zh:'報酬；獎勵；報答；獎賞',
+     ex:[{en:'Hard work will eventually be rewarded.',zh:'努力工作終將得到回報。'},{en:'She offered a reward for the return of her lost cat.',zh:'她提供了賞金，希望找回走失的貓。'}]},
   ]},
 ];
 const QS_U7=[
@@ -1760,25 +1813,38 @@ const QS_U7=[
 
 const VOCAB_U8I=[
   {kp:'KP01',root:'字根 com-',note:'com- 有「一起；強調」的意思',words:[
-    {en:'command',type:'(v./n.)',zh:'命令；博得；指揮、控制；俯瞰；精通（語言）'},
-    {en:'commend',type:'(v.)',zh:'稱讚；推薦'},
-    {en:'commence',type:'(v.)',zh:'開始；著手'},
-    {en:'comment',type:'(v./n.)',zh:'批評、評論；註釋'},
+    {en:'command',mm:[{t:'com',m:'p'},{t:'mand',m:'r'}],type:'(v./n.)',zh:'命令；博得；指揮、控制；俯瞰；精通（語言）',
+     ex:[{en:'The general commanded his troops to advance.',zh:'將軍命令他的部隊前進。'},{en:'The mountain view commands great respect from all visitors.',zh:'壯麗的山景讓所有遊客肅然起敬。'}]},
+    {en:'commend',mm:[{t:'com',m:'p'},{t:'mend',m:'r'}],type:'(v.)',zh:'稱讚；推薦',
+     ex:[{en:'The teacher commended the student for her excellent essay.',zh:'老師稱讚學生寫了一篇優秀的作文。'},{en:'I would highly commend this book to anyone interested in history.',zh:'我強力推薦這本書給所有對歷史感興趣的人。'}]},
+    {en:'commence',mm:[{t:'com',m:'p'},{t:'mence',m:'r'}],type:'(v.)',zh:'開始；著手',
+     ex:[{en:'The ceremony will commence at nine o\'clock sharp.',zh:'典禮將於九點整準時開始。'},{en:'Work on the new building will commence next month.',zh:'新大樓的工程將在下個月開始。'}]},
+    {en:'comment',mm:[{t:'com',m:'p'},{t:'ment',m:'r'}],type:'(v./n.)',zh:'批評、評論；註釋',
+     ex:[{en:'The teacher made helpful comments on my composition.',zh:'老師對我的作文提出了有幫助的評論。'},{en:'He refused to comment on the investigation.',zh:'他拒絕對調查發表評論。'}]},
   ]},
   {kp:'KP02',root:'campaign, champagne, champion',note:'字形相近易混淆的三個單字',words:[
-    {en:'campaign',type:'(n./v.)',zh:'戰役；運動、競選活動；從事活動'},
-    {en:'champagne',type:'(n.)',zh:'香檳酒'},
-    {en:'champion',type:'(n.)',zh:'優勝者；冠軍；擁護者；鬥士'},
+    {en:'campaign',mm:[{t:'camp',m:'r'},{t:'aign',m:'s'}],type:'(n./v.)',zh:'戰役；運動、競選活動；從事活動',
+     ex:[{en:'The politician launched an election campaign.',zh:'這位政治人物展開了競選活動。'},{en:'The school launched a campaign to reduce plastic waste.',zh:'學校發起了一個減少塑膠廢物的活動。'}]},
+    {en:'champagne',mm:[{t:'champ',m:'r'},{t:'agne',m:'s'}],type:'(n.)',zh:'香檳酒',
+     ex:[{en:'They toasted with champagne to celebrate their victory.',zh:'他們用香檳慶祝他們的勝利。'},{en:'A bottle of champagne was opened at the wedding.',zh:'婚禮上打開了一瓶香檳。'}]},
+    {en:'champion',mm:[{t:'champ',m:'r'},{t:'ion',m:'s'}],type:'(n.)',zh:'優勝者；冠軍；擁護者；鬥士',
+     ex:[{en:'She became the swimming champion after years of training.',zh:'經過多年的訓練，她成為了游泳冠軍。'},{en:'He is a champion of human rights.',zh:'他是人權的鬥士。'}]},
   ]},
   {kp:'KP03',root:'complaint, compliant',note:'字形相近易混淆的兩個單字',words:[
-    {en:'complaint',type:'(n.)',zh:'抱怨；不滿；牢騷；疾病'},
-    {en:'compliant',type:'(adj.)',zh:'順從的'},
+    {en:'complaint',mm:[{t:'com',m:'p'},{t:'plain',m:'r'},{t:'t',m:'s'}],type:'(n.)',zh:'抱怨；不滿；牢騷；疾病',
+     ex:[{en:'She filed a complaint about the noisy neighbor.',zh:'她就吵鬧的鄰居提出了投訴。'},{en:'The company received many complaints about the new product.',zh:'公司收到了許多關於新產品的投訴。'}]},
+    {en:'compliant',mm:[{t:'com',m:'p'},{t:'pli',m:'r'},{t:'ant',m:'s'}],type:'(adj.)',zh:'順從的',
+     ex:[{en:'A compliant person always agrees with others.',zh:'順從的人總是同意別人的意見。'},{en:'The new machine is fully compliant with safety regulations.',zh:'新機器完全符合安全規定。'}]},
   ]},
   {kp:'KP04',root:'字根 -pliment/-plement',note:'-pliment/-plement 有「填滿；補足」的意思',words:[
-    {en:'compliment',type:'(n./v.)',zh:'恭維；讚美'},
-    {en:'complement',type:'(n./v.)',zh:'補足物；增添物；補語；補足；互補'},
-    {en:'implement',type:'(n./v.)',zh:'工具；實施（計畫、政策、提案等）'},
-    {en:'supplement',type:'(n.)',zh:'補充物；副刊；補給品'},
+    {en:'compliment',mm:[{t:'com',m:'p'},{t:'pliment',m:'r'}],type:'(n./v.)',zh:'恭維；讚美',
+     ex:[{en:'He paid her a sincere compliment on her cooking.',zh:'他真誠地稱讚了她的廚藝。'},{en:'She blushed when she received the compliment.',zh:'她受到稱讚時臉紅了。'}]},
+    {en:'complement',mm:[{t:'com',m:'p'},{t:'plement',m:'r'}],type:'(n./v.)',zh:'補足物；增添物；補語；補足；互補',
+     ex:[{en:'The blue tie complements his white shirt perfectly.',zh:'藍色領帶與他的白襯衫完美搭配。'},{en:'The two skills complement each other.',zh:'這兩種技能互相補充。'}]},
+    {en:'implement',mm:[{t:'im',m:'p'},{t:'plement',m:'r'}],type:'(n./v.)',zh:'工具；實施（計畫、政策、提案等）',
+     ex:[{en:'The school will implement a new attendance policy next term.',zh:'學校下學期將實施新的出勤政策。'},{en:'Farming implements are stored in the barn.',zh:'農具存放在穀倉裡。'}]},
+    {en:'supplement',mm:[{t:'sup',m:'p'},{t:'plement',m:'r'}],type:'(n.)',zh:'補充物；副刊；補給品',
+     ex:[{en:'She takes vitamin C supplements every day.',zh:'她每天服用維生素C補充品。'},{en:'The Sunday newspaper includes a color supplement.',zh:'週日報紙附有彩色副刊。'}]},
   ]},
 ];
 const QS_U8I=[
@@ -1801,34 +1867,52 @@ const QS_U8I=[
 
 const VOCAB_U8II=[
   {kp:'KP05',root:'conscience, conscious, consensus',note:'三字字形相近，意思各異',words:[
-    {en:'conscience',type:'(n.)',zh:'良心；良知'},
-    {en:'conscious',type:'(adj.)',zh:'體認到；有意識的；清醒的；能察覺的'},
-    {en:'consensus',type:'(n.)',zh:'共識'},
+    {en:'conscience',mm:[{t:'con',m:'p'},{t:'sci',m:'r'},{t:'ence',m:'s'}],type:'(n.)',zh:'良心；良知',
+     ex:[{en:'A guilty conscience kept him awake at night.',zh:'愧疚的良心讓他夜不成眠。'},{en:'You should always let your conscience guide your actions.',zh:'你應該讓良心引導你的行動。'}]},
+    {en:'conscious',mm:[{t:'con',m:'p'},{t:'sci',m:'r'},{t:'ous',m:'s'}],type:'(adj.)',zh:'體認到；有意識的；清醒的；能察覺的',
+     ex:[{en:'She was conscious of the danger ahead.',zh:'她察覺到前方的危險。'},{en:'He is very conscious of his appearance.',zh:'他非常在意自己的外表。'}]},
+    {en:'consensus',mm:[{t:'con',m:'p'},{t:'sens',m:'r'},{t:'us',m:'s'}],type:'(n.)',zh:'共識',
+     ex:[{en:'The team reached a consensus after a long discussion.',zh:'團隊經過長時間討論後達成了共識。'},{en:'There is a growing consensus that climate change is serious.',zh:'越來越多人有共識認為氣候變遷是嚴重的問題。'}]},
   ]},
   {kp:'KP06',root:'字根 -stitute',note:'-stitute 有「站立；設立」的意思',words:[
-    {en:'constitute',type:'(v.)',zh:'組成；構成'},
-    {en:'destitute',type:'(adj.)',zh:'缺乏（食物、金錢）的；欠缺的'},
-    {en:'institute',type:'(v./n.)',zh:'創立；設立；開始；研究機構'},
-    {en:'substitute',type:'(n./v.)',zh:'替代品；代理人；以…代用；代替；代理'},
-    {en:'prostitute',type:'(v.)',zh:'賣淫；（為了賺錢）濫用才能或技術'},
+    {en:'constitute',mm:[{t:'con',m:'p'},{t:'stitute',m:'r'}],type:'(v.)',zh:'組成；構成',
+     ex:[{en:'Seven days constitute a week.',zh:'七天組成一個星期。'},{en:'Theft constitutes a criminal offense.',zh:'盜竊構成刑事罪行。'}]},
+    {en:'destitute',mm:[{t:'de',m:'p'},{t:'stitute',m:'r'}],type:'(adj.)',zh:'缺乏（食物、金錢）的；欠缺的',
+     ex:[{en:'The earthquake left many families destitute.',zh:'地震讓許多家庭陷入一貧如洗的困境。'},{en:'He found himself completely destitute after losing his job.',zh:'失業後，他發現自己一無所有。'}]},
+    {en:'institute',mm:[{t:'in',m:'p'},{t:'stitute',m:'r'}],type:'(v./n.)',zh:'創立；設立；開始；研究機構',
+     ex:[{en:'She was admitted to a famous research institute.',zh:'她被一所著名的研究機構錄取。'},{en:'The government will institute new environmental policies.',zh:'政府將制定新的環境政策。'}]},
+    {en:'substitute',mm:[{t:'sub',m:'p'},{t:'stitute',m:'r'}],type:'(n./v.)',zh:'替代品；代理人；以…代用；代替；代理',
+     ex:[{en:'You can substitute honey for sugar in this recipe.',zh:'你可以在這個食譜中用蜂蜜代替糖。'},{en:'The coach brought in a substitute in the second half.',zh:'教練在下半場換上了替補球員。'}]},
+    {en:'prostitute',mm:[{t:'pro',m:'p'},{t:'stitute',m:'r'}],type:'(v.)',zh:'賣淫；（為了賺錢）濫用才能或技術',
+     ex:[{en:'He was warned not to prostitute his talents for money.',zh:'他被警告不要為了錢而濫用自己的才能。'},{en:'Using one\'s skills merely for profit can be seen as prostituting them.',zh:'僅為利益使用才能可被視為在濫用它們。'}]},
   ]},
   {kp:'KP07',root:'consul, council, counsel',note:'三字字形相近，意思各異',words:[
-    {en:'consul',type:'(n.)',zh:'領事'},
-    {en:'council',type:'(n.)',zh:'政務會；議會；協調會'},
-    {en:'counsel',type:'(n./v.)',zh:'忠告；律師；建議；勸告'},
+    {en:'consul',mm:[{t:'consul',m:'r'}],type:'(n.)',zh:'領事',
+     ex:[{en:'The consul helped citizens who had lost their passports.',zh:'領事幫助了遺失護照的公民。'},{en:'She met with the consul to discuss her visa application.',zh:'她與領事會面，討論她的簽證申請。'}]},
+    {en:'council',mm:[{t:'council',m:'r'}],type:'(n.)',zh:'政務會；議會；協調會',
+     ex:[{en:'The city council voted to build a new library.',zh:'市議會投票通過建造一座新圖書館。'},{en:'He was elected to the student council.',zh:'他當選了學生議會的成員。'}]},
+    {en:'counsel',mm:[{t:'counsel',m:'r'}],type:'(n./v.)',zh:'忠告；律師；建議；勸告',
+     ex:[{en:'The lawyer counseled her client to remain silent.',zh:'律師建議她的委託人保持沉默。'},{en:'He gave wise counsel to the young man.',zh:'他給了這位年輕人明智的忠告。'}]},
   ]},
   {kp:'KP08',root:'contact, contract, contrast',note:'三字字形相近，意思各異',words:[
-    {en:'contact',type:'(n./v.)',zh:'接觸；（與某人）接觸'},
-    {en:'contract',type:'(n./v.)',zh:'契約；合同；收縮；訂立合約；感染（疾病）'},
-    {en:'contrast',type:'(n./v.)',zh:'對照；對比；明顯差異；顯出差異'},
+    {en:'contact',mm:[{t:'con',m:'p'},{t:'tact',m:'r'}],type:'(n./v.)',zh:'接觸；（與某人）接觸',
+     ex:[{en:'Please contact me if you have any questions.',zh:'如有任何問題，請與我聯絡。'},{en:'He has been in contact with his old friends.',zh:'他一直與老朋友保持聯絡。'}]},
+    {en:'contract',mm:[{t:'con',m:'p'},{t:'tract',m:'r'}],type:'(n./v.)',zh:'契約；合同；收縮；訂立合約；感染（疾病）',
+     ex:[{en:'They signed a two-year contract for the project.',zh:'他們為這個專案簽了兩年的合約。'},{en:'Metal contracts when it is cooled.',zh:'金屬冷卻時會收縮。'}]},
+    {en:'contrast',mm:[{t:'con',m:'p'},{t:'trast',m:'r'}],type:'(n./v.)',zh:'對照；對比；明顯差異；顯出差異',
+     ex:[{en:'The black coat contrasted sharply with her white dress.',zh:'黑色外套與她的白色洋裝形成鮮明對比。'},{en:'In contrast to his brother, he is very quiet.',zh:'與他的哥哥相比，他非常安靜。'}]},
   ]},
   {kp:'KP09',root:'contend, content',note:'兩字字形相近，意思各異',words:[
-    {en:'contend',type:'(v.)',zh:'宣稱…為事實；競爭；鬥爭'},
-    {en:'content',type:'(n./v./adj.)',zh:'內容物；使滿足；感到滿足的'},
+    {en:'contend',mm:[{t:'con',m:'p'},{t:'tend',m:'r'}],type:'(v.)',zh:'宣稱…為事實；競爭；鬥爭',
+     ex:[{en:'Two teams are contending for the championship.',zh:'兩隊正在爭奪冠軍。'},{en:'She contended that the rule was unfair.',zh:'她聲稱這條規定是不公平的。'}]},
+    {en:'content',mm:[{t:'con',m:'p'},{t:'tent',m:'r'}],type:'(n./v./adj.)',zh:'內容物；使滿足；感到滿足的',
+     ex:[{en:'I am perfectly content with a simple life.',zh:'我對簡單的生活非常滿足。'},{en:'What is the content of this package?',zh:'這個包裹裡裝的是什麼內容？'}]},
   ]},
   {kp:'KP10',root:'cooperation, corporation',note:'兩字字形相近，意思各異',words:[
-    {en:'cooperation',type:'(n.)',zh:'協力；合作'},
-    {en:'corporation',type:'(n.)',zh:'（社團）法人；（股份有限）公司'},
+    {en:'cooperation',mm:[{t:'co',m:'p'},{t:'oper',m:'r'},{t:'ation',m:'s'}],type:'(n.)',zh:'協力；合作',
+     ex:[{en:'The project was completed through the cooperation of both teams.',zh:'這個專案是透過兩個團隊的合作完成的。'},{en:'Thank you for your cooperation during the investigation.',zh:'感謝您在調查期間的配合。'}]},
+    {en:'corporation',mm:[{t:'corpor',m:'r'},{t:'ation',m:'s'}],type:'(n.)',zh:'（社團）法人；（股份有限）公司',
+     ex:[{en:'She works for a large international corporation.',zh:'她在一家大型跨國公司工作。'},{en:'The corporation donated money to local schools.',zh:'這家公司捐款給當地學校。'}]},
   ]},
 ];
 const QS_U8II=[
@@ -1856,29 +1940,46 @@ const QS_U8II=[
 
 const VOCAB_U9I=[
   {kp:'KP01',root:'對手；敵人',note:'',words:[
-    {en:'adversary',type:'(n.)',zh:'死敵；強敵'},
-    {en:'antagonist',type:'(n.)',zh:'對手；敵手'},
-    {en:'competitor',type:'(n.)',zh:'競爭者'},
-    {en:'enemy',type:'(n.)',zh:'敵人'},
-    {en:'foe',type:'(n.)',zh:'仇敵；敵人'},
-    {en:'opponent',type:'(n.)',zh:'對手；競爭者'},
-    {en:'rival',type:'(n.)',zh:'競爭對手；情敵'},
+    {en:'adversary',mm:[{t:'ad',m:'p'},{t:'vers',m:'r'},{t:'ary',m:'s'}],type:'(n.)',zh:'死敵；強敵',
+     ex:[{en:'He turned his greatest adversary into a close ally.',zh:'他把自己最大的死敵變成了親密的盟友。'},{en:'The lawyer faced a formidable adversary in court.',zh:'律師在法庭上面對了一個強勁的對手。'}]},
+    {en:'antagonist',mm:[{t:'ant',m:'p'},{t:'agon',m:'r'},{t:'ist',m:'s'}],type:'(n.)',zh:'對手；敵手',
+     ex:[{en:'The antagonist in the story causes all the trouble.',zh:'故事中的反派造成了所有的麻煩。'},{en:'The two antagonists finally reached a peace agreement.',zh:'兩個對手最終達成了和平協議。'}]},
+    {en:'competitor',mm:[{t:'com',m:'p'},{t:'petit',m:'r'},{t:'or',m:'s'}],type:'(n.)',zh:'競爭者',
+     ex:[{en:'Our main competitor launched a new product last week.',zh:'我們的主要競爭者上週推出了新產品。'},{en:'She beat all her competitors in the race.',zh:'她在比賽中超越了所有競爭對手。'}]},
+    {en:'enemy',mm:[{t:'en',m:'p'},{t:'emy',m:'r'}],type:'(n.)',zh:'敵人',
+     ex:[{en:'He treats everyone as a friend, never an enemy.',zh:'他把每個人都當朋友，從不當敵人。'},{en:'Laziness is the greatest enemy of success.',zh:'懶惰是成功最大的敵人。'}]},
+    {en:'foe',mm:[{t:'foe',m:'r'}],type:'(n.)',zh:'仇敵；敵人',
+     ex:[{en:'They were once bitter foes but later became allies.',zh:'他們曾是不共戴天的仇敵，後來卻成了盟友。'},{en:'In the poem, winter is described as a cruel foe.',zh:'詩中，冬天被描述為一個殘酷的敵人。'}]},
+    {en:'opponent',mm:[{t:'op',m:'p'},{t:'pon',m:'r'},{t:'ent',m:'s'}],type:'(n.)',zh:'對手；競爭者',
+     ex:[{en:'She shook hands with her opponent after the match.',zh:'比賽結束後她與對手握手。'},{en:'The politician criticized his opponent\'s policies.',zh:'這位政治人物批評了對手的政策。'}]},
+    {en:'rival',mm:[{t:'rival',m:'r'}],type:'(n.)',zh:'競爭對手；情敵',
+     ex:[{en:'The two companies have been rivals for decades.',zh:'這兩家公司已經競爭了幾十年。'},{en:'He works hard to stay ahead of his rivals.',zh:'他努力工作以保持領先對手。'}]},
   ]},
   {kp:'KP02',root:'避免',note:'',words:[
-    {en:'avoid',type:'(v.)',zh:'避免；躲避'},
-    {en:'prevent',type:'(v.)',zh:'預防；阻止'},
+    {en:'avoid',mm:[{t:'a',m:'p'},{t:'void',m:'r'}],type:'(v.)',zh:'避免；躲避',
+     ex:[{en:'You should avoid eating too much sugar.',zh:'你應該避免攝取過多糖分。'},{en:'He tried to avoid being seen by his teacher.',zh:'他試著避免被老師看見。'}]},
+    {en:'prevent',mm:[{t:'pre',m:'p'},{t:'vent',m:'r'}],type:'(v.)',zh:'預防；阻止',
+     ex:[{en:'Wearing a helmet can prevent serious head injuries.',zh:'戴安全帽可以預防嚴重的頭部傷害。'},{en:'Regular exercise prevents many common diseases.',zh:'規律運動能預防許多常見疾病。'}]},
   ]},
   {kp:'KP03',root:'報仇',note:'',words:[
-    {en:'avenge',type:'(v.)',zh:'替…報仇；為…復仇'},
-    {en:'revenge',type:'(n./v.)',zh:'復仇；報仇'},
+    {en:'avenge',mm:[{t:'a',m:'p'},{t:'venge',m:'r'}],type:'(v.)',zh:'替…報仇；為…復仇',
+     ex:[{en:'She swore to avenge her family\'s honor.',zh:'她發誓要為家族的榮譽報仇。'},{en:'He wanted to avenge his friend\'s defeat.',zh:'他想為朋友的落敗報仇。'}]},
+    {en:'revenge',mm:[{t:'re',m:'p'},{t:'venge',m:'r'}],type:'(n./v.)',zh:'復仇；報仇',
+     ex:[{en:'He took revenge on those who had wronged him.',zh:'他向那些曾傷害過他的人復仇。'},{en:'Revenge only leads to more hatred and conflict.',zh:'復仇只會帶來更多的仇恨和衝突。'}]},
   ]},
   {kp:'KP04',root:'人格；個性',note:'',words:[
-    {en:'character',type:'(n.)',zh:'品格；個性；人物'},
-    {en:'disposition',type:'(n.)',zh:'氣質；性情；傾向'},
-    {en:'individuality',type:'(n.)',zh:'個性；個人特徵'},
-    {en:'nature',type:'(n.)',zh:'天性；本性'},
-    {en:'personality',type:'(n.)',zh:'個性；性格'},
-    {en:'temper',type:'(n.)',zh:'脾氣；性情'},
+    {en:'character',mm:[{t:'character',m:'r'}],type:'(n.)',zh:'品格；個性；人物',
+     ex:[{en:'She has a strong and honest character.',zh:'她的品格堅強且誠實。'},{en:'Hard times build character.',zh:'艱難的時刻塑造人格。'}]},
+    {en:'disposition',mm:[{t:'dis',m:'p'},{t:'posit',m:'r'},{t:'ion',m:'s'}],type:'(n.)',zh:'氣質；性情；傾向',
+     ex:[{en:'He has a cheerful disposition that brightens the room.',zh:'他開朗的性情讓整個房間都明亮了起來。'},{en:'Her gentle disposition makes her popular with everyone.',zh:'她溫柔的氣質讓她受到每個人的喜愛。'}]},
+    {en:'individuality',mm:[{t:'individu',m:'r'},{t:'al',m:'s'},{t:'ity',m:'s'}],type:'(n.)',zh:'個性；個人特徵',
+     ex:[{en:'Everyone should express their individuality.',zh:'每個人都應該表達自己的個性。'},{en:'Her unique fashion sense shows her individuality.',zh:'她獨特的時尚品味展現了她的個人特色。'}]},
+    {en:'nature',mm:[{t:'nature',m:'r'}],type:'(n.)',zh:'天性；本性',
+     ex:[{en:'It is human nature to seek happiness.',zh:'追求快樂是人的天性。'},{en:'By nature, she is a curious and adventurous person.',zh:'她天生是個好奇且愛冒險的人。'}]},
+    {en:'personality',mm:[{t:'person',m:'r'},{t:'al',m:'s'},{t:'ity',m:'s'}],type:'(n.)',zh:'個性；性格',
+     ex:[{en:'She has a bright and outgoing personality.',zh:'她個性開朗外向。'},{en:'His strong personality helps him lead the team well.',zh:'他強烈的個性幫助他很好地領導團隊。'}]},
+    {en:'temper',mm:[{t:'temper',m:'r'}],type:'(n.)',zh:'脾氣；性情',
+     ex:[{en:'Try to keep your temper even when things go wrong.',zh:'即使事情不順，也要試著控制自己的脾氣。'},{en:'She has a calm and patient temper.',zh:'她脾氣沉穩有耐心。'}]},
   ]},
 ];
 const QS_U9I=[
@@ -1913,43 +2014,68 @@ const QS_U9I=[
 /* ══════ UNIT 9 SECTION II DATA ══════ */
 const VOCAB_U9II=[
   {kp:'KP05',root:'氣旋；颶風；颱風；龍捲風',note:'',words:[
-    {en:'cyclone',type:'(n.)',zh:'氣旋，強度大，通常帶來暴雨和強大摧毀力'},
-    {en:'hurricane',type:'(n.)',zh:'颶風，發生在西太平洋、東太平洋'},
-    {en:'monsoon',type:'(n.)',zh:'①雨季（印度附近四月至十月）②季風（印度洋上夏季由西南、冬季由東北吹來）'},
-    {en:'tornado',type:'(n.)',zh:'龍捲風，形狀似管狀，掃經狹窄陸地'},
-    {en:'typhoon',type:'(n.)',zh:'颱風，發生在西太平洋'},
-    {en:'waterspout',type:'(n.)',zh:'水龍捲，掃經水面的龍捲風'},
+    {en:'cyclone',mm:[{t:'cycl',m:'r'},{t:'one',m:'s'}],type:'(n.)',zh:'氣旋，強度大，通常帶來暴雨和強大摧毀力',
+     ex:[{en:'A powerful cyclone destroyed many villages.',zh:'一場強烈氣旋摧毀了許多村莊。'},{en:'The cyclone brought heavy rain and strong winds.',zh:'氣旋帶來了大雨和強風。'}]},
+    {en:'hurricane',mm:[{t:'hurricane',m:'r'}],type:'(n.)',zh:'颶風，發生在西太平洋、東太平洋',
+     ex:[{en:'The hurricane caused widespread damage along the coast.',zh:'颶風對沿岸地區造成了大規模破壞。'},{en:'Residents were advised to evacuate before the hurricane hit.',zh:'居民被建議在颶風來臨前疏散。'}]},
+    {en:'monsoon',mm:[{t:'monsoon',m:'r'}],type:'(n.)',zh:'①雨季（印度附近四月至十月）②季風（印度洋上夏季由西南、冬季由東北吹來）',
+     ex:[{en:'Farmers depend on the monsoon rains for their crops.',zh:'農民依靠季風雨水種植農作物。'},{en:'Flooding is common during the monsoon season.',zh:'洪水在雨季期間很常見。'}]},
+    {en:'tornado',mm:[{t:'tornado',m:'r'}],type:'(n.)',zh:'龍捲風，形狀似管狀，掃經狹窄陸地',
+     ex:[{en:'The tornado tore through the town in minutes.',zh:'龍捲風在幾分鐘內席捲了整個城鎮。'},{en:'A tornado warning was issued for the region.',zh:'該地區發布了龍捲風警報。'}]},
+    {en:'typhoon',mm:[{t:'typhoon',m:'r'}],type:'(n.)',zh:'颱風，發生在西太平洋',
+     ex:[{en:'The typhoon season in Taiwan runs from May to November.',zh:'台灣的颱風季從五月持續到十一月。'},{en:'Schools were closed due to the approaching typhoon.',zh:'由於颱風逼近，學校停課。'}]},
+    {en:'waterspout',mm:[{t:'water',m:'p'},{t:'spout',m:'r'}],type:'(n.)',zh:'水龍捲，掃經水面的龍捲風',
+     ex:[{en:'Fishermen spotted a waterspout forming near the coast.',zh:'漁民發現一個水龍捲在海岸附近形成。'},{en:'A waterspout can be dangerous for small boats.',zh:'水龍捲對小型船隻可能很危險。'}]},
   ]},
   {kp:'KP06',root:'無知的；天真的',note:'',words:[
-    {en:'ignorant',type:'(adj.)',zh:'（人）無知的、愚昧的'},
-    {en:'innocent',type:'(adj./n.)',zh:'天真的；無罪的、無辜的 / 天真的人'},
+    {en:'ignorant',mm:[{t:'ignor',m:'r'},{t:'ant',m:'s'}],type:'(adj.)',zh:'（人）無知的、愚昧的',
+     ex:[{en:'He was ignorant of the local customs.',zh:'他對當地習俗一無所知。'},{en:'It is dangerous to be ignorant of basic traffic rules.',zh:'對基本交通規則一無所知是危險的。'}]},
+    {en:'innocent',mm:[{t:'in',m:'p'},{t:'nocent',m:'r'}],type:'(adj./n.)',zh:'天真的；無罪的、無辜的 / 天真的人',
+     ex:[{en:'The judge declared the suspect innocent.',zh:'法官宣判嫌疑人無罪。'},{en:'Children are innocent and should be protected.',zh:'孩子是天真無邪的，應該受到保護。'}]},
   ]},
   {kp:'KP07',root:'值錢的',note:'',words:[
-    {en:'invaluable',type:'(adj.)',zh:'珍貴的、無價之寶的（= priceless）'},
-    {en:'valuable',type:'(adj.)',zh:'值錢的；重要的、有用的'},
-    {en:'valued',type:'(adj.)',zh:'受重視的'},
-    {en:'valueless',type:'(adj.)',zh:'不值錢的（= worthless）；無用的'},
+    {en:'invaluable',mm:[{t:'in',m:'p'},{t:'valu',m:'r'},{t:'able',m:'s'}],type:'(adj.)',zh:'珍貴的、無價之寶的（= priceless）',
+     ex:[{en:'Her advice has been invaluable to the project.',zh:'她的建議對這個專案來說非常珍貴。'},{en:'Experience is an invaluable asset in life.',zh:'經驗是人生中無價的資產。'}]},
+    {en:'valuable',mm:[{t:'valu',m:'r'},{t:'able',m:'s'}],type:'(adj.)',zh:'值錢的；重要的、有用的',
+     ex:[{en:'Time is the most valuable resource we have.',zh:'時間是我們所擁有最寶貴的資源。'},{en:'She wore a valuable diamond necklace to the event.',zh:'她在活動上戴了一條珍貴的鑽石項鍊。'}]},
+    {en:'valued',mm:[{t:'valu',m:'r'},{t:'ed',m:'s'}],type:'(adj.)',zh:'受重視的',
+     ex:[{en:'She is a highly valued member of our team.',zh:'她是我們團隊中非常受重視的成員。'},{en:'His opinion is valued by everyone in the company.',zh:'他的意見受到公司所有人的重視。'}]},
+    {en:'valueless',mm:[{t:'valu',m:'r'},{t:'less',m:'s'}],type:'(adj.)',zh:'不值錢的（= worthless）；無用的',
+     ex:[{en:'Promises without action are valueless.',zh:'沒有行動的承諾毫無價值。'},{en:'The old coin turned out to be valueless.',zh:'那枚舊硬幣原來毫無價值。'}]},
   ]},
   {kp:'KP08',root:'旅行',note:'',words:[
-    {en:'excursion',type:'(n.)',zh:'娛樂性質的短期旅行（最多一天），例如：校外教學或踏青'},
-    {en:'expedition',type:'(n.)',zh:'有計劃、具特定目的的行程，像是考察某地或某物'},
-    {en:'journey',type:'(n.)',zh:'指長時間的旅途，旅途的範圍廣大'},
-    {en:'tour',type:'(n.)',zh:'旅遊期間會同時參觀好幾個地方或含有導覽意思；距離可長可短'},
-    {en:'trip',type:'(n.)',zh:'指短程或有目的的旅行，又可指一小段路程'},
-    {en:'voyage',type:'(n.)',zh:'長期旅程或航行，特指乘船之旅'},
+    {en:'excursion',mm:[{t:'ex',m:'p'},{t:'curs',m:'r'},{t:'ion',m:'s'}],type:'(n.)',zh:'娛樂性質的短期旅行（最多一天），例如：校外教學或踏青',
+     ex:[{en:'The class enjoyed their excursion to the science museum.',zh:'全班很享受去科學博物館的校外教學。'},{en:'We went on a short excursion to the countryside.',zh:'我們去鄉下進行了一次短途旅遊。'}]},
+    {en:'expedition',mm:[{t:'ex',m:'p'},{t:'pedit',m:'r'},{t:'ion',m:'s'}],type:'(n.)',zh:'有計劃、具特定目的的行程，像是考察某地或某物',
+     ex:[{en:'The scientist led an expedition to the Arctic.',zh:'那位科學家帶領了一次前往北極的探險隊。'},{en:'The expedition team climbed the mountain successfully.',zh:'探險隊成功地攀登了這座山。'}]},
+    {en:'journey',mm:[{t:'journey',m:'r'}],type:'(n.)',zh:'指長時間的旅途，旅途的範圍廣大',
+     ex:[{en:'The journey from Taipei to Kaohsiung takes about four hours by train.',zh:'從台北到高雄搭火車大約需要四個小時。'},{en:'Life is a long journey full of challenges.',zh:'人生是一段充滿挑戰的漫長旅途。'}]},
+    {en:'tour',mm:[{t:'tour',m:'r'}],type:'(n.)',zh:'旅遊期間會同時參觀好幾個地方或含有導覽意思；距離可長可短',
+     ex:[{en:'We took a guided tour of the ancient city.',zh:'我們參加了這座古城的導覽之旅。'},{en:'The band is on a world tour this year.',zh:'樂團今年正在進行世界巡迴演出。'}]},
+    {en:'trip',mm:[{t:'trip',m:'r'}],type:'(n.)',zh:'指短程或有目的的旅行，又可指一小段路程',
+     ex:[{en:'She made a quick trip to the supermarket.',zh:'她快速去了一趟超市。'},{en:'The school trip to the zoo was very educational.',zh:'學校去動物園的校外教學非常有教育意義。'}]},
+    {en:'voyage',mm:[{t:'voyage',m:'r'}],type:'(n.)',zh:'長期旅程或航行，特指乘船之旅',
+     ex:[{en:'The sailors set off on a voyage across the Atlantic.',zh:'水手們啟程橫渡大西洋的航行。'},{en:'The voyage lasted three months.',zh:'這次航行持續了三個月。'}]},
   ]},
   {kp:'KP09',root:'關係',note:'',words:[
-    {en:'relation',type:'(n.)',zh:'（人、國、組織）關係；關聯；親戚'},
-    {en:'relationship',type:'(n.)',zh:'（人、國、組織）關係；關聯；情愛關係'},
-    {en:'interrelationship',type:'(n.)',zh:'（人事物）相互關係'},
+    {en:'relation',mm:[{t:'re',m:'p'},{t:'lat',m:'r'},{t:'ion',m:'s'}],type:'(n.)',zh:'（人、國、組織）關係；關聯；親戚',
+     ex:[{en:'There is a close relation between diet and health.',zh:'飲食與健康之間有密切的關係。'},{en:'She has good relations with all of her neighbors.',zh:'她與所有鄰居關係良好。'}]},
+    {en:'relationship',mm:[{t:'re',m:'p'},{t:'lat',m:'r'},{t:'ion',m:'s'},{t:'ship',m:'s'}],type:'(n.)',zh:'（人、國、組織）關係；關聯；情愛關係',
+     ex:[{en:'A good relationship requires trust and communication.',zh:'一段好的關係需要信任和溝通。'},{en:'He values his relationship with his family above all else.',zh:'他最重視與家人的關係。'}]},
+    {en:'interrelationship',mm:[{t:'inter',m:'p'},{t:'re',m:'p'},{t:'lat',m:'r'},{t:'ion',m:'s'},{t:'ship',m:'s'}],type:'(n.)',zh:'（人事物）相互關係',
+     ex:[{en:'The interrelationship between exercise and mental health is well documented.',zh:'運動與心理健康之間的相互關係已有充分的研究記錄。'},{en:'Scientists study the interrelationship of species in an ecosystem.',zh:'科學家研究生態系統中物種間的相互關係。'}]},
   ]},
   {kp:'KP10',root:'代替',note:'replace A with/by B = substitute B for A = A be replaced/substituted with/by B',words:[
-    {en:'replace',type:'(v.)',zh:'取代；把…放回原處'},
-    {en:'substitute',type:'(v./n.)',zh:'代替；替代品'},
+    {en:'replace',mm:[{t:'re',m:'p'},{t:'place',m:'r'}],type:'(v.)',zh:'取代；把…放回原處',
+     ex:[{en:'We need to replace the broken window.',zh:'我們需要更換破掉的窗戶。'},{en:'Can anything truly replace face-to-face communication?',zh:'有任何事物能真正取代面對面的溝通嗎？'}]},
+    {en:'substitute',mm:[{t:'sub',m:'p'},{t:'stitute',m:'r'}],type:'(v./n.)',zh:'代替；替代品',
+     ex:[{en:'You can use olive oil as a substitute for butter.',zh:'你可以用橄欖油代替奶油。'},{en:'The coach sent in a substitute when the player was injured.',zh:'球員受傷時，教練派上了替補球員。'}]},
   ]},
   {kp:'KP11',root:'生病的',note:'',words:[
-    {en:'ill',type:'(adj./adv.)',zh:'（生理或心理上）有病的；邪惡的、有害的 / 惡劣地；不利地'},
-    {en:'sick',type:'(adj.)',zh:'身體不適的；變態的、噁心的；be sick of = 對…感到厭倦'},
+    {en:'ill',mm:[{t:'ill',m:'r'}],type:'(adj./adv.)',zh:'（生理或心理上）有病的；邪惡的、有害的 / 惡劣地；不利地',
+     ex:[{en:'She fell ill after eating the uncooked meat.',zh:'她吃了生肉後生病了。'},{en:'He has been mentally ill for several years.',zh:'他患有精神疾病已有好幾年了。'}]},
+    {en:'sick',mm:[{t:'sick',m:'r'}],type:'(adj.)',zh:'身體不適的；變態的、噁心的；be sick of = 對…感到厭倦',
+     ex:[{en:'He felt sick after riding the roller coaster.',zh:'他坐完雲霄飛車後感覺不舒服。'},{en:'She is sick of waiting and decided to leave.',zh:'她等得厭煩，決定離開。'}]},
   ]},
 ];
 const QS_U9II=[
@@ -1981,28 +2107,28 @@ const QS_U9II=[
 ];
 
 const CHAPTERS_DATA={
-  'u1i':{vocab:VOCAB_U1I,qs:QS_U1I,title:'Unit 1 · Section I',kpsInfo:'KP01–09 · 27個單字'},
-  'u1ii':{vocab:VOCAB_U1II,qs:QS_U1II,title:'Unit 1 · Section II',kpsInfo:'KP10–25 · 42個單字'},
-  'u1iii':{vocab:VOCAB_U1III,qs:QS_U1III,title:'Unit 1 · Section III',kpsInfo:'KP26–28 · 20個單字'},
-  'u2i':{vocab:VOCAB_U2I,qs:QS_U2I,title:'Unit 2 · Section I',kpsInfo:'KP01–12 · 25個單字'},
-  'u2ii':{vocab:VOCAB_U2II,qs:QS_U2II,title:'Unit 2 · Section II',kpsInfo:'KP13–22 · 28個單字'},
-  'u2iii':{vocab:VOCAB_U2III,qs:QS_U2III,title:'Unit 2 · Section III',kpsInfo:'KP23–29 · 42個單字'},
-  'u3i':{vocab:VOCAB_U3I,qs:QS_U3I,title:'Unit 3 · Section I',kpsInfo:'KP01–02 · 8個單字'},
-  'u3iii':{vocab:VOCAB_U3III,qs:QS_U3III,title:'Unit 3 · Section III',kpsInfo:'KP06–08 · 14個單字'},
-  'u3iv':{vocab:VOCAB_U3IV,qs:QS_U3IV,title:'Unit 3 · Section IV',kpsInfo:'KP09–12 · 19個單字'},
-  'u4i':{vocab:VOCAB_U4I,qs:QS_U4I,title:'Unit 4 · Section I',kpsInfo:'KP01–02 · 12個單字'},
-  'u4ii':{vocab:VOCAB_U4II,qs:QS_U4II,title:'Unit 4 · Section II',kpsInfo:'KP03–05 · 17個單字'},
-  'u4iii':{vocab:VOCAB_U4III,qs:QS_U4III,title:'Unit 4 · Section III',kpsInfo:'KP06–07 · 15個單字'},
-  'u5i':{vocab:VOCAB_U5I,qs:QS_U5I,title:'Unit 5 · Section I',kpsInfo:'KP01–02 · 9個單字'},
-  'u5ii':{vocab:VOCAB_U5II,qs:QS_U5II,title:'Unit 5 · Section II',kpsInfo:'KP03–06 · 21個單字'},
-  'u6i':{vocab:VOCAB_U6I,qs:QS_U6I,title:'Unit 6 · Section I',kpsInfo:'KP01–03 · 21個單字'},
-  'u6ii':{vocab:VOCAB_U6II,qs:QS_U6II,title:'Unit 6 · Section II',kpsInfo:'KP04–07 · 20個單字'},
-  'u6iii':{vocab:VOCAB_U6III,qs:QS_U6III,title:'Unit 6 · Section III',kpsInfo:'KP08–12 · 31個單字'},
-  'u7':{vocab:VOCAB_U7,qs:QS_U7,title:'Unit 7',kpsInfo:'KP01–10 · 34個單字'},
-  'u8i':{vocab:VOCAB_U8I,qs:QS_U8I,title:'Unit 8 · Section I',kpsInfo:'KP01–04 · 13個單字'},
-  'u8ii':{vocab:VOCAB_U8II,qs:QS_U8II,title:'Unit 8 · Section II',kpsInfo:'KP05–10 · 18個單字'},
-  'u9i':{vocab:VOCAB_U9I,qs:QS_U9I,title:'Unit 9 · Section I',kpsInfo:'KP01–04 · 17個單字'},
-  'u9ii':{vocab:VOCAB_U9II,qs:QS_U9II,title:'Unit 9 · Section II',kpsInfo:'KP05–11 · 25個單字'},
+  'u1i':{vocab:VOCAB_U1I,qs:QS_U1I,title:'Unit 1 · Section I',kpsInfo:'27 個單字'},
+  'u1ii':{vocab:VOCAB_U1II,qs:QS_U1II,title:'Unit 1 · Section II',kpsInfo:'42 個單字'},
+  'u1iii':{vocab:VOCAB_U1III,qs:QS_U1III,title:'Unit 1 · Section III',kpsInfo:'20 個單字'},
+  'u2i':{vocab:VOCAB_U2I,qs:QS_U2I,title:'Unit 2 · Section I',kpsInfo:'25 個單字'},
+  'u2ii':{vocab:VOCAB_U2II,qs:QS_U2II,title:'Unit 2 · Section II',kpsInfo:'28 個單字'},
+  'u2iii':{vocab:VOCAB_U2III,qs:QS_U2III,title:'Unit 2 · Section III',kpsInfo:'42 個單字'},
+  'u3i':{vocab:VOCAB_U3I,qs:QS_U3I,title:'Unit 3 · Section I',kpsInfo:'8 個單字'},
+  'u3iii':{vocab:VOCAB_U3III,qs:QS_U3III,title:'Unit 3 · Section II',kpsInfo:'14 個單字'},
+  'u3iv':{vocab:VOCAB_U3IV,qs:QS_U3IV,title:'Unit 3 · Section III',kpsInfo:'19 個單字'},
+  'u4i':{vocab:VOCAB_U4I,qs:QS_U4I,title:'Unit 4 · Section I',kpsInfo:'12 個單字'},
+  'u4ii':{vocab:VOCAB_U4II,qs:QS_U4II,title:'Unit 4 · Section II',kpsInfo:'17 個單字'},
+  'u4iii':{vocab:VOCAB_U4III,qs:QS_U4III,title:'Unit 4 · Section III',kpsInfo:'15 個單字'},
+  'u5i':{vocab:VOCAB_U5I,qs:QS_U5I,title:'Unit 5 · Section I',kpsInfo:'9 個單字'},
+  'u5ii':{vocab:VOCAB_U5II,qs:QS_U5II,title:'Unit 5 · Section II',kpsInfo:'21 個單字'},
+  'u6i':{vocab:VOCAB_U6I,qs:QS_U6I,title:'Unit 6 · Section I',kpsInfo:'21 個單字'},
+  'u6ii':{vocab:VOCAB_U6II,qs:QS_U6II,title:'Unit 6 · Section II',kpsInfo:'20 個單字'},
+  'u6iii':{vocab:VOCAB_U6III,qs:QS_U6III,title:'Unit 6 · Section III',kpsInfo:'31 個單字'},
+  'u7':{vocab:VOCAB_U7,qs:QS_U7,title:'Unit 7',kpsInfo:'34 個單字'},
+  'u8i':{vocab:VOCAB_U8I,qs:QS_U8I,title:'Unit 8 · Section I',kpsInfo:'13 個單字'},
+  'u8ii':{vocab:VOCAB_U8II,qs:QS_U8II,title:'Unit 8 · Section II',kpsInfo:'18 個單字'},
+  'u9i':{vocab:VOCAB_U9I,qs:QS_U9I,title:'Unit 9 · Section I',kpsInfo:'17 個單字'},
+  'u9ii':{vocab:VOCAB_U9II,qs:QS_U9II,title:'Unit 9 · Section II',kpsInfo:'25 個單字'},
 };
 let currentChId='u1i';
 
@@ -2083,7 +2209,7 @@ function buildHome(){
         h+=`<div class="ch-card open" onclick="openChapter('${c.id}')">
           <div class="ch-tag">Unit ${u.n}</div>
           <div class="ch-sec">${c.sec?'Section '+c.sec:''}</div>
-          <div class="ch-words">${c.words||0} 個單字 · ${c.kps}</div>
+          <div class="ch-words">${c.words||0} 個單字</div>
           ${prog!==null?
             `<div class="ch-prog-wrap"><div class="ch-prog"><div style="width:${prog}%"></div></div><div class="ch-pct">${prog}% 完成</div></div>`:
             '<div class="ch-cta">開始學習 →</div>'
@@ -2139,7 +2265,8 @@ function buildVocab(){
   </div>`;
   for(const sec of VOCAB){
     h+=`<div class="kpc"><div class="kph">
-      <span class="kpb">${sec.kp}</span><span class="kpn">${sec.root}</span><span class="kpnt">${sec.note}</span></div>`;
+      <span class="kpn">${sec.root}</span></div>
+    ${sec.note?`<div class="kpnt">${sec.note}</div>`:''}`;
     for(const w of sec.words){
       h+=`<div class="wrow"><div class="wtop">
         <span class="wen" data-text="${ae(w.en)}" onclick="speak(this.dataset.text)" title="🔊">${w.mm&&w.mm.length?rM(w.mm):w.en}</span>
@@ -2177,7 +2304,7 @@ function renderTQ(){
   pg.innerHTML=`<div class="pbox">
     <div class="prow"><span class="plbl">第 ${tC+1} 題／共 ${QS.length} 題</span><span class="sclbl" id="tSclbl">得分 ${tSc}／${tC}</span></div>
     <div class="pbar"><div class="pfill" style="width:${pct}%"></div></div>
-    <span class="qtag">${q.kp}</span>
+    <span class="qtag">${q.kp.replace(/^KP\d+\s*/,'')}</span>
     <div class="zhbox"><div class="zhlab">中文提示</div><div class="zhtxt">${q.zh}</div></div>
     <div class="sentbox">${q.before}&nbsp;<span class="blank">${q.hint}</span>&nbsp;${q.after}</div>
     <p class="hnote">💡 輸入完整單字後按 Enter 或「確認」</p>
@@ -2227,7 +2354,7 @@ function renderSQ(){
   pg.innerHTML=`<div class="pbox">
     <div class="prow"><span class="plbl">第 ${spC+1} 題／共 ${QS.length} 題</span><span class="sclbl" id="spSclbl">得分 ${spSc}／${spC}</span></div>
     <div class="pbar"><div class="pfill" style="width:${pct}%"></div></div>
-    <span class="qtag">${q.kp}</span>
+    <span class="qtag">${q.kp.replace(/^KP\d+\s*/,'')}</span>
     <div class="zhbox"><div class="zhlab">中文提示</div><div class="zhtxt">${q.zh}</div></div>
     <div class="sentbox">${q.before}&nbsp;<span class="blank">${q.hint}</span>&nbsp;${q.after}</div>
     <p style="text-align:center;color:var(--tx2);font-size:.8rem;margin-bottom:10px">請說出空格中的英文單字</p>
@@ -2444,8 +2571,9 @@ function renderSpell(){
     </div>
     <div class="sp-pbar"><div class="sp-pfill" style="width:${pct}%"></div></div>
     <div class="sp-card">
+      <div class="sp-en">${w.mm&&w.mm.length?rM(w.mm):w.en}</div>
       <div class="sp-zh">${w.zh}</div>
-      <div class="sp-pos">${w.type} · ${w.kp}</div>
+      <div class="sp-pos">${w.type}</div>
       ${exHtml}
     </div>
     <div class="sp-hint">
