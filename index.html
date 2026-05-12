@@ -2679,7 +2679,7 @@ function setSnd(btn,s){sndStyle=s;localStorage.setItem('snd',s);document.querySe
 function initBoxes(word){
   const c=document.getElementById('lboxes');if(!c)return;c.innerHTML='';
   for(let i=0;i<word.length;i++){
-    const d=document.createElement('div');d.id='lb'+i;d.className='lb '+(i===0?'cur':'');
+    const d=document.createElement('div');d.id='lb'+i;d.className='lb '+(i===0?'cur':'empty');
     d.textContent='';c.appendChild(d);
   }
 }
@@ -2717,7 +2717,7 @@ function handleSpellKey(key){
 
 function handleSpellBack(){
   if(spIdx>=spList.length||spPos<=0)return;
-  const cur=gB(spPos);if(cur){cur.className='lb';cur.textContent='';}
+  const cur=gB(spPos);if(cur){cur.className='lb empty';cur.textContent='';}
   spPos--;
   const box=gB(spPos);if(box){box.className='lb cur';box.textContent='';}
 }
