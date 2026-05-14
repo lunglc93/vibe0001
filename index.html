@@ -311,6 +311,9 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 .sp-first{width:50px;height:50px;border-radius:9px;background:var(--ac-l);border:2.5px solid var(--ac);display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:900;color:var(--ac-d);font-family:'Courier New',monospace}
 [data-theme=cyber] .sp-first{box-shadow:0 0 14px rgba(0,255,209,.4);color:var(--ac)}
 .sp-lentag{font-size:.78rem;color:var(--tx2);background:var(--sur2);padding:3px 9px;border-radius:9px;border:1px solid var(--bd)}
+.sp-mne{font-size:.78rem;color:var(--ac-d);padding:5px 10px 5px 12px;border-left:3px solid var(--ac);line-height:1.65;margin-top:7px;text-align:left;background:var(--ac-l);border-radius:0 6px 6px 0}
+[data-theme=cyber] .sp-mne{color:var(--ac)}
+[data-theme=retro] .sp-mne{color:var(--ac)}
 
 /* Letter boxes */
 .lboxes{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
@@ -322,6 +325,12 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 [data-theme=cyber] .lb.typed{box-shadow:0 0 8px rgba(0,255,209,.25)}
 .lb.cur{background:var(--sur);border:2.5px dashed var(--ac);animation:bcur .75s ease infinite}
 .lb.empty{background:var(--sur2);border:2px solid var(--bd)}
+.lb.empty[data-m=p]{background:var(--pb);border-color:var(--pc)}
+.lb.empty[data-m=r]{background:var(--rb);border-color:var(--rc)}
+.lb.empty[data-m=s]{background:var(--sb);border-color:var(--sc)}
+.lb.cur[data-m=p]{border-color:var(--pc)}
+.lb.cur[data-m=r]{border-color:var(--rc)}
+.lb.cur[data-m=s]{border-color:var(--sc)}
 .lb.rev{background:var(--bk);color:#fff;border:2px solid var(--bk);animation:prev .3s ease backwards}
 [data-theme=cyber] .lb.rev{background:var(--bk);box-shadow:0 0 12px rgba(255,0,255,.4)}
 .lb.ef{animation:eflash .18s ease}
@@ -422,7 +431,6 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
   <div class="study-topbar">
     <button class="study-back" onclick="goHome()">← 章節列表</button>
     <span class="study-ttl" id="studyTtl"></span>
-    <span class="study-kps" id="studyKps"></span>
     <button class="ok-btn" id="okBtn" onclick="toggleOK()">✓ 完成</button>
   </div>
   <div class="tabbar">
@@ -2754,46 +2762,46 @@ const QS_U9IIb=[
 ];
 
 const CHAPTERS_DATA={
-  'u1i':{vocab:VOCAB_U1I,qs:QS_U1I,title:'Unit 1 · Section I',kpsInfo:'KP01–05 · 21 個單字'},
-  'u1ia':{vocab:VOCAB_U1Ia,qs:QS_U1Ia,title:'Unit 1 · Section I-a',kpsInfo:'KP06–09 · 20 個單字'},
-  'u1ii':{vocab:VOCAB_U1II,qs:QS_U1II,title:'Unit 1 · Section II',kpsInfo:'KP10–14 · 15 個單字'},
-  'u1iib':{vocab:VOCAB_U1IIb,qs:QS_U1IIb,title:'Unit 1 · Section II-b',kpsInfo:'KP15–20 · 19 個單字'},
-  'u1iic':{vocab:VOCAB_U1IIc,qs:QS_U1IIc,title:'Unit 1 · Section II-c',kpsInfo:'KP21–25 · 20 個單字'},
-  'u1iii':{vocab:VOCAB_U1III,qs:QS_U1III,title:'Unit 1 · Section III',kpsInfo:'KP26–27 · 18 個單字'},
-  'u1iiid':{vocab:VOCAB_U1IIId,qs:QS_U1IIId,title:'Unit 1 · Section III-d',kpsInfo:'KP28–29 · 16 個單字'},
-  'u2i':{vocab:VOCAB_U2I,qs:QS_U2I,title:'Unit 2 · Section I',kpsInfo:'KP01–06 · 18 個單字'},
-  'u2ia':{vocab:VOCAB_U2Ia,qs:QS_U2Ia,title:'Unit 2 · Section I-a',kpsInfo:'KP07–12 · 19 個單字'},
-  'u2ii':{vocab:VOCAB_U2II,qs:QS_U2II,title:'Unit 2 · Section II',kpsInfo:'KP13–17 · 16 個單字'},
-  'u2iib':{vocab:VOCAB_U2IIb,qs:QS_U2IIb,title:'Unit 2 · Section II-b',kpsInfo:'KP18–22 · 19 個單字'},
-  'u2iii':{vocab:VOCAB_U2III,qs:QS_U2III,title:'Unit 2 · Section III',kpsInfo:'KP23–25 · 16 個單字'},
-  'u2iiid':{vocab:VOCAB_U2IIId,qs:QS_U2IIId,title:'Unit 2 · Section III-d',kpsInfo:'KP26–27 · 15 個單字'},
-  'u2iiie':{vocab:VOCAB_U2IIIe,qs:QS_U2IIIe,title:'Unit 2 · Section III-e',kpsInfo:'KP28–29 · 16 個單字'},
-  'u3i':{vocab:VOCAB_U3I,qs:QS_U3I,title:'Unit 3 · Section I',kpsInfo:'KP01–02 · 10 個單字'},
-  'u3iii':{vocab:VOCAB_U3III,qs:QS_U3III,title:'Unit 3 · Section II',kpsInfo:'KP06–08 · 17 個單字'},
-  'u3iv':{vocab:VOCAB_U3IV,qs:QS_U3IV,title:'Unit 3 · Section III',kpsInfo:'KP09–10 · 13 個單字'},
-  'u3ivb':{vocab:VOCAB_U3IVb,qs:QS_U3IVb,title:'Unit 3 · Section III-b',kpsInfo:'KP11–12 · 10 個單字'},
-  'u4i':{vocab:VOCAB_U4I,qs:QS_U4I,title:'Unit 4 · Section I',kpsInfo:'KP01–02 · 14 個單字'},
-  'u4ii':{vocab:VOCAB_U4II,qs:QS_U4II,title:'Unit 4 · Section II',kpsInfo:'KP03–05 · 20 個單字'},
-  'u4iii':{vocab:VOCAB_U4III,qs:QS_U4III,title:'Unit 4 · Section III',kpsInfo:'KP06–07 · 17 個單字'},
-  'u5i':{vocab:VOCAB_U5I,qs:QS_U5I,title:'Unit 5 · Section I',kpsInfo:'KP01–02 · 11 個單字'},
-  'u5ii':{vocab:VOCAB_U5II,qs:QS_U5II,title:'Unit 5 · Section II',kpsInfo:'KP03–04 · 14 個單字'},
-  'u5iib':{vocab:VOCAB_U5IIb,qs:QS_U5IIb,title:'Unit 5 · Section II-b',kpsInfo:'KP05–06 · 11 個單字'},
-  'u6i':{vocab:VOCAB_U6I,qs:QS_U6I,title:'Unit 6 · Section I',kpsInfo:'KP01–02 · 13 個單字'},
-  'u6ia':{vocab:VOCAB_U6Ia,qs:QS_U6Ia,title:'Unit 6 · Section I-a',kpsInfo:'KP03 · 11 個單字'},
-  'u6ii':{vocab:VOCAB_U6II,qs:QS_U6II,title:'Unit 6 · Section II',kpsInfo:'KP04–05 · 14 個單字'},
-  'u6iib':{vocab:VOCAB_U6IIb,qs:QS_U6IIb,title:'Unit 6 · Section II-b',kpsInfo:'KP06–07 · 10 個單字'},
-  'u6iii':{vocab:VOCAB_U6III,qs:QS_U6III,title:'Unit 6 · Section III',kpsInfo:'KP08–09 · 16 個單字'},
-  'u6iiib':{vocab:VOCAB_U6IIIb,qs:QS_U6IIIb,title:'Unit 6 · Section III-b',kpsInfo:'KP10 · 11 個單字'},
-  'u6iiic':{vocab:VOCAB_U6IIIc,qs:QS_U6IIIc,title:'Unit 6 · Section III-c',kpsInfo:'KP11–12 · 9 個單字'},
-  'u7i':{vocab:VOCAB_U7I,qs:QS_U7I,title:'Unit 7 · Section I',kpsInfo:'KP01–04 · 18 個單字'},
-  'u7ii':{vocab:VOCAB_U7II,qs:QS_U7II,title:'Unit 7 · Section II',kpsInfo:'KP05–07 · 15 個單字'},
-  'u7iii':{vocab:VOCAB_U7III,qs:QS_U7III,title:'Unit 7 · Section III',kpsInfo:'KP08–10 · 11 個單字'},
-  'u8i':{vocab:VOCAB_U8I,qs:QS_U8I,title:'Unit 8 · Section I',kpsInfo:'KP01–04 · 17 個單字'},
-  'u8ii':{vocab:VOCAB_U8II,qs:QS_U8II,title:'Unit 8 · Section II',kpsInfo:'KP05–07 · 14 個單字'},
-  'u8iib':{vocab:VOCAB_U8IIb,qs:QS_U8IIb,title:'Unit 8 · Section II-b',kpsInfo:'KP08–10 · 10 個單字'},
-  'u9i':{vocab:VOCAB_U9I,qs:QS_U9I,title:'Unit 9 · Section I',kpsInfo:'KP01–04 · 20 個單字'},
-  'u9ii':{vocab:VOCAB_U9II,qs:QS_U9II,title:'Unit 9 · Section II',kpsInfo:'KP05–07 · 15 個單字'},
-  'u9iib':{vocab:VOCAB_U9IIb,qs:QS_U9IIb,title:'Unit 9 · Section II-b',kpsInfo:'KP08–11 · 17 個單字'},
+  'u1i':{vocab:VOCAB_U1I,qs:QS_U1I,title:'第 1 單元・第一節',kpsInfo:'KP01–05 · 21 個單字'},
+  'u1ia':{vocab:VOCAB_U1Ia,qs:QS_U1Ia,title:'第 1 單元・第一節（下）',kpsInfo:'KP06–09 · 20 個單字'},
+  'u1ii':{vocab:VOCAB_U1II,qs:QS_U1II,title:'第 1 單元・第二節',kpsInfo:'KP10–14 · 15 個單字'},
+  'u1iib':{vocab:VOCAB_U1IIb,qs:QS_U1IIb,title:'第 1 單元・第二節（下）',kpsInfo:'KP15–20 · 19 個單字'},
+  'u1iic':{vocab:VOCAB_U1IIc,qs:QS_U1IIc,title:'第 1 單元・第二節（三）',kpsInfo:'KP21–25 · 20 個單字'},
+  'u1iii':{vocab:VOCAB_U1III,qs:QS_U1III,title:'第 1 單元・第三節',kpsInfo:'KP26–27 · 18 個單字'},
+  'u1iiid':{vocab:VOCAB_U1IIId,qs:QS_U1IIId,title:'第 1 單元・第三節（下）',kpsInfo:'KP28–29 · 16 個單字'},
+  'u2i':{vocab:VOCAB_U2I,qs:QS_U2I,title:'第 2 單元・第一節',kpsInfo:'KP01–06 · 18 個單字'},
+  'u2ia':{vocab:VOCAB_U2Ia,qs:QS_U2Ia,title:'第 2 單元・第一節（下）',kpsInfo:'KP07–12 · 19 個單字'},
+  'u2ii':{vocab:VOCAB_U2II,qs:QS_U2II,title:'第 2 單元・第二節',kpsInfo:'KP13–17 · 16 個單字'},
+  'u2iib':{vocab:VOCAB_U2IIb,qs:QS_U2IIb,title:'第 2 單元・第二節（下）',kpsInfo:'KP18–22 · 19 個單字'},
+  'u2iii':{vocab:VOCAB_U2III,qs:QS_U2III,title:'第 2 單元・第三節',kpsInfo:'KP23–25 · 16 個單字'},
+  'u2iiid':{vocab:VOCAB_U2IIId,qs:QS_U2IIId,title:'第 2 單元・第三節（下）',kpsInfo:'KP26–27 · 15 個單字'},
+  'u2iiie':{vocab:VOCAB_U2IIIe,qs:QS_U2IIIe,title:'第 2 單元・第三節（三）',kpsInfo:'KP28–29 · 16 個單字'},
+  'u3i':{vocab:VOCAB_U3I,qs:QS_U3I,title:'第 3 單元・第一節',kpsInfo:'KP01–02 · 10 個單字'},
+  'u3iii':{vocab:VOCAB_U3III,qs:QS_U3III,title:'第 3 單元・第二節',kpsInfo:'KP06–08 · 17 個單字'},
+  'u3iv':{vocab:VOCAB_U3IV,qs:QS_U3IV,title:'第 3 單元・第三節',kpsInfo:'KP09–10 · 13 個單字'},
+  'u3ivb':{vocab:VOCAB_U3IVb,qs:QS_U3IVb,title:'第 3 單元・第三節（下）',kpsInfo:'KP11–12 · 10 個單字'},
+  'u4i':{vocab:VOCAB_U4I,qs:QS_U4I,title:'第 4 單元・第一節',kpsInfo:'KP01–02 · 14 個單字'},
+  'u4ii':{vocab:VOCAB_U4II,qs:QS_U4II,title:'第 4 單元・第二節',kpsInfo:'KP03–05 · 20 個單字'},
+  'u4iii':{vocab:VOCAB_U4III,qs:QS_U4III,title:'第 4 單元・第三節',kpsInfo:'KP06–07 · 17 個單字'},
+  'u5i':{vocab:VOCAB_U5I,qs:QS_U5I,title:'第 5 單元・第一節',kpsInfo:'KP01–02 · 11 個單字'},
+  'u5ii':{vocab:VOCAB_U5II,qs:QS_U5II,title:'第 5 單元・第二節',kpsInfo:'KP03–04 · 14 個單字'},
+  'u5iib':{vocab:VOCAB_U5IIb,qs:QS_U5IIb,title:'第 5 單元・第二節（下）',kpsInfo:'KP05–06 · 11 個單字'},
+  'u6i':{vocab:VOCAB_U6I,qs:QS_U6I,title:'第 6 單元・第一節',kpsInfo:'KP01–02 · 13 個單字'},
+  'u6ia':{vocab:VOCAB_U6Ia,qs:QS_U6Ia,title:'第 6 單元・第一節（下）',kpsInfo:'KP03 · 11 個單字'},
+  'u6ii':{vocab:VOCAB_U6II,qs:QS_U6II,title:'第 6 單元・第二節',kpsInfo:'KP04–05 · 14 個單字'},
+  'u6iib':{vocab:VOCAB_U6IIb,qs:QS_U6IIb,title:'第 6 單元・第二節（下）',kpsInfo:'KP06–07 · 10 個單字'},
+  'u6iii':{vocab:VOCAB_U6III,qs:QS_U6III,title:'第 6 單元・第三節',kpsInfo:'KP08–09 · 16 個單字'},
+  'u6iiib':{vocab:VOCAB_U6IIIb,qs:QS_U6IIIb,title:'第 6 單元・第三節（下）',kpsInfo:'KP10 · 11 個單字'},
+  'u6iiic':{vocab:VOCAB_U6IIIc,qs:QS_U6IIIc,title:'第 6 單元・第三節（三）',kpsInfo:'KP11–12 · 9 個單字'},
+  'u7i':{vocab:VOCAB_U7I,qs:QS_U7I,title:'第 7 單元・第一節',kpsInfo:'KP01–04 · 18 個單字'},
+  'u7ii':{vocab:VOCAB_U7II,qs:QS_U7II,title:'第 7 單元・第二節',kpsInfo:'KP05–07 · 15 個單字'},
+  'u7iii':{vocab:VOCAB_U7III,qs:QS_U7III,title:'第 7 單元・第三節',kpsInfo:'KP08–10 · 11 個單字'},
+  'u8i':{vocab:VOCAB_U8I,qs:QS_U8I,title:'第 8 單元・第一節',kpsInfo:'KP01–04 · 17 個單字'},
+  'u8ii':{vocab:VOCAB_U8II,qs:QS_U8II,title:'第 8 單元・第二節',kpsInfo:'KP05–07 · 14 個單字'},
+  'u8iib':{vocab:VOCAB_U8IIb,qs:QS_U8IIb,title:'第 8 單元・第二節（下）',kpsInfo:'KP08–10 · 10 個單字'},
+  'u9i':{vocab:VOCAB_U9I,qs:QS_U9I,title:'第 9 單元・第一節',kpsInfo:'KP01–04 · 20 個單字'},
+  'u9ii':{vocab:VOCAB_U9II,qs:QS_U9II,title:'第 9 單元・第二節',kpsInfo:'KP05–07 · 15 個單字'},
+  'u9iib':{vocab:VOCAB_U9IIb,qs:QS_U9IIb,title:'第 9 單元・第二節（下）',kpsInfo:'KP08–11 · 17 個單字'},
 };
 let currentChId='u1i';
 
@@ -2909,14 +2917,14 @@ function goHome(){
   buildHome();
 }
 
+function getChNum(id){let n=0;for(const u of UNITS)for(const c of u.chs){n++;if(c.id===id)return n;}return 0;}
 let spellInited=false;
 function openChapter(id){
   const ch=CHAPTERS_DATA[id];if(!ch)return;
   currentChId=id;VOCAB=ch.vocab;QS=ch.qs;
   document.getElementById('view-home').style.display='none';
   document.getElementById('view-study').style.display='block';
-  document.getElementById('studyTtl').textContent=ch.title;
-  document.getElementById('studyKps').textContent=ch.kpsInfo;
+  document.getElementById('studyTtl').textContent=`第 ${getChNum(id)} 章`;
   spellInited=false;
   updateOKBtn();
   buildVocab(); buildPractice(); buildSpeech();
@@ -3224,7 +3232,7 @@ let spList=[],spIdx=0,spPos=0,spellCombo=0,spellScore=0,spellTotal=0,spMist=0;
 function initSpell(){
   spList=[];retroSeq=0;scifiBase=400;
   for(const sec of VOCAB)for(const w of sec.words)
-    if(w.en.length>=3)spList.push({en:w.en,zh:w.zh.split('　')[0].split('；')[0],type:w.type,kp:sec.kp,ex:w.ex||[]});
+    if(w.en.length>=3)spList.push({en:w.en,zh:w.zh.split('　')[0].split('；')[0],type:w.type,kp:sec.kp,ex:w.ex||[],mm:w.mm,mne:w.mne});
   spList.sort(()=>Math.random()-.5);
   spIdx=0;spellScore=0;spellTotal=0;spellCombo=0;renderSpell();
 }
@@ -3253,6 +3261,7 @@ function renderSpell(){
       <div class="sp-en">${w.mm&&w.mm.length?rM(w.mm):w.en}</div>
       <div class="sp-zh">${w.zh}</div>
       <div class="sp-pos">${w.type}</div>
+      ${w.mne?`<div class="sp-mne">💡 ${w.mne}</div>`:''}
       ${exHtml}
     </div>
     <div class="sp-hint">
@@ -3272,7 +3281,7 @@ function renderSpell(){
     </div>
   </div>
   <input id="spellInput" type="text" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="done" style="position:fixed;top:-200px;left:0;width:1px;height:1px;opacity:0;border:none;outline:none;" aria-hidden="true">`;
-  initBoxes(w.en);
+  initBoxes(w.en,w.mm);
   const _si=document.getElementById('spellInput');
   if(_si){
     _si.value='x';
@@ -3289,10 +3298,13 @@ function renderSpell(){
 
 function setSnd(btn,s){sndStyle=s;localStorage.setItem('snd',s);document.querySelectorAll('.sndbtn').forEach(b=>b.classList.toggle('on',b===btn));}
 
-function initBoxes(word){
+function initBoxes(word,mm){
   const c=document.getElementById('lboxes');if(!c)return;c.innerHTML='';
+  const mmap=[];
+  if(mm&&mm.length){let idx=0;mm.forEach(m=>{for(let j=0;j<m.t.length;j++)mmap[idx++]=m.m||'';});}
   for(let i=0;i<word.length;i++){
     const d=document.createElement('div');d.id='lb'+i;d.className='lb '+(i===0?'cur':'empty');
+    if(mmap[i])d.dataset.m=mmap[i];
     d.textContent='';c.appendChild(d);
   }
 }
