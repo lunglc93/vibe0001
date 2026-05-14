@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -370,7 +370,7 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
 /* ══════ PRINT ══════ */
 @media print{
   .app-bar,.study-topbar,.tabbar,.ctrl,.bstar,.brs,.snd-row,.sp-acts{display:none!important}
-  #pg-practice,#pg-speech,#pg-spell,#pg-bookmark{display:none!important}
+  #pg-practice,#pg-speech,#pg-spell,#pg-bookmark,#pg-reading{display:none!important}
   .pg.on{display:block!important;padding:0}
   .kph{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
@@ -382,6 +382,53 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
   .sp-zh{font-size:.95rem}
   .ch-row{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
 }
+/* ══════ READING TEST ══════ */
+.rd-intro{text-align:center;padding:14px;font-size:.85rem;color:var(--tx2);line-height:1.7}
+.rd-card{background:var(--sur);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:var(--cs);border:1px solid var(--bd)}
+.rd-hdr{background:linear-gradient(135deg,var(--h1),var(--h2));color:#fff;padding:12px 18px;display:flex;align-items:center;gap:10px}
+.rd-num{background:rgba(255,255,255,.2);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;flex-shrink:0}
+.rd-ttl{font-size:.9rem;font-weight:700}
+.rd-body{padding:18px}
+.rd-en{font-size:.92rem;line-height:2;color:var(--tx);margin-bottom:12px;text-align:justify}
+.rd-en b{color:var(--ac-d);font-weight:700;border-bottom:2px dotted var(--ac)}
+[data-theme=cyber] .rd-en b{color:var(--ac)}
+.rd-toggle{display:inline-block;padding:5px 14px;font-size:.78rem;border:1.5px solid var(--ac);border-radius:18px;background:var(--sur);color:var(--ac);cursor:pointer;font-family:inherit;transition:all .2s;margin-bottom:10px}
+.rd-toggle:hover{background:var(--ac);color:#fff}
+.rd-zh{font-size:.85rem;line-height:2;color:var(--tx2);background:var(--sur2);padding:12px 14px;border-radius:8px;border-left:4px solid var(--ac);margin-bottom:6px;display:none}
+.rd-zh.show{display:block}
+.rd-words{font-size:.75rem;color:var(--tx3);margin-top:8px;padding:6px 10px;background:var(--sur2);border-radius:6px}
+.rd-words span{color:var(--ac-d);font-weight:600}
+.rd-qs{padding:0 18px 18px}
+.rd-qs h4{font-size:.85rem;color:var(--ac-d);margin-bottom:10px;padding-top:8px;border-top:1px dashed var(--bd)}
+.rd-q{margin-bottom:14px}
+.rd-stem{font-size:.85rem;font-weight:600;color:var(--tx);margin-bottom:5px}
+.rd-stem .rqn{color:var(--ac);font-weight:800;margin-right:3px}
+.rd-opts{display:grid;gap:4px}
+.rd-opt{display:flex;align-items:flex-start;gap:5px;padding:6px 9px;border-radius:7px;cursor:pointer;font-size:.83rem;transition:background .15s;border:1.5px solid transparent}
+.rd-opt:hover{background:var(--ac-l)}
+.rd-opt input{margin-top:3px;accent-color:var(--ac)}
+.rd-opt.ok{background:var(--ac-l);border-color:var(--ac)}
+.rd-opt.ng{background:#ffebee;border-color:#ef5350}
+[data-theme=cyber] .rd-opt.ok{background:rgba(0,255,100,.1);border-color:#00CC66}
+[data-theme=cyber] .rd-opt.ng{background:rgba(255,0,60,.1);border-color:#FF3060}
+.rd-check{display:block;margin:18px auto 0;padding:10px 30px;font-size:.9rem;border:none;border-radius:10px;background:var(--ac-d);color:#fff;cursor:pointer;font-weight:700;font-family:inherit;transition:opacity .2s,transform .15s}
+.rd-check:hover{opacity:.9;transform:translateY(-1px)}
+.rd-check:disabled{opacity:.4;cursor:default;transform:none}
+.rd-result{text-align:center;padding:18px;margin-top:16px;background:var(--sur);border-radius:16px;box-shadow:var(--cs);border:1px solid var(--bd);display:none}
+.rd-result.show{display:block}
+.rd-ricon{font-size:2.2rem;margin-bottom:6px}
+.rd-rscore{font-size:1.8rem;font-weight:900;color:var(--ac)}
+.rd-rpct{font-size:.85rem;color:var(--tx2);margin-top:3px}
+.rd-rmsg{font-size:.95rem;color:var(--ac-d);font-weight:600;margin-top:6px}
+.rd-key{background:var(--sur);border-radius:16px;padding:18px;margin-top:16px;box-shadow:var(--cs);border:1px solid var(--bd);display:none}
+.rd-key.show{display:block}
+.rd-key h4{color:var(--ac-d);font-size:.9rem;margin-bottom:10px}
+.rd-arow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.rd-arow .rd-at{font-weight:700;color:var(--tx);font-size:.82rem;min-width:90px}
+.rd-arow .rd-aa{font-size:.82rem;color:var(--ac);font-weight:600}
+.rd-aexp{font-size:.8rem;color:var(--tx2);margin-top:3px;padding:5px 9px;background:var(--sur2);border-radius:5px;line-height:1.7}
+.rd-reset{display:block;margin:12px auto 0;padding:8px 22px;font-size:.85rem;border:1.5px solid var(--ac);border-radius:8px;background:var(--sur);color:var(--ac);cursor:pointer;font-weight:600;font-family:inherit;transition:all .2s}
+.rd-reset:hover{background:var(--ac);color:#fff}
 </style>
 </head>
 <body>
@@ -438,12 +485,14 @@ body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:var(--
     <button onclick="switchTab('practice')" style="display:none">✏️ 打字</button>
     <button onclick="switchTab('speech')" style="display:none">🎤 口說</button>
     <button onclick="switchTab('spell')">⌨️ 拼字</button>
+    <button onclick="switchTab('reading')">📖 閱讀</button>
     <button onclick="switchTab('bookmark')">⭐ 收藏</button>
   </div>
   <div id="pg-vocab"    class="pg on"></div>
   <div id="pg-practice" class="pg"></div>
   <div id="pg-speech"   class="pg"></div>
   <div id="pg-spell"    class="pg"></div>
+  <div id="pg-reading"  class="pg"></div>
   <div id="pg-bookmark" class="pg"></div>
 </div>
 
@@ -2926,18 +2975,20 @@ function openChapter(id){
   document.getElementById('view-study').style.display='block';
   document.getElementById('studyTtl').textContent=`第 ${getChNum(id)} 章`;
   spellInited=false;
+  rdBuilt={};
   updateOKBtn();
   buildVocab(); buildPractice(); buildSpeech();
   switchTab('vocab');
 }
 
 /* ══════ TABS ══════ */
-const TABS=['vocab','practice','speech','spell','bookmark'];
+const TABS=['vocab','practice','speech','spell','reading','bookmark'];
 function switchTab(name){
   document.querySelectorAll('.tabbar button').forEach((b,i)=>b.classList.toggle('on',TABS[i]===name));
   TABS.forEach(t=>document.getElementById('pg-'+t).classList.toggle('on',t===name));
   if(name==='spell'&&!spellInited){initSpell();spellInited=true;}
   if(name==='bookmark')buildBM();
+  if(name==='reading')buildReading();
 }
 
 /* ══════ VOCAB PAGE ══════ */
@@ -3401,6 +3452,809 @@ function buildBM(){
       <div class="bmkp">${b.kp}</div>
       <button class="bmrm" onclick="togBM('${ae(b.en)}')">移除</button></div>`;
   h+='</div>';pg.innerHTML=h;
+}
+
+/* ══════ READING TEST ══════ */
+const READING_DATA={
+u1i:{
+title:'The Stage Accident — 舞台意外',
+en:`<p>A famous <b>actor</b> had an important <b>appointment</b> at the Grand Theater last Friday. His <b>aim</b> was to star in a new play funded by a wealthy <b>benefactor</b>. The crew set up a <b>triangle</b>-shaped stage with a large <b>rectangle</b> screen behind it. The director looked at the set from every <b>angle</b> and <b>exclaimed</b>, "This looks perfect!"</p>
+<p>During rehearsal, however, an accident happened. A heavy spotlight fell and almost <b>maimed</b> the actor's right hand. The medical team <b>reacted</b> quickly, applying <b>ointment</b> to the wound. They <b>presumed</b> the injury was not serious. "I will <b>resume</b> the performance," the actor <b>claimed</b> bravely.</p>
+<p>Backstage, the staff <b>wrangled</b> over who was to blame. Some <b>assumed</b> it was the lighting crew's fault, but many <b>factors</b> had contributed to the accident. The city had recently <b>enacted</b> a new workplace safety law, and some worried the theater had not followed it. The debate was so intense that it <b>consumed</b> everyone's attention.</p>
+<p>In the end, the repair costs were <b>subsumed</b> under the theater's insurance plan. The <b>benefactor</b>, as if <b>anointing</b> the project with renewed hope, donated extra funds. The play <b>resumed</b> the following week. "I never <b>assumed</b> this journey would be easy," the actor said, "but I <b>presume</b> dedication always leads to success."</p>`,
+zh:`<p>上週五，一位著名的演員在大劇院有一個重要的約會。他的目標是出演由一位富裕贊助者資助的新劇。工作人員搭建了一個三角形的舞台，後方設置了一面大型長方形銀幕。導演從每個角度審視佈景，驚呼道：「看起來太完美了！」</p>
+<p>然而，排練時發生了意外。一盞沉重的聚光燈掉落，差點使演員的右手嚴重受傷。醫療團隊迅速做出反應，為傷口塗上了藥膏。他們推測傷勢並不嚴重。「我會繼續演出的，」演員勇敢地聲稱。</p>
+<p>後台，工作人員為了該由誰負責而激烈爭論。有些人假設是燈光組的錯，但許多因素共同導致了這次意外。市政府最近制定了一項新的職場安全法律，有人擔心劇院沒有遵守。這場爭論如此激烈，消耗了每個人的注意力。</p>
+<p>最終，修繕費用被歸入劇院的保險計畫中。贊助者彷彿為這個專案賦予新的希望，額外捐出了資金。演出在隔週恢復。「我從來沒有假設這段旅程會很輕鬆，」演員說道，「但我推測付出總會帶來成功。」</p>`,
+words:'actor, appointment, aim, benefactor, triangle, rectangle, angle, exclaim, maim, react, ointment, presume, resume, claim, wrangle, assume, factor, enact, consume, subsume, anoint',
+qs:[
+{s:'1. What was the actor\'s aim at the Grand Theater?',o:['(A) To direct a new movie.','(B) To star in a new play funded by a benefactor.','(C) To meet his fans at an event.','(D) To receive a medical appointment.'],a:1},
+{s:'2. What happened during rehearsal?',o:['(A) The audience left the theater.','(B) The play was postponed for a month.','(C) A spotlight fell and almost maimed the actor\'s hand.','(D) The benefactor canceled the funding.'],a:2},
+{s:'3. What does "wrangled" most likely mean?',o:['(A) Cooperated calmly.','(B) Worked in silence.','(C) Celebrated together.','(D) Argued intensely.'],a:3},
+{s:'4. What was recently enacted by the city?',o:['(A) A new workplace safety law.','(B) A special tax on theaters.','(C) A ban on live performances.','(D) A new holiday for actors.'],a:0},
+{s:'5. What message did the actor share at the end?',o:['(A) He wanted to retire from acting.','(B) The benefactor should be blamed.','(C) Dedication always leads to success.','(D) Acting is too dangerous for him.'],a:2}
+],ak:'1.B　2.C　3.D　4.A　5.C',
+exp:'1. 文章第一段提到他的 aim 是出演由 benefactor 資助的新劇。<br>2. 排練時聚光燈掉落 "almost maimed the actor\'s right hand"。<br>3. wrangle 意為「激烈爭論」。<br>4. 文中提到 "The city had recently enacted a new workplace safety law"。<br>5. 演員最後說 "I presume dedication always leads to success"。'
+},
+u1ia:{
+title:'A Dream Hotel Stay — 夢幻飯店之旅',
+en:`<p>Last summer, a <b>team</b> of five friends traveled to a mountain resort. Their <b>dream</b> was to spend a relaxing weekend by a crystal-clear <b>stream</b>. When they arrived, a friendly <b>bellhop</b> carried their bags to the room. The lobby's large <b>bell</b> chimed softly to welcome guests.</p>
+<p>"This place is amazing!" said Amy. But her friend Lily did not <b>reply</b>. She just stared <b>blankly</b> out the window, her mind <b>blank</b> from exhaustion. Amy wrapped a warm <b>blanket</b> around Lily's shoulders and said, "Get some rest."</p>
+<p>The next morning, they visited the hotel spa. Hot <b>steam</b> rose from the natural springs. The spa staff <b>applied</b> a special herbal <b>cream</b> on their skin. "We <b>comply</b> with all health and safety regulations," the manager explained, <b>implying</b> that the products were safe and natural.</p>
+<p>After the spa, the group headed to the fitness center. Tom lifted <b>dumbbells</b> while Amy stretched her arms. "My <b>belly</b> is too full from breakfast," Tom laughed. Meanwhile, the hotel used speakers to <b>amplify</b> soft background music.</p>
+<p>On the last day, the hotel could barely <b>supply</b> enough towels — guests had <b>multiplied</b> during the holiday season. Despite the crowds, the trip fulfilled their <b>dream</b> of relaxation.</p>`,
+zh:`<p>去年夏天，一支五人好友團隊前往一座山區度假村。他們的夢想是在一條清澈的溪流旁度過一個放鬆的週末。抵達時，一位友善的飯店服務生幫他們把行李搬到房間。大廳裡一座大鐘輕柔地鳴響，歡迎客人。</p>
+<p>「這地方太棒了！」Amy 說道。但她的朋友 Lily 沒有回應。她只是茫然地望著窗外，腦海一片空白，疲憊不堪。Amy 用一條溫暖的毛毯裹住 Lily 的肩膀，說：「休息一下吧。」</p>
+<p>隔天早上，她們參觀了飯店的水療中心。天然溫泉冒出陣陣熱蒸氣。水療工作人員為她們的皮膚塗上了一種特製草本乳霜。「我們遵守所有健康和安全法規，」經理解釋道，暗示這些產品是安全且天然的。</p>
+<p>水療結束後，一行人前往健身中心。Tom 舉著啞鈴，Amy 在旁做伸展。「我的肚子早餐吃太飽了，」Tom 笑道。同時，飯店用喇叭放大柔和的背景音樂。</p>
+<p>最後一天，飯店幾乎無法供應足夠的毛巾——假日期間客人數量倍增。儘管人潮擁擠，這趟旅行實現了他們放鬆身心的夢想。</p>`,
+words:'team, dream, stream, bellhop, bell, reply, blankly, blank, blanket, steam, apply, cream, comply, imply, dumbbell, belly, amplify, supply, multiply',
+qs:[
+{s:'1. Why did Lily stare blankly out the window?',o:['(A) She was angry at her friends.','(B) She was too exhausted to respond.','(C) She did not like the hotel room.','(D) She was watching a movie outside.'],a:1},
+{s:'2. What did the spa staff apply on the guests\' skin?',o:['(A) Sunscreen lotion.','(B) Cold water from the stream.','(C) A special herbal cream.','(D) Medical bandages.'],a:2},
+{s:'3. What does "amplify" most likely mean?',o:['(A) To turn something off completely.','(B) To record something for later.','(C) To make something louder or stronger.','(D) To make something quieter.'],a:2},
+{s:'4. Why could the hotel barely supply enough towels?',o:['(A) The washing machines were broken.','(B) The staff refused to work weekends.','(C) All the towels were stolen.','(D) Guests had multiplied during the holiday season.'],a:3},
+{s:'5. Which of the following is TRUE according to the passage?',o:['(A) The group traveled to a beach resort.','(B) Tom exercised by lifting dumbbells at the gym.','(C) Lily replied excitedly when she arrived.','(D) The hotel spa used artificial chemicals.'],a:1}
+],ak:'1.B　2.C　3.C　4.D　5.B',
+exp:'1. 文中描述 Lily "her mind blank from exhaustion"，因疲憊而茫然。<br>2. 水療人員 "applied a special herbal cream on their skin"。<br>3. amplify 意為「放大、使更強」。<br>4. 文中提到 "guests had multiplied during the holiday season"。<br>5. 文中提到 "Tom lifted dumbbells"，其他選項皆與原文不符。'
+},
+u1ii:{
+title:'The Mountain Brand — 山之品牌',
+en:`<p>Mr. Wang decided to <b>invest</b> in an outdoor clothing <b>brand</b>. He wanted to <b>showcase</b> his products to hikers who climbed mountain <b>ridges</b> every weekend. His flagship item was a high-quality <b>vest</b> designed for cold weather.</p>
+<p>Before the launch, Mr. Wang checked the weather <b>forecast</b> to plan a promotional event near a famous stone <b>bridge</b>. The TV station agreed to <b>broadcast</b> the event live. During the show, a model <b>brandished</b> the new vest dramatically on stage. "This is the perfect gear for adventure," the host announced.</p>
+<p>However, a competing brand began to <b>chase</b> Mr. Wang's customers with lower prices. Some investors suggested he <b>divest</b> from the outdoor market. Mr. Wang refused. He <b>abridged</b> his business plan to focus on quality rather than quantity.</p>
+<p>During the event, an elderly gentleman sipped a glass of <b>brandy</b> and said, "I would like to <b>purchase</b> three vests for my grandchildren." The man was actually a famous mountaineer who had once crossed a dangerous <b>ridge</b> on foot. His endorsement was <b>broadcast</b> on the news. Mr. Wang had <b>cast</b> his net wide, and the public responded. His brand became the top choice for outdoor enthusiasts.</p>`,
+zh:`<p>王先生決定投資一個戶外服裝品牌。他想向每個週末攀登山脊的登山者展示他的產品。他的旗艦商品是一件為寒冷天氣設計的高品質背心。</p>
+<p>產品上市前，王先生查看了天氣預報，計畫在一座著名的石橋附近舉辦促銷活動。電視台同意直播這場活動。在節目中，一位模特兒在舞台上誇張地揮舞著新款背心。「這是冒險的完美裝備，」主持人宣布。</p>
+<p>然而，一個競爭品牌開始以更低的價格追逐王先生的客戶。一些投資者建議他從戶外市場撤資。王先生拒絕了。他精簡了商業計畫，專注於品質而非數量。</p>
+<p>在活動中，一位年長的紳士啜飲著一杯白蘭地，說：「我想幫我的孫子們買三件背心。」這位先生其實是一位著名的登山家，曾經徒步穿越一條危險的山脊。他的背書在新聞中被播出。王先生廣泛撒網，公眾也做出了回應。他的品牌成為戶外愛好者的首選。</p>`,
+words:'invest, brand, showcase, ridge, vest, forecast, bridge, broadcast, brandish, chase, divest, abridge, brandy, purchase, cast',
+qs:[
+{s:'1. What was Mr. Wang\'s flagship product?',o:['(A) A pair of hiking boots.','(B) A waterproof camping tent.','(C) A high-quality vest for cold weather.','(D) A climbing rope.'],a:2},
+{s:'2. What does "brandish" most likely mean?',o:['(A) To wave or display in a dramatic way.','(B) To hide something carefully.','(C) To throw something away.','(D) To fold neatly into a bag.'],a:0},
+{s:'3. Why did some investors suggest Mr. Wang divest?',o:['(A) His products were of poor quality.','(B) A competitor was chasing his customers with lower prices.','(C) The weather forecast predicted a long drought.','(D) The TV station refused to broadcast his event.'],a:1},
+{s:'4. Who was the elderly gentleman at the event?',o:['(A) A local politician.','(B) Mr. Wang\'s business partner.','(C) A famous mountaineer.','(D) A TV reporter.'],a:2},
+{s:'5. How did Mr. Wang respond to the competition?',o:['(A) He divested from the market entirely.','(B) He lowered his prices dramatically.','(C) He chased the competitor\'s customers.','(D) He abridged his plan to focus on quality.'],a:3}
+],ak:'1.C　2.A　3.B　4.C　5.D',
+exp:'1. 文中提到旗艦商品是 "a high-quality vest designed for cold weather"。<br>2. brandish 意為「揮舞、誇張展示」。<br>3. 競爭品牌 "began to chase Mr. Wang\'s customers with lower prices"。<br>4. 那位紳士 "was actually a famous mountaineer"。<br>5. 王先生 "abridged his business plan to focus on quality"。'
+},
+u1iib:{
+title:'The Dragon Festival — 龍祭大典',
+en:`<p>Every spring, the small town on the <b>east</b> side of the mountain holds a grand <b>feast</b> called the Dragon Festival. The event <b>excites</b> thousands of visitors. Local elders <b>recite</b> ancient poems about a legendary <b>dragon</b> that once protected the village.</p>
+<p>This year, the organizers worked hard to <b>procure</b> enough food. A baker used special <b>yeast</b> to make hundreds of loaves of bread. The festival committee <b>attempted</b> to <b>secure</b> the main square by placing guards at every <b>counter</b> and entrance. They <b>cited</b> safety reports from past years to justify the expense.</p>
+<p>During the parade, a performer dressed as a fierce <b>beast</b> <b>dragged</b> a giant dragon puppet through the streets. Children screamed with joy. One old man <b>recounted</b> the tale of a brave warrior who once <b>encountered</b> a real dragon in the mountains. "The dragon <b>tempted</b> the warrior with treasure, but he showed <b>contempt</b> for gold," the old man said. "His only aim was to find a <b>cure</b> for the village's plague."</p>
+<p>Some critics tried to <b>incite</b> controversy, claiming the festival was too expensive. But the mayor replied, "This tradition defines our town." The crowd cheered. The festival remained a celebration that <b>excited</b> hearts and kept ancient stories alive.</p>`,
+zh:`<p>每年春天，山東側的小鎮都會舉辦一場盛大的宴會，稱為龍祭大典。這個活動讓成千上萬的遊客興奮不已。當地的長者會朗誦關於一條傳說中保護村莊的龍的古詩。</p>
+<p>今年，主辦方努力採購了足夠的食物。一位麵包師使用特殊的酵母製作了數百條麵包。節慶委員會試圖在每個櫃檯和入口設置守衛來確保主廣場的安全。他們引用了往年的安全報告來證明這筆開支的合理性。</p>
+<p>遊行期間，一位表演者裝扮成兇猛的野獸，拖著一個巨大的龍偶穿過街道。孩子們興奮地尖叫。一位老人詳述了一個勇敢戰士曾在山中遭遇真龍的故事。「那條龍用寶藏誘惑戰士，但他對黃金不屑一顧，」老人說。「他唯一的目標是找到治癒村莊瘟疫的方法。」</p>
+<p>一些批評者試圖煽動爭議，聲稱節慶太過昂貴。但市長回應：「這個傳統定義了我們的城鎮。」群眾歡呼。這個節慶仍然是一場激動人心、讓古老故事流傳的慶典。</p>`,
+words:'east, feast, excite, recite, dragon, procure, yeast, attempt, secure, counter, cite, beast, drag, recount, encounter, tempt, contempt, cure, incite',
+qs:[
+{s:'1. When is the Dragon Festival held?',o:['(A) Every spring.','(B) Every winter.','(C) Every summer.','(D) Once every five years.'],a:0},
+{s:'2. What does "procure" most likely mean?',o:['(A) To throw away.','(B) To cook quickly.','(C) To obtain or acquire.','(D) To sell at a discount.'],a:2},
+{s:'3. In the old man\'s story, what did the warrior show contempt for?',o:['(A) The dragon\'s power.','(B) The village elders.','(C) Ancient poems.','(D) Gold and treasure.'],a:3},
+{s:'4. Why did critics try to incite controversy?',o:['(A) The festival was dangerous.','(B) The festival was too expensive.','(C) They wanted to cancel all traditions.','(D) They were jealous of the mayor.'],a:1},
+{s:'5. Which of the following is NOT mentioned in the passage?',o:['(A) Local elders recited ancient poems.','(B) A baker used special yeast for bread.','(C) The festival was broadcast on national TV.','(D) A performer dragged a giant dragon puppet.'],a:2}
+],ak:'1.A　2.C　3.D　4.B　5.C',
+exp:'1. 文章開頭即說 "Every spring"。<br>2. procure 意為「取得、採購」。<br>3. 老人說戰士 "showed contempt for gold"。<br>4. 批評者 "claiming the festival was too expensive"。<br>5. 文中未提到在電視上直播。'
+},
+u1iic:{
+title:'The Green Revolution — 綠色革命',
+en:`<p>A research <b>institute</b> in Taipei launched a project called "The Green <b>Revolution</b>." The project <b>involved</b> developing <b>efficient</b> farming techniques to <b>sustain</b> food production. Scientists studied the <b>evolution</b> of plants to find species that could grow on <b>flat</b> land with limited water.</p>
+<p>"Our current methods are <b>deficient</b> in many ways," said Dr. Lin, a researcher <b>proficient</b> in agricultural science. "We need <b>sufficient</b> funding to <b>obtain</b> better equipment." She warned that existing farmland could not <b>sustain</b> unlimited growth. "If we do not act, future generations will <b>retain</b> nothing but barren soil."</p>
+<p>The project required farmers to <b>abstain</b> from using chemical fertilizers and <b>substitute</b> them with natural ones. Some farmers <b>maintained</b> that natural methods were too slow. "You cannot <b>flatten</b> decades of farming habits overnight," one farmer argued. But Dr. Lin's team showed that organic crops <b>contained</b> more nutrients.</p>
+<p>A wealthy businessman tried to use <b>flattery</b> to join the project for personal gain. "Your research is brilliant — I am <b>flattered</b> to even be here," he said. Dr. Lin saw through his <b>flattery</b> and refused. "The volunteers who <b>constitute</b> our team are here because they care." In the end, the project succeeded — a quiet <b>revolution</b> that would <b>sustain</b> the land for generations.</p>`,
+zh:`<p>台北的一所研究學院啟動了一個名為「綠色革命」的專案。這個專案涉及開發高效的農業技術來維持糧食生產。科學家們研究了植物的演化，以找到能在平坦且水源有限的土地上生長的物種。</p>
+<p>「我們目前的方法在很多方面是不足的，」農業科學精通的研究員林博士說。「我們需要足夠的資金來獲取更好的設備。」她警告說，現有的農地無法支撐無限制的增長。「如果我們不採取行動，後代將只能保留一片貧瘠的土壤。」</p>
+<p>這個專案要求農民戒除使用化學肥料，改用天然肥料代替。一些農民堅持認為天然方法太慢。「你不能一夜之間把數十年的農耕習慣壓平，」一位農民爭辯道。但林博士的團隊證明有機作物包含更多營養。</p>
+<p>一位富有的商人試圖用奉承來加入專案以謀取私利。「你們的研究太出色了——能來到這裡我都受寵若驚，」他說。林博士看穿了他的諂媚並拒絕了。「組成我們團隊的志工們是因為他們真正關心。」最終，專案成功了——一場安靜的革命，將世世代代維持著這片土地。</p>`,
+words:'institute, revolution, involve, efficient, sustain, evolution, flat, deficient, proficient, sufficient, obtain, retain, abstain, substitute, maintain, flatten, contain, flattery, flatter, constitute',
+qs:[
+{s:'1. What was the main goal of the "Green Revolution" project?',o:['(A) To sell organic food for higher prices.','(B) To flatten farmland for new construction.','(C) To develop efficient farming techniques to sustain food production.','(D) To build more research institutes.'],a:2},
+{s:'2. What does "deficient" most likely mean?',o:['(A) Highly advanced.','(B) More than enough.','(C) Very expensive.','(D) Lacking or insufficient.'],a:3},
+{s:'3. What were farmers asked to substitute?',o:['(A) Chemical fertilizers with natural ones.','(B) Traditional crops with foreign species.','(C) Old tractors with new ones.','(D) Water with chemical solutions.'],a:0},
+{s:'4. Why did Dr. Lin refuse the businessman?',o:['(A) He was not proficient in farming.','(B) He wanted to flatten the farmland.','(C) He did not have sufficient money.','(D) He tried to use flattery for personal gain.'],a:3},
+{s:'5. What is the main idea of the passage?',o:['(A) Chemical farming is better than organic farming.','(B) Flattery is the best way to join research projects.','(C) Science and nature can work together to sustain the land.','(D) Farming traditions should be completely abandoned.'],a:2}
+],ak:'1.C　2.D　3.A　4.D　5.C',
+exp:'1. 文中提到專案目標是 "developing efficient farming techniques to sustain food production"。<br>2. deficient 意為「不足的、缺乏的」。<br>3. 農民被要求 "abstain from using chemical fertilizers and substitute them with natural ones"。<br>4. 商人 "tried to use flattery to join the project for personal gain"。<br>5. 全文主旨是科學與自然合作來維持土地永續。'
+},
+u1iii:{
+title:'Computer Trouble at School — 學校電腦大災難',
+en:`<p>On Monday morning, the computer lab at Minghua High School broke down. Teacher Mr. Chen had asked the IT team to <b>install</b> a new software update over the weekend, but something went wrong. Every computer screen was frozen, and students had to <b>endure</b> a long wait before class could begin.</p>
+<p>"First, try to <b>reboot</b> the computers," said Mr. Chen. The students <b>pressed</b> the power buttons, but the screens remained blank. The IT technician arrived and tried to <b>adjust</b> the display settings. She then <b>inserted</b> a USB drive to run a diagnostic tool. "We may need to <b>format</b> the hard drives," she warned. "Make sure all important files have a <b>backup</b>."</p>
+<p>Some students began to <b>wrangle</b> about whose homework files were lost. One student had forgotten to <b>eject</b> the USB safely last Friday, which caused data corruption. Another student needed to <b>disconnect</b> the printer and <b>charge</b> its battery.</p>
+<p>The technician worked quickly. She <b>abbreviated</b> the repair process by skipping non-essential steps — she needed to <b>abridge</b> the procedure so classes could resume on time. "Please <b>comply</b> with the new rules: always <b>backup</b> your files and safely <b>eject</b> USB devices," she told the students. Some <b>maintained</b> they had followed the rules, while others tried to <b>obtain</b> copies of lost files from classmates. By noon, every computer was running again. "Technology requires patience and discipline," Mr. Chen smiled.</p>`,
+zh:`<p>週一早上，明華高中的電腦教室故障了。陳老師要求 IT 團隊在週末安裝新的軟體更新，但出了差錯。每台電腦螢幕都凍結了，學生們不得不忍受漫長的等待才能上課。</p>
+<p>「先試著重新啟動電腦，」陳老師說。學生們按下了電源鍵，但螢幕仍然一片空白。IT 技術人員到場，試著調整顯示設定。她接著插入一個 USB 隨身碟來執行診斷工具。「我們可能需要格式化硬碟，」她警告。「確保所有重要檔案都有備份。」</p>
+<p>一些學生開始為誰的作業檔案遺失而爭吵。一個學生上週五忘記安全退出 USB，導致資料損壞。另一個學生需要拔除印表機並為其電池充電。</p>
+<p>技術人員迅速工作。她縮短了修復流程，跳過非必要步驟——她需要精簡程序，好讓課程能準時恢復。「請遵守新規定：永遠備份你們的檔案，並安全退出 USB 裝置，」她告訴學生們。有些人堅持他們已經遵守了規定，而其他人則試圖從同學那裡取得遺失檔案的副本。中午前，每台電腦都恢復正常運作了。「科技需要耐心和紀律，」陳老師微笑著說。</p>`,
+words:'install, endure, reboot, press, adjust, insert, format, backup, wrangle, eject, disconnect, charge, abbreviate, abridge, comply, maintain, obtain',
+qs:[
+{s:'1. What caused the computer lab to break down?',o:['(A) A virus attack from the internet.','(B) Students spilled water on the computers.','(C) The power supply was suddenly cut off.','(D) A software update went wrong.'],a:3},
+{s:'2. What did the technician warn might be necessary?',o:['(A) Buying brand-new computers.','(B) Formatting the hard drives.','(C) Disconnecting the internet permanently.','(D) Installing antivirus software.'],a:1},
+{s:'3. What does "endure" most likely mean?',o:['(A) To enjoy something fun.','(B) To fix a machine quickly.','(C) To forget about a problem.','(D) To bear or put up with something difficult.'],a:3},
+{s:'4. What caused one student\'s data corruption?',o:['(A) The student formatted the wrong drive.','(B) The student disconnected the computer too early.','(C) The student forgot to eject the USB safely.','(D) The student pressed the wrong button.'],a:2},
+{s:'5. What lesson did Mr. Chen share at the end?',o:['(A) Students should never use computers.','(B) Technology requires patience and discipline.','(C) USB drives are always dangerous.','(D) Only IT technicians should touch computers.'],a:1}
+],ak:'1.D　2.B　3.D　4.C　5.B',
+exp:'1. 文中提到 "asked the IT team to install a new software update... but something went wrong"。<br>2. 技術人員警告 "We may need to format the hard drives"。<br>3. endure 意為「忍受」。<br>4. 學生 "had forgotten to eject the USB safely... which caused data corruption"。<br>5. 陳老師說 "Technology requires patience and discipline"。'
+},
+u1iiid:{
+title:'A Night of Harmony — 和諧之夜',
+en:`<p>Last Friday, Guangming High School held its annual music concert. The <b>conductor</b>, Mr. Huang, raised his baton and the performance began. A first-year student opened the show with a <b>piano</b> <b>solo</b>. She had earned her spot through a competitive <b>audition</b>, and her fingers danced across the keys, producing a gentle <b>melody</b> that captivated every listener.</p>
+<p>The string section joined in next. The sweet sound of the <b>violin</b>, the warm tone of the <b>viola</b>, and the deep voice of the <b>cello</b> blended into perfect <b>harmony</b>. Then came the brass and woodwinds — a confident boy played the <b>trumpet</b> while his classmate performed on the <b>saxophone</b>. Even the percussionist, tapping her <b>drumsticks</b> lightly, added a special rhythm. The <b>flute</b> player delivered a beautiful closing number.</p>
+<p>The team had spent weeks in <b>rehearsal</b>, and each musician worked hard to <b>tune</b> their instruments before the show. When the final piece ended, the crowd demanded an <b>encore</b>. The <b>conductor</b> smiled and led the orchestra through one more song.</p>
+<p>"Music brings people together in <b>harmony</b>," Mr. Huang told the students afterward. "Tonight, every <b>solo</b> and every ensemble piece proved that." It was a night no one would forget.</p>`,
+zh:`<p>上週五，光明高中舉行了年度音樂會。指揮黃老師舉起指揮棒，演出正式開始。一位一年級學生以鋼琴獨奏開場。她是通過競爭激烈的試演贏得演出機會的，她的手指在琴鍵上飛舞，奏出一段柔美的旋律，吸引了每一位聽眾。</p>
+<p>接著，弦樂組加入。小提琴的甜美聲音、中提琴的溫暖音色、以及大提琴的深沉聲響融合成完美的和聲。隨後是銅管與木管樂器——一位自信的男孩演奏小號，他的同學則表演薩克斯風。就連用鼓棒輕輕敲擊的打擊樂手，也增添了特別的節奏感。長笛手演奏了一首優美的終曲。</p>
+<p>團隊花了好幾週排練，每位音樂家都在演出前努力為樂器調音。當最後一首曲子結束時，觀眾要求再演一曲。指揮微笑著帶領管弦樂團演奏了最後一首歌。</p>
+<p>「音樂讓人們在和諧中凝聚在一起，」黃老師在演出後告訴學生們。「今晚，每一段獨奏和每一首合奏曲目都證明了這一點。」這是一個沒有人會忘記的夜晚。</p>`,
+words:'conductor, piano, solo, audition, melody, violin, viola, cello, harmony, trumpet, saxophone, drumsticks, flute, rehearsal, tune, encore',
+qs:[
+{s:'1. How did the first-year student earn her chance to perform?',o:['(A) She was recommended by a teacher.','(B) She won through a competitive audition.','(C) She was the only pianist in the school.','(D) She paid a fee to participate.'],a:1},
+{s:'2. Which instruments are part of the string section?',o:['(A) Trumpet, saxophone, and flute.','(B) Piano, drumsticks, and flute.','(C) Violin, viola, and cello.','(D) Conductor, trumpet, and piano.'],a:2},
+{s:'3. What does "encore" mean?',o:['(A) A ticket for the next concert.','(B) An additional performance requested by the audience.','(C) The opening piece of a concert.','(D) A type of musical instrument.'],a:1},
+{s:'4. What did the musicians do before the show?',o:['(A) They purchased new instruments.','(B) They watched a movie for inspiration.','(C) They asked the conductor to cancel.','(D) They tuned their instruments during rehearsal.'],a:3},
+{s:'5. What message did Mr. Huang share after the concert?',o:['(A) Music brings people together in harmony.','(B) The school needs more funding for instruments.','(C) Solo performances are better than ensembles.','(D) Students should practice harder next year.'],a:0}
+],ak:'1.B　2.C　3.B　4.D　5.A',
+exp:'1. 文中提到她 "earned her spot through a competitive audition"。<br>2. 弦樂組包含 violin、viola、cello。<br>3. encore 意為「安可，觀眾要求加演」。<br>4. 音樂家們 "worked hard to tune their instruments" 且經過數週 rehearsal。<br>5. 黃老師說 "Music brings people together in harmony"。'
+},
+u2i:{
+title:'The Witty Witness — 機智的目擊者',
+en:`<p>Jason was a <b>witty</b> journalist known for his quick <b>wit</b> and sense of <b>humor</b>. One day, he <b>witnessed</b> a dramatic scene at the harbor — a naval <b>fleet</b> was arriving, and hundreds of people gathered in <b>front</b> of the dock to watch.</p>
+<p>A <b>rumor</b> spread that the fleet's captain had been hiding a secret. Some said he had <b>undergone</b> surgery to remove a <b>tumor</b>. The story was an <b>affront</b> to the captain's dignity. Jason decided to <b>confront</b> the source of the <b>rumor</b>.</p>
+<p>He <b>went</b> to the <b>flea</b> market nearby, where a <b>bargain</b> hunter <b>claimed</b> to have the inside story. "Don't let your <b>ego</b> get in the way," Jason told him. "You've <b>gained</b> nothing but trouble." The man turned pale and tried to <b>flee</b>. In the end, Jason helped the captain <b>regain</b> his reputation.</p>`,
+zh:`<p>Jason 是一位以機智聞名的記者，以反應敏捷的智慧和幽默感著稱。某天，他在港口目擊了一幕戲劇性的場景——一支海軍艦隊正在抵達，數百人聚集在碼頭前方觀看。</p>
+<p>一個謠言傳開了，說艦隊的船長隱瞞了一個祕密。有人說他動過手術切除了一個腫瘤。這個故事是對船長尊嚴的侮辱。Jason 決定去正面面對謠言的源頭。</p>
+<p>他前往附近的跳蚤市場，一個在那裡議價的人聲稱知道內幕。「別讓你的自尊心阻礙你，」Jason 告訴他。「你什麼也沒得到，只惹了一身麻煩。」那人臉色發白，試圖逃跑。最終，Jason 幫助船長重新贏回了名聲。</p>`,
+words:'witty, wit, humor, witness, fleet, front, rumor, undergo, tumor, affront, confront, flea, bargain, ego, gain, flee, regain',
+qs:[
+{s:'1. What was Jason known for?',o:['(A) His athletic ability.','(B) His quick wit and humor.','(C) His cooking skills.','(D) His musical talent.'],a:1},
+{s:'2. What rumor spread about the captain?',o:['(A) He had stolen money.','(B) He had resigned from duty.','(C) He had undergone surgery for a tumor.','(D) He had fled the country.'],a:2},
+{s:'3. What does "affront" most likely mean?',o:['(A) An insult to someone\'s dignity.','(B) A gift for a friend.','(C) A military honor.','(D) A news report.'],a:0},
+{s:'4. Where did Jason confront the rumor source?',o:['(A) At the harbor.','(B) At the hospital.','(C) At the police station.','(D) At the flea market.'],a:3},
+{s:'5. What happened at the end?',o:['(A) The captain fled the city.','(B) Jason lost his job.','(C) Jason helped the captain regain his reputation.','(D) The fleet left the harbor.'],a:2}
+],ak:'1.B　2.C　3.A　4.D　5.C',
+exp:'1. 文中描述 Jason 以 "quick wit and sense of humor" 聞名。<br>2. 謠言說船長 "undergone surgery to remove a tumor"。<br>3. affront 意為「對尊嚴的侮辱」。<br>4. Jason 去 "flea market" 找到謠言源頭。<br>5. 最後 Jason 幫助船長 "regain his reputation"。'
+},
+u2ia:{
+title:'The Migrant\'s Garden — 移民者的花園',
+en:`<p>A <b>migrant</b> family moved to a new town and started a <b>fragrant</b> flower garden. The father worked hard with a <b>hammer</b>, building a fence to keep animals from <b>clawing</b> at the plants. His young <b>daughter</b> helped him <b>fasten</b> the gate.</p>
+<p>One <b>bitter</b> winter day, a <b>flaw</b> in the <b>law</b> allowed a factory to dump <b>litter</b> near their garden. The family's beautiful garden, where flowers once <b>glistened</b> in the morning dew, was now covered in trash. The daughter wrote to the government, asking them to <b>grant</b> the neighborhood protection.</p>
+<p>Thanks to her effort, the town passed a new <b>law</b> against <b>littering</b>. People on <b>Twitter</b> praised her bravery. The garden recovered — flowers <b>glittered</b> in the sunlight, and the family's <b>laughter</b> filled the air. Even the dog stopped <b>gnawing</b> on the fence. Their neighbor brought <b>ham</b> sandwiches to celebrate, and nothing could <b>hamper</b> their joy. The <b>slaughter</b> of beauty had been prevented. "Always <b>listen</b> to your heart," the father told his daughter.</p>`,
+zh:`<p>一個移民家庭搬到了一個新城鎮，開始種植一座芬芳的花園。父親辛勤地用錘子工作，建造圍欄以防動物用爪子抓壞植物。他的小女兒幫他扣緊大門。</p>
+<p>一個寒冷的冬日，法律上的一個漏洞讓一間工廠在他們的花園附近傾倒垃圾。家人美麗的花園——花朵曾在晨露中閃閃發光——現在被垃圾覆蓋。女兒寫信給政府，要求他們給予社區保護。</p>
+<p>多虧她的努力，鎮上通過了一項新的反亂丟垃圾法。人們在推特上讚揚她的勇敢。花園恢復了——花朵在陽光下閃爍，家人的笑聲充滿了空氣。連狗都不再啃圍欄了。鄰居帶來了火腿三明治慶祝，沒有什麼能阻礙他們的喜悅。美麗的毀滅被阻止了。「永遠傾聽你的心聲，」父親告訴女兒。</p>`,
+words:'migrant, fragrant, hammer, claw, daughter, fasten, bitter, flaw, law, litter, glisten, grant, twitter, glitter, laughter, gnaw, ham, hamper, slaughter, listen',
+qs:[
+{s:'1. Why did the father build a fence?',o:['(A) To keep the neighbors out.','(B) To keep animals from clawing at the plants.','(C) To make the garden look beautiful.','(D) To protect against the wind.'],a:1},
+{s:'2. What was the flaw that angered the family?',o:['(A) A flaw in the law allowed littering near their garden.','(B) The hammer broke during construction.','(C) The daughter made a mistake.','(D) The flowers were the wrong color.'],a:0},
+{s:'3. What does "hamper" most likely mean?',o:['(A) To help someone.','(B) To celebrate.','(C) To improve.','(D) To prevent or hinder.'],a:3},
+{s:'4. What did the daughter do to solve the problem?',o:['(A) She moved to another town.','(B) She called the police.','(C) She wrote to the government asking them to grant protection.','(D) She cleaned up the litter alone.'],a:2},
+{s:'5. Which of the following is TRUE?',o:['(A) The garden never recovered.','(B) People on Twitter praised the daughter.','(C) The father refused to listen to his daughter.','(D) The family had no neighbors.'],a:1}
+],ak:'1.B　2.A　3.D　4.C　5.B',
+exp:'1. 父親建圍欄是為了 "keep animals from clawing at the plants"。<br>2. "A flaw in the law" 讓工廠能在花園附近丟垃圾。<br>3. hamper 意為「阻礙、妨礙」。<br>4. 女兒 "wrote to the government, asking them to grant protection"。<br>5. 文中提到 "People on Twitter praised her bravery"。'
+},
+u2ii:{
+title:'The Coral Trail — 珊瑚步道',
+en:`<p>Ms. Lee took her students on a nature <b>trail</b> along the coast. The goal was to observe <b>coral</b> reefs and learn about marine life. "Make sure your behavior is <b>proper</b> — touching the coral is <b>improper</b> and illegal," she warned.</p>
+<p>As they walked, a girl with a long <b>braid</b> noticed a <b>snail</b> crawling slowly on the rocks. "Even a snail deserves a <b>quality</b> habitat," Ms. Lee said, sharing a <b>moral</b> lesson about <b>equality</b>. "<b>Inequality</b> between humans and nature has caused great damage."</p>
+<p>Near the <b>property</b> of a local fisherman, the students witnessed a <b>raid</b> by environmental officers. Someone had been collecting coral illegally. "I'm <b>afraid</b> this happens too often," said an officer. A young <b>maid</b> from the nearby hotel helped <b>nail</b> a warning sign to a post. The <b>oral</b> reports the students gave later showed deep understanding: respect nature as an equal.</p>`,
+zh:`<p>李老師帶學生沿著海岸走一條自然步道。目標是觀察珊瑚礁並學習海洋生物知識。「確保你們的行為是適當的——觸碰珊瑚是不恰當且違法的，」她警告。</p>
+<p>走路時，一個紮著長辮子的女孩注意到一隻蝸牛在岩石上緩慢爬行。「即使是蝸牛也值得擁有高品質的棲息地，」李老師分享了一個關於平等的道德課題。「人類與自然之間的不平等已經造成了巨大的破壞。」</p>
+<p>在一位當地漁夫的財產附近，學生們目睹了環保官員的一次突擊檢查。有人一直在非法採集珊瑚。「恐怕這種事太常發生了，」一位官員說。附近飯店的一位女服務員幫忙把一個警告標誌釘在柱子上。學生們後來做的口頭報告顯示出他們的深刻理解：把自然當作平等的存在來尊重。</p>`,
+words:'trail, coral, proper, improper, braid, snail, quality, moral, equality, inequality, property, raid, afraid, maid, nail, oral',
+qs:[
+{s:'1. What did Ms. Lee warn students about?',o:['(A) Touching coral is improper and illegal.','(B) The trail was too dangerous.','(C) Students should not bring food.','(D) The water was polluted.'],a:0},
+{s:'2. What moral lesson did Ms. Lee share?',o:['(A) Snails are the most important animals.','(B) Students should never walk on trails.','(C) Inequality between humans and nature causes damage.','(D) Coral reefs are not valuable.'],a:2},
+{s:'3. What does "raid" mean in the passage?',o:['(A) A friendly visit.','(B) A sudden inspection or search.','(C) A party at the beach.','(D) A nature hike.'],a:1},
+{s:'4. What did the maid help do?',o:['(A) She cleaned the beach.','(B) She collected coral samples.','(C) She called the police.','(D) She helped nail a warning sign to a post.'],a:3},
+{s:'5. What did students learn from the trail?',o:['(A) Respect nature as an equal.','(B) Coral is worthless.','(C) Snails move very fast.','(D) Hotels should be built near reefs.'],a:0}
+],ak:'1.A　2.C　3.B　4.D　5.A',
+exp:'1. 李老師警告 "touching the coral is improper and illegal"。<br>2. 李老師教導 "Inequality between humans and nature has caused great damage"。<br>3. raid 在此意為「突擊檢查」。<br>4. 女服務員 "helped nail a warning sign to a post"。<br>5. 學生報告顯示要 "respect nature as an equal"。'
+},
+u2iib:{
+title:'The Farm Rivalry — 農場爭霸',
+en:`<p>Two <b>rival</b> farmers, Mr. Chen and Mr. Wu, competed at the annual harvest festival. Upon his <b>arrival</b>, Mr. Chen displayed his prize <b>fowl</b> — large, plump chickens. Mr. Wu brought fresh fruit and vegetables.</p>
+<p>The judges <b>weighed</b> each product carefully. Mr. Wu asked them to <b>peel</b> and taste his oranges: "The <b>flesh</b> is sweet and juicy." Mr. Chen's daughter used a <b>scoop</b> to <b>mash</b> potatoes and <b>pluck</b> herbs from the garden. Even an <b>owl</b> hooting nearby did not <b>startle</b> her.</p>
+<p>A conflict arose when Mr. Wu accused Mr. Chen of cheating. The <b>growl</b> of anger between them worried the judges. But the committee passed a <b>resolution</b>: both were <b>permitted</b> to compete fairly. With <b>adequate</b> evidence reviewed, the judges <b>dissolved</b> the complaint and <b>resolved</b> the dispute. The <b>solution</b> was simple — both won prizes. The festival became a <b>revival</b> of community spirit.</p>`,
+zh:`<p>兩位對手農夫——陳先生和吳先生——在年度豐收節競賽。陳先生一到場就展示了他引以為傲的家禽——肥美碩大的雞隻。吳先生則帶來新鮮的水果和蔬菜。</p>
+<p>評審仔細秤量每項產品。吳先生請他們剝開並品嚐他的柳橙：「果肉甜美多汁。」陳先生的女兒用勺子搗碎馬鈴薯，並從花園裡摘取香草。即使附近有貓頭鷹啼叫也沒有嚇到她。</p>
+<p>當吳先生指控陳先生作弊時，衝突出現了。他們之間的怒吼讓評審擔憂。但委員會通過了一項決議：兩人都被允許公平競爭。在審查了充分的證據後，評審撤銷了投訴並解決了爭端。解決方案很簡單——兩人都獲獎了。這場節慶成為了社區精神的復興。</p>`,
+words:'rival, arrival, fowl, weigh, peel, flesh, scoop, mash, pluck, owl, startle, growl, resolution, permit, adequate, dissolve, resolve, solution, revival',
+qs:[
+{s:'1. What did Mr. Chen display at the festival?',o:['(A) Fresh fruit.','(B) His prize fowl.','(C) Homemade bread.','(D) Flowers from his garden.'],a:1},
+{s:'2. What does "resolve" most likely mean?',o:['(A) To create a new problem.','(B) To ignore an issue.','(C) To settle or find a solution.','(D) To start a competition.'],a:2},
+{s:'3. What did NOT startle Mr. Chen\'s daughter?',o:['(A) The judges\' comments.','(B) Mr. Wu\'s accusation.','(C) The crowd cheering.','(D) An owl hooting nearby.'],a:3},
+{s:'4. How was the dispute dissolved?',o:['(A) Both farmers won prizes in different categories.','(B) Mr. Wu was disqualified.','(C) The festival was canceled.','(D) The judges refused to decide.'],a:0},
+{s:'5. What did the festival become?',o:['(A) A source of anger.','(B) A revival of community spirit.','(C) A commercial event.','(D) A private competition.'],a:1}
+],ak:'1.B　2.C　3.D　4.A　5.B',
+exp:'1. 陳先生展示了他的 "prize fowl"。<br>2. resolve 意為「解決」。<br>3. "Even an owl hooting nearby did not startle her"。<br>4. 兩人都獲獎，爭議被解決。<br>5. 節慶成為 "a revival of community spirit"。'
+},
+u2iii:{
+title:'Cooking Class — 烹飪課',
+en:`<p>In Ms. Wang's cooking class, students learned to prepare <b>organic</b> meals. "First, <b>wash</b> your vegetables carefully and <b>rinse</b> the rice under cold water," she instructed. "<b>Remove</b> any <b>rotten</b> leaves before cooking."</p>
+<p>One student <b>filled</b> the <b>rice cooker</b> and pressed the start button. Another group learned to <b>knead</b> dough for handmade noodles. "<b>Toss</b> the noodles gently and <b>stir-fry</b> the vegetables on high heat," Ms. Wang demonstrated. She <b>dressed</b> the salad with olive oil and lemon juice.</p>
+<p>The class used <b>chopsticks</b> to taste their dishes. A student accidentally <b>stirred</b> the soup too hard and it splashed everywhere. "Don't let the quality of your cooking <b>plummet</b> because of carelessness," Ms. Wang laughed. By the end, every student had prepared a delicious organic meal.</p>`,
+zh:`<p>在王老師的烹飪課上，學生們學習準備有機餐點。「首先，仔細清洗蔬菜，在冷水下沖洗米，」她指導。「烹煮前先去除任何腐爛的葉子。」</p>
+<p>一位學生將電鍋裝滿，按下啟動鍵。另一組學生學習揉捏麵團製作手工麵條。「輕輕拋動麵條，用大火炒蔬菜，」王老師示範。她用橄欖油和檸檬汁拌沙拉。</p>
+<p>全班用筷子品嚐菜餚。一位學生不小心攪拌湯太用力，濺得到處都是。「不要因為粗心大意讓烹飪品質暴跌，」王老師笑道。課程結束時，每位學生都準備好了一道美味的有機餐點。</p>`,
+words:'organic, wash, rinse, remove, rotten, fill, rice cooker, knead, toss, stir-fry, dress, chopsticks, stir, plummet',
+qs:[
+{s:'1. What should students do first?',o:['(A) Start the rice cooker.','(B) Knead the dough.','(C) Wash vegetables and rinse rice.','(D) Stir-fry the meat.'],a:2},
+{s:'2. What does "plummet" most likely mean?',o:['(A) To drop or decline sharply.','(B) To improve slowly.','(C) To taste delicious.','(D) To mix ingredients together.'],a:0},
+{s:'3. What did one student fill?',o:['(A) A water bottle.','(B) The rice cooker.','(C) A salad bowl.','(D) A shopping bag.'],a:1},
+{s:'4. What happened when a student stirred too hard?',o:['(A) The pot fell off the stove.','(B) The noodles burned.','(C) The vegetables turned rotten.','(D) The soup splashed everywhere.'],a:3},
+{s:'5. What was the main lesson of the class?',o:['(A) Always use chopsticks.','(B) Never cook with organic food.','(C) Fresh ingredients and proper technique matter.','(D) Cooking is too difficult for students.'],a:2}
+],ak:'1.C　2.A　3.B　4.D　5.C',
+exp:'1. 老師指示先 "wash vegetables and rinse the rice"。<br>2. plummet 意為「暴跌、急劇下降」。<br>3. 學生 "filled the rice cooker"。<br>4. 學生攪太用力 "it splashed everywhere"。<br>5. 全文強調新鮮食材和正確技術的重要性。'
+},
+u2iiid:{
+title:'The Seafood Challenge — 海鮮挑戰賽',
+en:`<p>At a cooking competition, Chef Lin opened fresh <b>clams</b> and <b>oysters</b>, removing their <b>shells</b> skillfully. "Some people are <b>allergic</b> to shellfish, so always ask your guests first," she reminded the audience.</p>
+<p>She <b>defrosted</b> a piece of <b>lean</b> beef and <b>diced</b> it into small cubes. To <b>maintain</b> its flavor, she <b>marinated</b> the meat in soy sauce and garlic. Meanwhile, she <b>minced</b> the vegetables finely and prepared a hearty <b>stew</b>.</p>
+<p>A judge asked for his steak <b>rare</b>, while another preferred <b>well done</b>. Chef Lin <b>broiled</b> two steaks to perfection — one pink inside, the other fully cooked. "Avoid <b>fatty</b> cuts if you want a healthier dish," she advised. The audience applauded her skill.</p>`,
+zh:`<p>在一場廚藝比賽中，林主廚熟練地打開新鮮的蛤蜊和牡蠣，去除外殼。「有些人對貝類過敏，所以一定要先問客人，」她提醒觀眾。</p>
+<p>她解凍了一塊瘦牛肉，切成小丁。為了維持風味，她用醬油和大蒜醃漬了肉。同時，她將蔬菜細細切末，準備了一鍋豐盛的燉菜。</p>
+<p>一位評審要求牛排三分熟，另一位偏好全熟。林主廚完美地炙烤了兩塊牛排——一塊內部粉紅，另一塊全熟。「如果想要更健康的料理，避免油脂多的部位，」她建議。觀眾為她的技術鼓掌。</p>`,
+words:'clam, oyster, shell, allergic, defrost, lean, dice, maintain, marinate, mince, stew, rare, well done, broil, fatty',
+qs:[
+{s:'1. Why should chefs ask guests about shellfish?',o:['(A) Some people are allergic to it.','(B) Shellfish is very expensive.','(C) Not everyone likes seafood.','(D) Shellfish spoils quickly.'],a:0},
+{s:'2. What does "marinate" mean?',o:['(A) To cook at high heat.','(B) To soak food in sauce for flavor.','(C) To freeze food overnight.','(D) To slice into thin pieces.'],a:1},
+{s:'3. How did Chef Lin maintain the beef\'s flavor?',o:['(A) She boiled it in water.','(B) She froze it again.','(C) She added extra salt.','(D) She marinated it in soy sauce and garlic.'],a:3},
+{s:'4. What is the difference between rare and well done?',o:['(A) Rare is frozen; well done is fresh.','(B) Rare uses more seasoning.','(C) Rare is pink inside; well done is fully cooked.','(D) There is no difference.'],a:2},
+{s:'5. What advice did Chef Lin give?',o:['(A) Always use oysters in stew.','(B) Never eat beef.','(C) Cook all steaks well done.','(D) Avoid fatty cuts for healthier dishes.'],a:3}
+],ak:'1.A　2.B　3.D　4.C　5.D',
+exp:'1. 林主廚說 "Some people are allergic to shellfish"。<br>2. marinate 意為「醃漬」。<br>3. 她 "marinated the meat in soy sauce and garlic" 來維持風味。<br>4. rare 內部粉紅；well done 全熟。<br>5. 她建議 "Avoid fatty cuts for healthier dishes"。'
+},
+u2iiie:{
+title:'Breakfast Around the World — 世界各地的早餐',
+en:`<p>Every country has its own breakfast traditions. In America, people <b>crack</b> eggs and <b>beat</b> them to make <b>scrambled</b> eggs or fluffy <b>omelets</b>. Some prefer <b>poached</b> eggs, where the <b>yolk</b> stays soft and runny.</p>
+<p>In France, a warm <b>croissant</b> is a morning favorite. People <b>slice</b> a fresh <b>loaf</b> of bread and <b>spread</b> butter on <b>toast</b>. <b>Crumbs</b> scatter across the table as families chat happily. Children <b>lick</b> jam off their fingers with delight.</p>
+<p>In New York, a <b>bagel</b> with cream cheese is a classic breakfast. Others make a simple <b>sandwich</b> with ham and vegetables. Whether it's a <b>hard-boiled</b> egg in Asia or a <b>slice</b> of toast in Europe, breakfast brings families together.</p>`,
+zh:`<p>每個國家都有自己的早餐傳統。在美國，人們打破雞蛋並攪打做成炒蛋或鬆軟的歐姆蛋。有些人偏好水波蛋，蛋黃保持柔軟流動。</p>
+<p>在法國，溫熱的可頌是早晨最愛。人們切一條新鮮的麵包，在吐司上抹奶油。家人開心聊天，麵包屑散落桌上。孩子們開心地舔著手指上的果醬。</p>
+<p>在紐約，搭配奶油乳酪的貝果是經典早餐。其他人則做簡單的三明治搭配火腿和蔬菜。不論是亞洲的水煮蛋還是歐洲的一片吐司，早餐讓家人聚在一起。</p>`,
+words:'crack, beat, scrambled, omelet, poached, yolk, croissant, slice, loaf, spread, toast, crumb, lick, bagel, sandwich, hard-boiled',
+qs:[
+{s:'1. How are scrambled eggs made?',o:['(A) By boiling eggs in water.','(B) By cracking and beating eggs.','(C) By slicing eggs thinly.','(D) By spreading eggs on toast.'],a:1},
+{s:'2. What is a popular breakfast in France?',o:['(A) A warm croissant.','(B) A hard-boiled egg.','(C) A bagel with cream cheese.','(D) A ham sandwich.'],a:0},
+{s:'3. What does "spread" mean in this passage?',o:['(A) To crack open.','(B) To throw away.','(C) To apply a layer of something.','(D) To mix together.'],a:2},
+{s:'4. What is a classic New York breakfast?',o:['(A) A French croissant.','(B) Scrambled eggs.','(C) A poached egg on rice.','(D) A bagel with cream cheese.'],a:3},
+{s:'5. What is the main idea of the passage?',o:['(A) French breakfast is the best.','(B) Breakfast traditions differ but bring families together.','(C) Everyone should eat scrambled eggs.','(D) Bagels are healthier than croissants.'],a:1}
+],ak:'1.B　2.A　3.C　4.D　5.B',
+exp:'1. 炒蛋的做法是 "crack eggs and beat them"。<br>2. 法國早餐最愛是 "a warm croissant"。<br>3. spread 在此意為「塗抹」。<br>4. 紐約經典早餐是 "a bagel with cream cheese"。<br>5. 全文主旨為早餐傳統雖不同但都讓家人聚在一起。'
+},
+u3i:{
+title:'The Medical Alliance — 醫學聯盟',
+en:`<p>Dr. Huang and Dr. Patel became <b>allies</b> in the fight against a new disease. They formed an <b>alliance</b> with hospitals worldwide. Their research focused on how the body produces <b>antibodies</b> to fight infections.</p>
+<p>"<b>Antibiotics</b> alone are not enough," Dr. Huang warned. "This virus requires a specific <b>antidote</b>." The team used <b>antiseptic</b> conditions in the lab to prevent contamination. Some people were <b>anti</b>-science, but the doctors continued their work.</p>
+<p>Dr. Patel studied metal <b>alloys</b> used in medical equipment. The <b>allure</b> of their research attracted top scientists. "Success and failure are <b>antonyms</b>," Dr. Huang told his students, "but in science, failure often leads to success."</p>`,
+zh:`<p>黃醫師和 Patel 醫師成為對抗新型疾病的盟友。他們與世界各地的醫院組成了聯盟。研究專注於人體如何產生抗體來對抗感染。</p>
+<p>「光靠抗生素是不夠的，」黃醫師警告。「這種病毒需要特定的解毒劑。」團隊在實驗室使用無菌條件防止汙染。有些人反科學，但醫師們繼續工作。</p>
+<p>Patel 醫師研究用於醫療設備的金屬合金。研究的魅力吸引了頂尖科學家。「成功和失敗是反義詞，」黃醫師告訴學生，「但在科學中，失敗往往通向成功。」</p>`,
+words:'ally, alliance, antibody, antibiotics, antidote, antiseptic, anti, alloy, allure, antonym',
+qs:[
+{s:'1. What did the two doctors form?',o:['(A) An alliance with hospitals worldwide.','(B) A new pharmaceutical company.','(C) A medical school.','(D) An anti-science group.'],a:0},
+{s:'2. What does "antidote" mean?',o:['(A) A type of antibiotic.','(B) A laboratory tool.','(C) A remedy to counteract a disease or poison.','(D) A metal alloy.'],a:2},
+{s:'3. Why did the lab use antiseptic conditions?',o:['(A) To save money.','(B) To prevent contamination.','(C) To test antibiotics.','(D) To study alloys.'],a:1},
+{s:'4. What attracted top scientists?',o:['(A) High salaries.','(B) The anti-science movement.','(C) Free antibiotics.','(D) The allure of the research.'],a:3},
+{s:'5. What lesson did Dr. Huang share?',o:['(A) In science, failure often leads to success.','(B) Antibiotics cure everything.','(C) Alloys are more important than medicine.','(D) Anti-science people are always wrong.'],a:0}
+],ak:'1.A　2.C　3.B　4.D　5.A',
+exp:'1. 兩位醫師 "formed an alliance with hospitals worldwide"。<br>2. antidote 意為「解毒劑」。<br>3. 使用無菌條件是 "to prevent contamination"。<br>4. "The allure of their research attracted top scientists"。<br>5. 黃醫師說 "in science, failure often leads to success"。'
+},
+u3iii:{
+title:'The Election Speech — 選舉演說',
+en:`<p>Mayor Lin <b>proclaimed</b> victory after the election results were <b>received</b>. The crowd <b>exclaimed</b> with joy. However, her rival <b>disclaimed</b> the results, <b>claiming</b> that votes had been <b>intercepted</b> and the count was <b>deceived</b>.</p>
+<p>The public was <b>receptive</b> to Mayor Lin's policies — all <b>accepted</b> her leadership <b>except</b> a small group. "I can <b>perceive</b> their frustration," she said. She <b>conceived</b> a plan to <b>reclaim</b> trust by being transparent.</p>
+<p>Her supporters <b>declaimed</b> passionately at rallies, and the <b>clamor</b> filled the streets. The <b>claimant</b> who challenged the results eventually accepted defeat. Mayor Lin received <b>acclaim</b> from citizens. "Democracy," she <b>proclaimed</b>, "belongs to everyone."</p>`,
+zh:`<p>選舉結果公布後，林市長宣布勝選。群眾驚呼歡慶。然而，她的對手否認結果，聲稱選票被攔截且計票被欺騙。</p>
+<p>公眾對林市長的政策持開放態度——除了一小群人外，所有人都接受她的領導。「我能感受到他們的挫折感，」她說。她構想了一個透過透明化重新贏回信任的計畫。</p>
+<p>她的支持者在集會上慷慨陳詞，喧嘩聲充滿了街道。挑戰結果的索賠人最終接受了失敗。林市長獲得了市民的讚譽。「民主，」她宣告，「屬於每一個人。」</p>`,
+words:'proclaim, receive, exclaim, disclaim, claim, intercept, deceive, receptive, accept, except, perceive, conceive, reclaim, declaim, clamor, claimant, acclaim',
+qs:[
+{s:'1. What did Mayor Lin proclaim?',o:['(A) Her resignation.','(B) Victory after the election.','(C) A new law.','(D) A holiday.'],a:1},
+{s:'2. What does "receptive" mean?',o:['(A) Open and willing to accept.','(B) Angry and resistant.','(C) Confused and lost.','(D) Tired and bored.'],a:0},
+{s:'3. Why did the rival disclaim the results?',o:['(A) He didn\'t participate.','(B) The election was canceled.','(C) He claimed votes were intercepted and deceived.','(D) He won the election.'],a:2},
+{s:'4. What plan did Mayor Lin conceive?',o:['(A) To hold another election.','(B) To punish her rival.','(C) To leave the country.','(D) To reclaim trust through transparency.'],a:3},
+{s:'5. What happened to the claimant?',o:['(A) He won the election.','(B) He eventually accepted defeat.','(C) He became mayor.','(D) He left the country.'],a:1}
+],ak:'1.B　2.A　3.C　4.D　5.B',
+exp:'1. 林市長 "proclaimed victory after the election"。<br>2. receptive 意為「樂於接受的」。<br>3. 對手 "claiming that votes had been intercepted and deceived"。<br>4. 她 "conceived a plan to reclaim trust by being transparent"。<br>5. 索賠人 "eventually accepted defeat"。'
+},
+u3iv:{
+title:'The Museum Guide — 博物館導覽',
+en:`<p>A museum <b>conductor</b> named Mei <b>introduced</b> visitors to ancient <b>artifacts</b>. "These objects were <b>produced</b> thousands of years ago," she explained. "Despite small <b>defects</b>, they are nearly <b>perfect</b>."</p>
+<p>One artifact had been <b>infected</b> with mold due to poor storage. The staff worked to <b>reduce</b> the damage and <b>deduce</b> the cause. "Humidity <b>affects</b> ancient materials," Mei explained.</p>
+<p>A filmmaker tried to <b>seduce</b> the museum into lending artifacts for a movie, but the director refused: "We cannot <b>induce</b> risk to priceless objects." The <b>effect</b> of Mei's passionate tours was remarkable — visitor numbers increased. Her dedication had <b>produced</b> real results. She even planned a new <b>project</b> to trace the <b>trajectory</b> of ancient trade routes.</p>`,
+zh:`<p>一位名叫 Mei 的博物館導覽員向參觀者介紹古代文物。「這些物品是數千年前製造的，」她解釋。「儘管有小瑕疵，它們幾乎是完美的。」</p>
+<p>一件文物因儲存不當而感染了霉菌。工作人員努力減少損害並推斷原因。「濕度會影響古代材料，」Mei 解釋。</p>
+<p>一位電影製作人試圖引誘博物館借出文物拍電影，但館長拒絕了：「我們不能引發對無價物品的風險。」Mei 熱情導覽的效果非常顯著——參觀人數增加了。她的奉獻已產生了實際成果。她甚至計畫了一個新專案來追蹤古代貿易路線的軌跡。</p>`,
+words:'conductor, introduce, artifact, produce, defect, perfect, infect, reduce, deduce, affect, seduce, induce, effect, project, trajectory',
+qs:[
+{s:'1. What did the conductor introduce?',o:['(A) Ancient artifacts.','(B) Modern technology.','(C) Musical instruments.','(D) New employees.'],a:0},
+{s:'2. What caused the mold problem?',o:['(A) Too much sunlight.','(B) A visitor touched the artifact.','(C) The artifact was too old.','(D) Poor storage and humidity.'],a:3},
+{s:'3. What does "deduce" mean?',o:['(A) To destroy completely.','(B) To reduce in size.','(C) To figure out through reasoning.','(D) To introduce to someone.'],a:2},
+{s:'4. Why did the director refuse the filmmaker?',o:['(A) The museum was closing.','(B) To avoid inducing risk to priceless objects.','(C) The filmmaker didn\'t pay enough.','(D) The artifacts were too heavy.'],a:1},
+{s:'5. What effect did Mei\'s tours produce?',o:['(A) Visitor numbers increased.','(B) The museum closed down.','(C) Artifacts were damaged.','(D) Ticket prices dropped.'],a:0}
+],ak:'1.A　2.D　3.C　4.B　5.A',
+exp:'1. Mei "introduced visitors to ancient artifacts"。<br>2. 文物因 "poor storage" 和濕度導致霉菌感染。<br>3. deduce 意為「推斷、推論」。<br>4. 館長拒絕是為了 "not induce risk to priceless objects"。<br>5. Mei 導覽的效果是 "visitor numbers increased"。'
+},
+u3ivb:{
+title:'The School Transfer — 轉學生',
+en:`<p>When Amy <b>transferred</b> to a new school, she <b>suffered</b> from loneliness at first. Her new classmates <b>differed</b> greatly from her old friends. She <b>preferred</b> to sit alone and often <b>deferred</b> to others in group discussions.</p>
+<p>Her teacher <b>conferred</b> with her privately. "I can <b>infer</b> from your behavior that you're struggling," the teacher said kindly. "Let me <b>refer</b> you to the school counselor." The counselor <b>offered</b> Amy practical advice: "Join the gardening club — the school has <b>fertile</b> ground for growing flowers."</p>
+<p>Amy followed the advice and began to thrive. She no longer suffered in silence. "Different experiences help us grow," her teacher said. "I <b>prefer</b> students who are willing to try new things."</p>`,
+zh:`<p>當 Amy 轉到新學校時，她起初飽受孤獨之苦。新同學與老朋友差異很大。她偏好獨自坐著，在小組討論中經常謙讓他人。</p>
+<p>老師與她私下商談。「我從你的行為可以推斷你正在掙扎，」老師親切地說。「讓我幫你轉介給學校輔導員。」輔導員給了 Amy 實際建議：「加入園藝社——學校有肥沃的土地可以種花。」</p>
+<p>Amy 聽從建議，開始蓬勃發展。她不再默默忍受。「不同的經歷幫助我們成長，」老師說。「我偏好願意嘗試新事物的學生。」</p>`,
+words:'transfer, suffer, differ, prefer, defer, confer, infer, refer, offer, fertile',
+qs:[
+{s:'1. Why did Amy suffer at her new school?',o:['(A) The teachers were mean.','(B) She felt lonely.','(C) The school was too far.','(D) She failed her exams.'],a:1},
+{s:'2. What does "confer" mean?',o:['(A) To discuss or consult.','(B) To punish someone.','(C) To ignore a problem.','(D) To transfer to another school.'],a:0},
+{s:'3. What did the teacher infer from Amy\'s behavior?',o:['(A) She was happy.','(B) She was cheating.','(C) She was struggling to adjust.','(D) She preferred sports.'],a:2},
+{s:'4. What did the counselor offer as advice?',o:['(A) Transfer to another school.','(B) Study harder at home.','(C) Talk to her parents.','(D) Join the gardening club.'],a:3},
+{s:'5. What is the main lesson?',o:['(A) Always sit alone in class.','(B) Different experiences help us grow.','(C) Gardening is the best hobby.','(D) Never transfer schools.'],a:1}
+],ak:'1.B　2.A　3.C　4.D　5.B',
+exp:'1. Amy "suffered from loneliness at first"。<br>2. confer 意為「商談、協商」。<br>3. 老師 "infer from your behavior that you\'re struggling"。<br>4. 輔導員建議 "Join the gardening club"。<br>5. 老師說 "Different experiences help us grow"。'
+},
+u4i:{
+title:'The Space Project — 太空計畫',
+en:`<p>The government launched a <b>project</b> to study the <b>infinite</b> universe. Scientists worked to <b>define</b> the <b>trajectory</b> of a new satellite. "Space may seem <b>infinite</b>, but our resources are <b>finite</b>," the project leader warned.</p>
+<p>A young engineer named Tom felt <b>dejected</b> when his design was <b>rejected</b>. His <b>subject</b> of research — fuel <b>injection</b> systems — had a <b>fine</b> flaw that <b>confined</b> the rocket's range. "Don't let rejection <b>deject</b> you," his mentor said. "<b>Refine</b> your design and try again."</p>
+<p>Tom <b>objected</b> to giving up. He <b>refined</b> the injection system and calculated a better trajectory. When the satellite was finally <b>ejected</b> into orbit, the team cheered. Tom's story proved that <b>fine</b>-tuning within <b>finite</b> resources can lead to <b>infinite</b> possibilities.</p>`,
+zh:`<p>政府啟動了一個研究無限宇宙的計畫。科學家們致力於定義一顆新衛星的軌道。「太空看似無限，但我們的資源是有限的，」計畫領導人警告。</p>
+<p>一位名叫 Tom 的年輕工程師在設計被拒絕時感到沮喪。他的研究主題——燃料噴射系統——有一個細微缺陷，限制了火箭的範圍。「不要讓拒絕使你沮喪，」導師說。「精煉你的設計，再試一次。」</p>
+<p>Tom 反對放棄。他精煉了噴射系統，計算出更好的軌道。當衛星終於被射入軌道時，團隊歡呼。Tom 的故事證明在有限資源中精煉想法可以通向無限的可能性。</p>`,
+words:'project, infinite, define, trajectory, finite, deject, reject, subject, inject, fine, confine, refine, object, eject',
+qs:[
+{s:'1. What was the goal of the project?',o:['(A) To study the infinite universe.','(B) To build a new airport.','(C) To design a car.','(D) To explore the ocean.'],a:0},
+{s:'2. Why was Tom dejected?',o:['(A) He lost his job.','(B) He failed an exam.','(C) His design was rejected.','(D) His mentor left.'],a:2},
+{s:'3. What does "confine" mean?',o:['(A) To expand freely.','(B) To celebrate.','(C) To improve quickly.','(D) To limit or restrict.'],a:3},
+{s:'4. What did Tom\'s mentor advise?',o:['(A) Give up and find a new job.','(B) Refine the design and try again.','(C) Object to the project leader.','(D) Eject from the team.'],a:1},
+{s:'5. What is the main message?',o:['(A) Space projects always fail.','(B) Rejection should make you quit.','(C) Fine-tuning within finite resources leads to infinite possibilities.','(D) Engineers should never feel dejected.'],a:2}
+],ak:'1.A　2.C　3.D　4.B　5.C',
+exp:'1. 計畫目標是 "study the infinite universe"。<br>2. Tom "felt dejected when his design was rejected"。<br>3. confine 意為「限制」。<br>4. 導師說 "Refine your design and try again"。<br>5. 主旨是在有限資源中精煉可通向無限可能。'
+},
+u4ii:{
+title:'The Secret Author — 匿名作家',
+en:`<p>A famous writer published novels under a <b>pseudonym</b> because she preferred to remain anonymous. She <b>committed</b> herself to writing and <b>submitted</b> manuscripts to publishers monthly. Her editor <b>announced</b> that the latest book had been <b>transmitted</b> to bookstores worldwide.</p>
+<p>One critic <b>denounced</b> her work, claiming she had <b>omitted</b> important themes. "I <b>dismiss</b> such criticism," the writer said. "I will not <b>renounce</b> my style." She <b>admitted</b>, however, that one chapter <b>emitted</b> a confusing tone and needed revision.</p>
+<p>At a press conference, she <b>pronounced</b> her pen name clearly. "A <b>synonym</b> for success is persistence," she said. The publisher reminded journalists that <b>acronyms</b> like "NY" stand for New York. When asked about her identity, she said: "I <b>permit</b> my work to speak for itself. I prefer to remain an <b>anonym</b>." Fans praised her, noting her style had no <b>antonym</b> in modern literature. She never <b>remitted</b> her efforts.</p>`,
+zh:`<p>一位著名作家用筆名出版小說，因為她偏好保持匿名。她全心投入寫作，每月向出版商提交手稿。編輯宣布最新的書已傳送到世界各地的書店。</p>
+<p>一位評論家抨擊她的作品，聲稱她遺漏了重要主題。「我駁回這樣的批評，」作家說。「我不會放棄我的風格。」然而她承認有一個章節散發出令人困惑的語調，需要修改。</p>
+<p>在記者會上，她清楚地發音了她的筆名。「成功的同義詞是堅持，」她說。出版商提醒記者，「NY」這樣的首字母縮寫代表紐約。當被問到身份時，她說：「我允許我的作品自己說話。我偏好保持匿名。」粉絲讚揚她，說她的風格在現代文學中沒有反義詞。她從未減緩過努力。</p>`,
+words:'pseudonym, commit, submit, announce, transmit, denounce, omit, dismiss, renounce, admit, emit, pronounce, synonym, acronym, permit, anonym, antonym, remit',
+qs:[
+{s:'1. Why did the writer use a pseudonym?',o:['(A) She was forced by her publisher.','(B) She preferred to remain anonymous.','(C) Her real name was too long.','(D) She wanted to confuse critics.'],a:1},
+{s:'2. What does "denounce" mean?',o:['(A) To publicly criticize strongly.','(B) To announce with joy.','(C) To whisper quietly.','(D) To write a new book.'],a:0},
+{s:'3. What did the writer admit?',o:['(A) She had copied another book.','(B) She was tired of writing.','(C) She wanted to retire.','(D) One chapter emitted a confusing tone.'],a:3},
+{s:'4. What is a synonym for success according to the writer?',o:['(A) Wealth.','(B) Fame.','(C) Persistence.','(D) Luck.'],a:2},
+{s:'5. What did the writer permit?',o:['(A) Critics to rewrite her books.','(B) Her work to speak for itself.','(C) Fans to know her real name.','(D) Publishers to change her style.'],a:1}
+],ak:'1.B　2.A　3.D　4.C　5.B',
+exp:'1. 作家用筆名因為 "she preferred to remain anonymous"。<br>2. denounce 意為「公開強烈批評」。<br>3. 她承認 "one chapter emitted a confusing tone"。<br>4. 她說 "A synonym for success is persistence"。<br>5. 她 "permit my work to speak for itself"。'
+},
+u4iii:{
+title:'The City Proposal — 城市提案',
+en:`<p>The city council <b>proposed</b> a plan to <b>deploy</b> solar panels across the city. "This will <b>multiply</b> our clean energy <b>supply</b>," the mayor said. Citizens were asked to <b>apply</b> for government grants to install panels.</p>
+<p>Some people <b>opposed</b> the plan, <b>implying</b> it would <b>impose</b> too many rules. "I <b>suppose</b> we should listen to all sides," the mayor <b>replied</b> calmly. She <b>composed</b> a letter explaining the benefits and asked residents to <b>comply</b>.</p>
+<p>An expert was <b>deployed</b> to <b>expose</b> the dangers of <b>decomposing</b> waste in local rivers. "We must <b>dispose</b> of trash properly," she said. The community <b>reposed</b> trust in the expert. When someone tried to <b>pose</b> a difficult challenge, the mayor handled it gracefully. The proposal passed unanimously.</p>`,
+zh:`<p>市議會提議了一項在全市部署太陽能板的計畫。「這將使我們的清潔能源供應倍增，」市長說。市民被要求申請政府補助來安裝面板。</p>
+<p>一些人反對這項計畫，暗示它會施加太多規定。「我想我們應該傾聽各方意見，」市長平靜地回應。她寫了一封信解釋好處，並要求居民遵守。</p>
+<p>一位專家被派遣來揭露當地河流中分解廢物的危險。「我們必須妥善處理垃圾，」她說。社區對專家寄予信任。當有人試圖提出困難的質疑時，市長從容應對。提案最終全票通過。</p>`,
+words:'propose, deploy, multiply, supply, apply, oppose, imply, impose, suppose, reply, compose, comply, expose, decompose, dispose, repose, pose',
+qs:[
+{s:'1. What did the council propose?',o:['(A) To deploy solar panels across the city.','(B) To build a new park.','(C) To increase taxes.','(D) To close old factories.'],a:0},
+{s:'2. What does "impose" mean?',o:['(A) To remove restrictions.','(B) To suggest politely.','(C) To cancel a plan.','(D) To force rules or conditions on someone.'],a:3},
+{s:'3. Why did some people oppose the plan?',o:['(A) Solar panels are ugly.','(B) They felt it implied too many rules.','(C) The mayor was unpopular.','(D) Clean energy is dangerous.'],a:1},
+{s:'4. What was the expert deployed to expose?',o:['(A) Corruption in the government.','(B) Problems with solar panels.','(C) The dangers of decomposing waste in rivers.','(D) Illegal construction.'],a:2},
+{s:'5. What was the final result?',o:['(A) The proposal passed unanimously.','(B) The mayor resigned.','(C) Citizens opposed the plan forever.','(D) The expert was fired.'],a:0}
+],ak:'1.A　2.D　3.B　4.C　5.A',
+exp:'1. 議會提議 "deploy solar panels across the city"。<br>2. impose 意為「強加規定」。<br>3. 反對者 "implying it would impose too many rules"。<br>4. 專家揭露 "dangers of decomposing waste in rivers"。<br>5. "The proposal passed unanimously"。'
+},
+u5i:{
+title:'The Freedom Writer — 自由作家',
+en:`<p>In a country where the government <b>oppressed</b> free speech, a young writer named Lena found ways to <b>express</b> her thoughts. The authorities tried to <b>suppress</b> her articles, but she refused to be <b>repressed</b>.</p>
+<p>Lena's powerful writing <b>impressed</b> readers worldwide. However, the constant pressure <b>depressed</b> her at times. "Writing <b>requires</b> courage," she said. "You must <b>acquire</b> thick skin to survive."</p>
+<p>A foreign journalist <b>inquired</b> about her work. "How do you <b>compress</b> so much emotion into short articles?" Lena replied, "Honesty is the <b>requisite</b> ingredient. I don't suppress my true feelings." Her story proved that no government can truly <b>repress</b> the desire to express what is right.</p>`,
+zh:`<p>在一個政府壓迫言論自由的國家，一位名叫 Lena 的年輕作家找到了表達思想的方法。當局試圖壓制她的文章，但她拒絕被壓抑。</p>
+<p>Lena 有力的文字讓全世界讀者印象深刻。然而持續的壓力有時讓她沮喪。「寫作需要勇氣，」她說。「你必須獲得厚臉皮才能生存。」</p>
+<p>一位外國記者詢問她的工作。「你怎麼將這麼多情感壓縮進短文章中？」Lena 回答：「誠實是必要的元素。我不壓制真實感受。」她的故事證明沒有政府能真正壓抑表達正義的渴望。</p>`,
+words:'oppress, express, suppress, repress, impress, depress, require, acquire, inquire, compress, requisite',
+qs:[
+{s:'1. What did the government try to suppress?',o:['(A) Economic growth.','(B) Lena\'s articles and free speech.','(C) International trade.','(D) Sports competitions.'],a:1},
+{s:'2. What does "requisite" mean?',o:['(A) Optional.','(B) Expensive.','(C) Necessary or required.','(D) Dangerous.'],a:2},
+{s:'3. What impressed readers worldwide?',o:['(A) Lena\'s powerful writing.','(B) The government\'s policies.','(C) The journalist\'s questions.','(D) Lena\'s cooking skills.'],a:0},
+{s:'4. What did the journalist inquire about?',o:['(A) Lena\'s family.','(B) The country\'s economy.','(C) Lena\'s favorite food.','(D) How she compresses emotion into short articles.'],a:3},
+{s:'5. What is the main theme?',o:['(A) Governments are always right.','(B) Writing is not important.','(C) The desire to express truth cannot be repressed.','(D) Journalists should not ask questions.'],a:2}
+],ak:'1.B　2.C　3.A　4.D　5.C',
+exp:'1. 政府試圖壓制 "Lena\'s articles and free speech"。<br>2. requisite 意為「必要的」。<br>3. "Lena\'s powerful writing impressed readers worldwide"。<br>4. 記者詢問 "How do you compress so much emotion into short articles?"<br>5. 主旨是表達正義的渴望無法被壓抑。'
+},
+u5ii:{
+title:'The Ancient Manuscript — 古代手稿',
+en:`<p>Professor Chen discovered an ancient <b>manuscript</b> in a remote temple. He carefully <b>observed</b> the writing and <b>described</b> its contents. "The script was <b>inscribed</b> on silk fabric," he noted. He began to <b>transcribe</b> the text into modern Chinese.</p>
+<p>Some scholars <b>ascribed</b> the manuscript to a famous Tang Dynasty poet. "We must <b>preserve</b> and <b>conserve</b> this treasure," the professor said. He <b>reserved</b> a special room in the museum to display it.</p>
+<p>A journalist who <b>subscribed</b> to the university newsletter wrote about the discovery. "Professor Chen <b>deserves</b> great credit," she wrote. The manuscript <b>served</b> as evidence of ancient literary traditions. The professor was not <b>servile</b> to fame — he simply wanted to <b>serve</b> knowledge. Doctors <b>prescribed</b> special treatment to protect the fragile silk.</p>`,
+zh:`<p>陳教授在一座偏遠寺廟中發現了一份古代手稿。他仔細觀察文字，描述其內容。「文字被刻寫在絲綢上，」他記錄道。他開始將文本謄寫為現代中文。</p>
+<p>一些學者將手稿歸功於唐代一位著名詩人。「我們必須保存和保護這件珍寶，」教授說。他在博物館預留了專門房間來展示。</p>
+<p>一位訂閱大學通訊的記者撰寫了這一發現。「陳教授值得高度讚揚，」她寫道。手稿作為古代文學傳統的證據。教授不對名聲卑躬屈膝——他只想為知識服務。專家規定了特殊處理方式來保護脆弱的絲綢。</p>`,
+words:'manuscript, observe, describe, inscribe, transcribe, ascribe, preserve, conserve, reserve, subscribe, deserve, serve, servile, prescribe',
+qs:[
+{s:'1. Where was the manuscript discovered?',o:['(A) In a remote temple.','(B) In a city library.','(C) In a university lab.','(D) In a cave by the sea.'],a:0},
+{s:'2. What does "inscribe" mean?',o:['(A) To erase completely.','(B) To write or carve on a surface.','(C) To read aloud.','(D) To fold carefully.'],a:1},
+{s:'3. Who did scholars ascribe the manuscript to?',o:['(A) A modern author.','(B) A foreign explorer.','(C) A military general.','(D) A famous Tang Dynasty poet.'],a:3},
+{s:'4. Why did the professor reserve a special room?',o:['(A) To sell the manuscript.','(B) To hide it from the public.','(C) To display and preserve the manuscript.','(D) To store other books.'],a:2},
+{s:'5. What was true about the professor?',o:['(A) He was servile to fame.','(B) He wanted to serve knowledge, not fame.','(C) He subscribed to many magazines.','(D) He prescribed medicine for patients.'],a:1}
+],ak:'1.A　2.B　3.D　4.C　5.B',
+exp:'1. 手稿在 "a remote temple" 被發現。<br>2. inscribe 意為「刻寫」。<br>3. 學者 "ascribed the manuscript to a famous Tang Dynasty poet"。<br>4. 教授 "reserved a special room to display and preserve it"。<br>5. 教授 "was not servile to fame — he wanted to serve knowledge"。'
+},
+u5iib:{
+title:'The Movie Sequel — 電影續集',
+en:`<p>Director Wang was <b>assigned</b> to <b>design</b> the <b>sequel</b> to a blockbuster movie. The original had a <b>significant</b> impact, and the studio expected the sequel to follow the same <b>sequence</b> of exciting events.</p>
+<p>However, the <b>consequences</b> of rushing were serious. "If we <b>consign</b> quality to speed, the movie will fail," Wang warned. He refused to <b>resign</b> from his vision. He designed each scene in careful <b>sequence</b>, making sure every twist sent a clear <b>signal</b>.</p>
+<p>When the studio pressured him, Wang <b>signed</b> a letter defending his choices. "A good sequel is not just a <b>subsequence</b> of the original — it must be <b>significant</b> on its own," he argued. The movie became a hit. The <b>consequence</b> of his patience was success.</p>`,
+zh:`<p>王導演被指派設計一部賣座電影的續集。原作有顯著的影響，片廠期望續集遵循同樣的精彩事件序列。</p>
+<p>然而匆忙趕工的後果是嚴重的。「如果我們把品質交付給速度，電影會失敗，」王警告。他拒絕放棄願景。他按仔細的順序設計每一幕，確保每個轉折發出清晰的訊號。</p>
+<p>當片廠施壓時，王簽署了一封信為選擇辯護。「一部好的續集不只是原作的延續——它必須本身就有重要意義，」他爭辯道。電影大獲成功。他耐心等待的結果就是成功。</p>`,
+words:'assign, design, sequel, significant, sequence, consequence, consign, resign, signal, sign, subsequence',
+qs:[
+{s:'1. What was Director Wang assigned to do?',o:['(A) Design the sequel to a blockbuster.','(B) Write a novel.','(C) Direct a TV show.','(D) Design a video game.'],a:0},
+{s:'2. What does "consign" mean?',o:['(A) To celebrate.','(B) To ignore.','(C) To assign a task.','(D) To hand over or deliver.'],a:3},
+{s:'3. What was the consequence of rushing?',o:['(A) The movie would be a hit.','(B) The movie could fail in quality.','(C) The director would get a raise.','(D) The studio would close.'],a:1},
+{s:'4. Why did Wang refuse to resign?',o:['(A) He needed the money.','(B) He wanted a bigger office.','(C) He believed in defending his creative vision.','(D) He was afraid of change.'],a:2},
+{s:'5. What was the consequence of patience?',o:['(A) The movie failed.','(B) The director was fired.','(C) The sequel was canceled.','(D) The movie became a hit.'],a:3}
+],ak:'1.A　2.D　3.B　4.C　5.D',
+exp:'1. 王導演被 "assigned to design the sequel to a blockbuster"。<br>2. consign 意為「交付、委託」。<br>3. 趕工的後果是 "the movie could fail in quality"。<br>4. 王 "refused to resign from his vision" 因為他相信自己的創意。<br>5. "The consequence of his patience was success"。'
+},
+u6i:{
+title:'The Village Dispute — 村莊糾紛',
+en:`<p>Two families in a village could not <b>coexist</b> peacefully. Their conflict <b>consisted</b> of arguments over land that had <b>existed</b> for decades. The mayor <b>insisted</b> they <b>resolve</b> the dispute, but both sides <b>resisted</b> compromise.</p>
+<p>A young mediator named Mei <b>persisted</b> in finding a solution. She <b>assisted</b> both families by listening to their concerns. "You must <b>desist</b> from fighting," she said. "This community cannot <b>subsist</b> on anger."</p>
+<p>After weeks of effort, Mei <b>solved</b> the problem by <b>dissolving</b> the old land agreement and creating a new one. The families <b>absolved</b> each other of past wrongs. "I <b>insist</b> that we move forward," the elder said. The two families finally learned to <b>coexist</b>.</p>`,
+zh:`<p>村莊裡的兩個家庭無法和平共存。衝突由持續數十年的土地爭議組成。村長堅持要他們解決糾紛，但雙方都抵制妥協。</p>
+<p>一位名叫 Mei 的年輕調解員堅持尋找解決方案。她透過傾聽雙方顧慮來協助兩個家庭。「你們必須停止爭鬥，」她說。「這個社區不能靠憤怒生存。」</p>
+<p>經過數週努力，Mei 透過解除舊土地協議並建立新協議來解決了問題。兩個家庭赦免了彼此過去的錯誤。「我堅持我們要向前看，」長者說。兩個家庭終於學會了共存。</p>`,
+words:'coexist, consist, exist, insist, resolve, resist, persist, assist, desist, subsist, solve, dissolve, absolve',
+qs:[
+{s:'1. What did the conflict consist of?',o:['(A) Religious differences.','(B) Arguments over land for decades.','(C) A business disagreement.','(D) A family marriage issue.'],a:1},
+{s:'2. What does "desist" mean?',o:['(A) To stop or cease an action.','(B) To continue fighting.','(C) To move to another town.','(D) To celebrate.'],a:0},
+{s:'3. How did Mei assist both families?',o:['(A) She paid them money.','(B) She called the police.','(C) She listened to their concerns.','(D) She moved them apart.'],a:2},
+{s:'4. How was the dispute solved?',o:['(A) One family left the village.','(B) The mayor punished both families.','(C) Both families were fined.','(D) By dissolving the old agreement and creating a new one.'],a:3},
+{s:'5. What did the families do after the dispute?',o:['(A) They continued fighting.','(B) They absolved each other and coexisted.','(C) They moved to different towns.','(D) They refused to speak.'],a:1}
+],ak:'1.B　2.A　3.C　4.D　5.B',
+exp:'1. 衝突 "consisted of arguments over land for decades"。<br>2. desist 意為「停止」。<br>3. Mei "assisted both families by listening to their concerns"。<br>4. 她 "dissolving the old agreement and creating a new one"。<br>5. 兩家 "absolved each other" 並學會共存。'
+},
+u6ia:{
+title:'The Spectacular Show — 壯觀的表演',
+en:`<p>Thousands of <b>spectators</b> gathered to watch a <b>spectacular</b> fireworks display. The show was <b>expected</b> to be the biggest <b>spectacle</b> of the year. Security officers <b>inspected</b> every entrance to ensure safety.</p>
+<p>A journalist named Tom <b>suspected</b> the organizer had cut corners. He decided to <b>introspect</b> on his own <b>perspective</b> before making accusations. "I should <b>respect</b> the facts," he reminded himself.</p>
+<p>Tom examined every <b>aspect</b> of the event and found that the <b>prospect</b> of success was genuine. When the fireworks lit up the sky, the spectacle was breathtaking. "I <b>expected</b> something good," said one <b>spectator</b>, "but this exceeded my expectations." Tom wrote a positive review, proving that a change in <b>perspective</b> can reveal the best <b>aspects</b>.</p>`,
+zh:`<p>數千名觀眾聚集觀看壯觀的煙火表演。這場表演預計是全年最大的盛觀。保安人員檢查每個入口確保安全。</p>
+<p>一位名叫 Tom 的記者懷疑主辦方偷工減料。他決定在做出指控前先從自己的角度自我反省。「我應該尊重事實，」他提醒自己。</p>
+<p>Tom 檢視了活動的每個面向，發現成功的前景是真實的。當煙火照亮天空時，景象令人嘆為觀止。「我預期會不錯，」一位觀眾說，「但這超出了期望。」Tom 寫了正面評論，證明換個角度可以揭示最好的面向。</p>`,
+words:'spectator, spectacular, expect, spectacle, inspect, suspect, introspect, perspective, respect, aspect, prospect',
+qs:[
+{s:'1. What did spectators gather to watch?',o:['(A) A spectacular fireworks display.','(B) A basketball game.','(C) A movie premiere.','(D) A cooking competition.'],a:0},
+{s:'2. What does "introspect" mean?',o:['(A) To inspect a building.','(B) To suspect someone.','(C) To spy on others.','(D) To examine one\'s own thoughts.'],a:3},
+{s:'3. What did Tom suspect at first?',o:['(A) The event would be canceled.','(B) The organizer had cut corners.','(C) The fireworks were fake.','(D) The spectators were bored.'],a:1},
+{s:'4. What did Tom discover after inspecting?',o:['(A) The event was poorly organized.','(B) The fireworks were dangerous.','(C) The prospect of success was genuine.','(D) The organizer had fled.'],a:2},
+{s:'5. What is the main lesson?',o:['(A) A change in perspective can reveal the best aspects.','(B) Fireworks are always dangerous.','(C) Journalists should never suspect anyone.','(D) Spectacles are overrated.'],a:0}
+],ak:'1.A　2.D　3.B　4.C　5.A',
+exp:'1. 觀眾聚集觀看 "a spectacular fireworks display"。<br>2. introspect 意為「自我反省」。<br>3. Tom "suspected the organizer had cut corners"。<br>4. Tom 發現 "the prospect of success was genuine"。<br>5. 主旨是換個角度能揭示最好的面向。'
+},
+u6ii:{
+title:'The Firefighter\'s Inspiration — 消防員的啟發',
+en:`<p>Young firefighter Mei <b>aspired</b> to save lives. Her <b>inspiration</b> came from her father, who had served for thirty years. "Trust your <b>instincts</b>," he told her. "In a fire, <b>instinctive</b> decisions can save your life."</p>
+<p>During her first major fire, Mei <b>perspired</b> heavily as she worked to <b>extinguish</b> the flames. The smoke made it hard to <b>respire</b>, but she pushed forward. "Don't let fear <b>conspire</b> against your training," she reminded herself.</p>
+<p>The truth <b>transpired</b>: the fire started from an <b>expired</b> electrical system. Mei's ability to <b>distinguish</b> between types of fire was a <b>distinct</b> advantage. "We must ensure old buildings don't become <b>extinct</b> due to preventable disasters," she said. Her bravery <b>inspired</b> an entire generation of firefighters.</p>`,
+zh:`<p>年輕消防員 Mei 立志救人。她的靈感來自服務三十年的父親。「相信你的直覺，」他告訴她。「在火災中，本能的決定能救你的命。」</p>
+<p>在第一場大火中，Mei 努力撲滅火焰時大量出汗。煙霧讓呼吸困難，但她堅持前進。「不要讓恐懼與訓練作對，」她提醒自己。</p>
+<p>真相浮現：火災由過期的電力系統引起。Mei 區分不同類型火災的能力是明顯的優勢。「我們必須確保老建築不因可預防的災難而消失，」她說。她的勇氣啟發了整整一代消防員。</p>`,
+words:'aspire, inspiration, instinct, instinctive, perspire, extinguish, respire, conspire, transpire, expire, distinguish, distinct, extinct, inspire',
+qs:[
+{s:'1. What did Mei aspire to do?',o:['(A) Become a doctor.','(B) Save lives as a firefighter.','(C) Work as a teacher.','(D) Study abroad.'],a:1},
+{s:'2. What does "transpire" mean?',o:['(A) To breathe heavily.','(B) To sweat a lot.','(C) To become known or come to light.','(D) To expire quickly.'],a:2},
+{s:'3. What caused the fire?',o:['(A) An expired electrical system.','(B) A careless smoker.','(C) A lightning strike.','(D) A cooking accident.'],a:0},
+{s:'4. What was Mei\'s distinct advantage?',o:['(A) Her physical strength.','(B) Her expensive equipment.','(C) Her father\'s connections.','(D) Her ability to distinguish between types of fire.'],a:3},
+{s:'5. What did her father advise?',o:['(A) Never enter a burning building.','(B) Trust your instincts.','(C) Always work alone.','(D) Retire early.'],a:1}
+],ak:'1.B　2.C　3.A　4.D　5.B',
+exp:'1. Mei "aspired to save lives" 作為消防員。<br>2. transpire 意為「真相浮現」。<br>3. 火災由 "an expired electrical system" 引起。<br>4. 她的優勢是 "ability to distinguish between types of fire"。<br>5. 父親說 "Trust your instincts"。'
+},
+u6iib:{
+title:'The Insurance Agent — 保險經紀人',
+en:`<p>Mr. Lin worked as an insurance agent. He <b>assured</b> his clients that their homes were properly <b>insured</b>. "I want to <b>ensure</b> that you are protected," he always said, <b>reassuring</b> worried homeowners.</p>
+<p>One client <b>assumed</b> his policy covered flood damage, but Mr. Lin explained: "Don't <b>presume</b> without reading the details. I want to make <b>sure</b> you understand every clause."</p>
+<p>When a typhoon struck, many families <b>consumed</b> emergency supplies rapidly. Mr. Lin <b>resumed</b> work the next day, helping clients file claims. He <b>reassured</b> them: "Your losses will be <b>subsumed</b> under the disaster coverage." His professionalism <b>ensured</b> that every family received fair compensation. "I can <b>assure</b> you," he told a grateful client, "your home will be rebuilt."</p>`,
+zh:`<p>林先生是保險經紀人。他向客戶保證房屋已妥善投保。「我想確保你們受到保護，」他總是這樣說，讓擔心的屋主安心。</p>
+<p>一位客戶假設保單涵蓋洪水損害，但林先生解釋：「不要在沒看細節的情況下推測。我想確保你了解每一個條款。」</p>
+<p>颱風來襲時，許多家庭迅速消耗了緊急物資。林先生隔天就恢復工作，幫助客戶申請理賠。他向他們保證：「損失會被歸入災害保險中。」他的專業確保了每個家庭獲得公平賠償。「我可以向你保證，」他告訴一位感激的客戶，「你的家會被重建。」</p>`,
+words:'assure, insure, ensure, reassure, assume, presume, sure, consume, resume, subsume',
+qs:[
+{s:'1. What did Mr. Lin assure his clients?',o:['(A) Their homes were properly insured.','(B) Typhoons would never come.','(C) Insurance was unnecessary.','(D) Their money was safe.'],a:0},
+{s:'2. What does "presume" mean?',o:['(A) To know for certain.','(B) To assume without full evidence.','(C) To deny something.','(D) To insure a property.'],a:1},
+{s:'3. What happened when the typhoon struck?',o:['(A) Mr. Lin went on vacation.','(B) All homes were destroyed.','(C) Insurance companies closed.','(D) Families consumed emergency supplies rapidly.'],a:3},
+{s:'4. What did Mr. Lin do the next day?',o:['(A) He moved to another city.','(B) He refused to work.','(C) He resumed work to help clients file claims.','(D) He retired from his job.'],a:2},
+{s:'5. What was subsumed under disaster coverage?',o:['(A) Mr. Lin\'s salary.','(B) The clients\' losses.','(C) The typhoon damage.','(D) Emergency supplies.'],a:1}
+],ak:'1.A　2.B　3.D　4.C　5.B',
+exp:'1. 林先生 "assured clients that homes were properly insured"。<br>2. presume 意為「在沒有充分證據下推測」。<br>3. 颱風時 "families consumed emergency supplies rapidly"。<br>4. 林先生 "resumed work the next day to help clients"。<br>5. 客戶的損失 "subsumed under the disaster coverage"。'
+},
+u6iii:{
+title:'The Community Leader — 社區領袖',
+en:`<p>Mrs. Huang was a <b>tenacious</b> community leader who worked to <b>maintain</b> peace. She <b>distributed</b> food to families in need and <b>contributed</b> her time to local charities. "We must <b>sustain</b> our efforts," she often said.</p>
+<p>One day, police <b>detained</b> a young man accused of theft. Mrs. Huang believed he deserved a chance to <b>attain</b> a better life. She <b>obtained</b> legal help. "<b>Retribution</b> is not the answer," she argued. "Let us pay <b>tribute</b> to compassion."</p>
+<p>Her efforts <b>pertained</b> to broader social issues. "These problems <b>contain</b> many layers," she explained. She <b>entertained</b> visitors who wanted to learn her methods. Some <b>attributed</b> her success to stubbornness, but she <b>retained</b> her kindness. She <b>abstained</b> from taking credit: "My only goal is to help others."</p>`,
+zh:`<p>黃女士是一位堅韌的社區領袖，致力維持和平。她向有需要的家庭分發食物，並將時間貢獻給慈善機構。「我們必須維持努力，」她常說。</p>
+<p>一天，警方拘留了一名被指控偷竊的年輕人。黃女士相信他值得獲得更好生活的機會。她取得了法律協助。「報復不是答案，」她辯稱。「讓我們向同情心致敬。」</p>
+<p>她的努力涉及更廣泛的社會議題。「這些問題包含很多層面，」她解釋。她接待了想學習她方法的訪客。有些人把她的成功歸因於固執，但她保持了善良。她不居功：「我唯一的目標是幫助別人。」</p>`,
+words:'tenacious, maintain, distribute, contribute, sustain, detain, attain, obtain, retribution, tribute, pertain, contain, entertain, attribute, retain, abstain',
+qs:[
+{s:'1. What does "tenacious" mean?',o:['(A) Lazy and careless.','(B) Quiet and shy.','(C) Persistent and determined.','(D) Wealthy and powerful.'],a:2},
+{s:'2. Why was the young man detained?',o:['(A) He was accused of theft.','(B) He missed school.','(C) He had no ID card.','(D) He littered in the park.'],a:0},
+{s:'3. What did Mrs. Huang argue about retribution?',o:['(A) It is always necessary.','(B) It is not the answer; compassion is better.','(C) It should be strict.','(D) It belongs in the courts only.'],a:1},
+{s:'4. What did Mrs. Huang distribute?',o:['(A) Books to libraries.','(B) Money to politicians.','(C) Awards to athletes.','(D) Food to families in need.'],a:3},
+{s:'5. Why did she abstain from taking credit?',o:['(A) Her only goal was to help others.','(B) She was too busy.','(C) She didn\'t want publicity.','(D) Her family told her not to.'],a:0}
+],ak:'1.C　2.A　3.B　4.D　5.A',
+exp:'1. tenacious 意為「堅韌不拔的」。<br>2. 年輕人 "accused of theft" 被拘留。<br>3. 黃女士認為 "Retribution is not the answer"。<br>4. 她 "distributed food to families in need"。<br>5. 她不居功因為 "My only goal is to help others"。'
+},
+u6iiib:{
+title:'The Mountain Climber — 登山家',
+en:`<p>At an <b>altitude</b> of 5,000 meters, climber Mei showed great <b>fortitude</b>. The <b>magnitude</b> of the challenge was enormous, but her positive <b>attitude</b> kept her going. She found <b>solitude</b> in the mountains — a peaceful escape from the <b>multitude</b> of problems in daily life.</p>
+<p>"Climbing requires both <b>aptitude</b> and courage," Mei told her students. She explained how <b>latitude</b> and <b>longitude</b> help determine location. "At this <b>altitude</b>, the air is thin and every step counts."</p>
+<p>Despite the <b>similitude</b> between this peak and ones she had climbed before, each mountain brought unique challenges. After reaching the summit, Mei expressed <b>gratitude</b> to her team. "A <b>multitude</b> of people dream of standing here, but only those with the right <b>attitude</b> succeed."</p>`,
+zh:`<p>在海拔 5000 公尺處，登山者 Mei 展現了巨大的毅力。挑戰的規模巨大，但她積極的態度讓她堅持前進。她在山中找到了孤獨——從日常生活中大量問題的寧靜逃離。</p>
+<p>「攀登需要天賦和勇氣，」Mei 告訴學生。她解釋了緯度和經度如何確定位置。「在這個高度，空氣稀薄，每一步都很重要。」</p>
+<p>儘管這座山與之前攀登過的相似，每座山都有獨特的挑戰。到達頂峰後，Mei 向團隊表達了感謝。「無數人夢想站在這裡，但只有擁有正確態度的人才能成功。」</p>`,
+words:'altitude, fortitude, magnitude, attitude, solitude, multitude, aptitude, latitude, longitude, similitude, gratitude',
+qs:[
+{s:'1. At what altitude was Mei climbing?',o:['(A) 1,000 meters.','(B) 5,000 meters.','(C) 8,000 meters.','(D) 500 meters.'],a:1},
+{s:'2. What does "fortitude" mean?',o:['(A) Courage and strength in facing difficulty.','(B) Physical fitness.','(C) Financial wealth.','(D) Academic knowledge.'],a:0},
+{s:'3. What did Mei find in the mountains?',o:['(A) Treasure.','(B) A lost hiker.','(C) Solitude and peaceful escape.','(D) A rare animal.'],a:2},
+{s:'4. What helps determine location?',o:['(A) Altitude and attitude.','(B) Fortitude and magnitude.','(C) Similitude and gratitude.','(D) Latitude and longitude.'],a:3},
+{s:'5. What is needed to succeed according to Mei?',o:['(A) Expensive equipment.','(B) The right attitude and aptitude.','(C) A large team.','(D) Good weather only.'],a:1}
+],ak:'1.B　2.A　3.C　4.D　5.B',
+exp:'1. Mei 在 "altitude of 5,000 meters" 攀登。<br>2. fortitude 意為「面對困難的勇氣和毅力」。<br>3. Mei 在山中找到 "solitude — a peaceful escape"。<br>4. "Latitude and longitude help determine location"。<br>5. Mei 說需要 "the right attitude" 才能成功。'
+},
+u6iiic:{
+title:'The Student Council — 學生會',
+en:`<p>The principal <b>convoked</b> a meeting of the student council. The discussion <b>involved</b> every class representative. Some rules had <b>evolved</b> over the years and needed updating.</p>
+<p>A heated debate <b>revolved</b> around phone use in classrooms. One student <b>provoked</b> an argument by saying, "Teachers just want to control us!" The council president replied calmly: "Let's not <b>provoke</b> each other. Our goal is to <b>invoke</b> reason, not anger."</p>
+<p>The principal agreed to <b>devolve</b> some decision-making power to the students. "This responsibility will <b>evolve</b> as you prove yourselves," she said. However, privileges could be <b>revoked</b> if misused. The meeting <b>evoked</b> a sense of pride — students felt <b>involved</b> in shaping their school's future.</p>`,
+zh:`<p>校長召集學生會開會。討論涉及每位班級代表。一些規則多年來已演變，需要更新。</p>
+<p>一場激烈辯論圍繞著教室使用手機展開。一位學生挑釁說：「老師只是想控制我們！」學生會會長冷靜回應：「我們不要互相激怒。目標是訴諸理性，而不是憤怒。」</p>
+<p>校長同意將一些決策權下放給學生。「這個責任會隨著你們證明自己而演進，」她說。然而特權如果被濫用可能被撤銷。會議在學生中喚起了自豪感——他們感覺參與了塑造學校未來。</p>`,
+words:'convoke, involve, evolve, revolve, provoke, invoke, devolve, revoke, evoke',
+qs:[
+{s:'1. Why did the principal convoke a meeting?',o:['(A) To discuss updating school rules.','(B) To announce a holiday.','(C) To punish students.','(D) To introduce new teachers.'],a:0},
+{s:'2. What does "revolve" mean in this context?',o:['(A) To spin quickly.','(B) To solve a problem.','(C) To center around a topic.','(D) To evolve over time.'],a:2},
+{s:'3. What did the principal agree to devolve?',o:['(A) School budgets.','(B) Some decision-making power to students.','(C) Teaching responsibilities.','(D) Exam schedules.'],a:1},
+{s:'4. What could be revoked if misused?',o:['(A) Class schedules.','(B) Teacher salaries.','(C) School uniforms.','(D) Student privileges.'],a:3},
+{s:'5. What did the meeting evoke?',o:['(A) A sense of pride among students.','(B) Fear and anxiety.','(C) Boredom and frustration.','(D) Anger at the principal.'],a:0}
+],ak:'1.A　2.C　3.B　4.D　5.A',
+exp:'1. 校長召集會議 "to discuss updating school rules"。<br>2. revolve 在此意為「圍繞某主題」。<br>3. 校長 "agreed to devolve some decision-making power to students"。<br>4. "Privileges could be revoked if misused"。<br>5. 會議 "evoked a sense of pride among students"。'
+},
+u7i:{
+title:'The Voyage Abroad — 海外航行',
+en:`<p>When Mei <b>boarded</b> a ship to study <b>abroad</b>, she was excited to explore the <b>Occident</b>. Once <b>aboard</b>, she noticed a sign: "No throwing items <b>overboard</b>." The <b>occidental</b> culture was new to her.</p>
+<p>An <b>incident</b> occurred on the second day — by <b>coincidence</b>, she met an old classmate. They discussed how studying abroad <b>stimulated</b> their growth and helped them <b>accumulate</b> new experiences.</p>
+<p>Their professor used a simulator to <b>simulate</b> ocean storms. "Don't fall under the <b>illusion</b> that travel is always easy," he warned. He made an <b>allusion</b> to famous explorers. One student, <b>disillusioned</b> by seasickness, wanted to go home. "That's just a <b>delusion</b> of comfort," the professor said. "There is no <b>collusion</b> between growth and ease." Mei tried to <b>emulate</b> the brave explorers she had read about.</p>`,
+zh:`<p>當 Mei 登船去海外留學時，她興奮地要探索西方世界。上船後，她注意到標誌：「禁止將物品丟出船外。」西方文化對她是全新的。</p>
+<p>第二天發生了一件事——巧合的是，她遇到了一位老同學。她們討論留學如何激發成長並幫助累積新經驗。</p>
+<p>教授使用模擬器模擬海洋風暴。「不要陷入旅行總是輕鬆的幻覺，」他警告。他提及了著名探險家。一位因暈船而幻滅的學生想回家。「那只是對舒適的妄想，」教授說。「成長與安逸之間沒有共謀。」Mei 試圖效仿她讀過的勇敢探險家。</p>`,
+words:'board, abroad, Occident, aboard, overboard, occidental, incident, coincidence, stimulate, accumulate, simulate, illusion, allusion, disillusion, delusion, collusion, emulate',
+qs:[
+{s:'1. Why did Mei board the ship?',o:['(A) For a vacation.','(B) To study abroad.','(C) To deliver cargo.','(D) To visit family.'],a:1},
+{s:'2. What does "coincidence" mean?',o:['(A) A planned meeting.','(B) A dangerous accident.','(C) An unexpected chance occurrence.','(D) A formal invitation.'],a:2},
+{s:'3. What did the professor simulate?',o:['(A) Ocean storms.','(B) Classroom lessons.','(C) Cooking experiments.','(D) Music performances.'],a:0},
+{s:'4. What illusion did the professor warn about?',o:['(A) That the ship was unsinkable.','(B) That food was free.','(C) That the ocean was shallow.','(D) That travel is always easy.'],a:3},
+{s:'5. What is the main lesson?',o:['(A) Traveling by ship is dangerous.','(B) Western culture is better.','(C) Real learning requires challenge, not comfort.','(D) Coincidences never happen.'],a:2}
+],ak:'1.B　2.C　3.A　4.D　5.C',
+exp:'1. Mei 登船 "to study abroad"。<br>2. coincidence 意為「巧合」。<br>3. 教授 "used a simulator to simulate ocean storms"。<br>4. 教授警告不要有 "the illusion that travel is always easy"。<br>5. 主旨是真正的學習需要挑戰而非舒適。'
+},
+u7ii:{
+title:'The Student Uprising — 學生起義',
+en:`<p>A controversy <b>arose</b> at the school when students discovered <b>alterations</b> to the lunch menu. The principal had <b>altered</b> the menu without consulting anyone, and students <b>loudly</b> protested. Some read their complaints <b>aloud</b> in the hallway.</p>
+<p>The <b>loudness</b> of their voices <b>roused</b> teachers from their offices. An <b>alternative</b> plan was proposed: students and teachers would <b>alternate</b> in choosing the weekly menu. "We must <b>raise</b> this issue properly," the student leader said.</p>
+<p>The <b>uprising</b> <b>aroused</b> attention from parents and media. Rather than suppress the students, the principal agreed to the <b>alternation</b> system. "When problems <b>arise</b>, we should <b>rise</b> to meet them," he said. The <b>loud</b> protest led to a better <b>alternative</b> for everyone.</p>`,
+zh:`<p>當學生發現午餐菜單被更改時，爭議在學校爆發了。校長在沒有諮詢任何人的情況下改變了菜單，學生們大聲抗議。有些人在走廊上大聲朗讀投訴。</p>
+<p>聲音的嘈雜喚醒了辦公室裡的老師。一個替代方案被提出：學生和老師輪流選擇每週菜單。「我們必須正確提出這個問題，」學生代表說。</p>
+<p>起義引起了家長和媒體的注意。校長沒有壓制學生，而是同意了輪替制度。「當問題出現時，我們應該挺身面對，」他說。大聲的抗議為每個人帶來了更好的替代方案。</p>`,
+words:'arise, alteration, alter, loudly, aloud, loudness, rouse, alternative, alternate, raise, uprising, arouse, alternation, arise, rise, loud',
+qs:[
+{s:'1. Why did controversy arise?',o:['(A) The principal altered the lunch menu without consulting.','(B) The school closed unexpectedly.','(C) Teachers went on strike.','(D) Students failed their exams.'],a:0},
+{s:'2. What does "rouse" mean?',o:['(A) To calm down.','(B) To wake up or stir into action.','(C) To praise someone.','(D) To whisper quietly.'],a:1},
+{s:'3. What alternative was proposed?',o:['(A) Students cook their own meals.','(B) The cafeteria closes permanently.','(C) Everyone eats the same food.','(D) Students and teachers alternate choosing the menu.'],a:3},
+{s:'4. What did the uprising arouse?',o:['(A) Fear among teachers.','(B) Laughter from parents.','(C) Attention from parents and media.','(D) Anger from the government.'],a:2},
+{s:'5. What was the result?',o:['(A) The principal punished all students.','(B) A better alternative for everyone.','(C) The school was closed.','(D) Nothing changed.'],a:1}
+],ak:'1.A　2.B　3.D　4.C　5.B',
+exp:'1. 校長 "altered the menu without consulting anyone"。<br>2. rouse 意為「喚醒、激起行動」。<br>3. 替代方案是 "students and teachers alternate choosing the menu"。<br>4. 起義 "aroused attention from parents and media"。<br>5. 結果是 "a better alternative for everyone"。'
+},
+u7iii:{
+title:'The Night Warden — 夜間守衛',
+en:`<p>Old Mr. Zhang worked as a night <b>warden</b> at a nature reserve. He would <b>wake</b> early and remain <b>wakeful</b> through the long dark hours. His dedication was well known — he was always <b>awake</b> and alert.</p>
+<p>One night, a <b>waitress</b> from the nearby restaurant rushed in. "<b>Wake</b> up! There are poachers!" she cried, trying to <b>waken</b> the other guards. Mr. Zhang was already awake and <b>awaiting</b> any sign of trouble.</p>
+<p>He <b>waited</b> patiently and caught the poachers red-handed. The director <b>awarded</b> him a special prize. "Your <b>reward</b> is well deserved," she said. The news <b>awakened</b> public interest in wildlife protection. Mr. Zhang smiled: "I don't do this for <b>awards</b> or <b>rewards</b>. These animals deserve to live freely."</p>`,
+zh:`<p>老張先生在自然保護區擔任夜間守衛。他會早起，在漫長黑暗的時光中保持清醒。他的奉獻眾所周知——他總是醒著且警覺。</p>
+<p>一天晚上，附近餐廳的女服務生衝進來。「快醒來！有盜獵者！」她大喊，試圖叫醒其他守衛。張先生已經醒著，等待著任何麻煩的跡象。</p>
+<p>他耐心等待，當場抓住了盜獵者。主任授予他特別獎項。「你的獎賞是當之無愧的，」她說。消息喚起了大眾對野生動物保護的關注。張先生微笑說：「我做這些不是為了獎項或獎勵。這些動物值得自由生活。」</p>`,
+words:'warden, wake, wakeful, awake, waitress, waken, await, wait, award, reward, awaken',
+qs:[
+{s:'1. What was Mr. Zhang\'s job?',o:['(A) A restaurant owner.','(B) A police officer.','(C) Night warden at a nature reserve.','(D) A school teacher.'],a:2},
+{s:'2. What does "wakeful" mean?',o:['(A) Unable or unwilling to sleep; alert.','(B) Very tired and sleepy.','(C) Afraid of the dark.','(D) Lazy and careless.'],a:0},
+{s:'3. Who tried to waken the other guards?',o:['(A) Mr. Zhang himself.','(B) A waitress from the nearby restaurant.','(C) The reserve director.','(D) A police officer.'],a:1},
+{s:'4. What reward was Mr. Zhang given?',o:['(A) A cash bonus.','(B) A new house.','(C) A vacation trip.','(D) A special award from the director.'],a:3},
+{s:'5. What awakened public interest?',o:['(A) A new movie about animals.','(B) A government announcement.','(C) The news about catching poachers.','(D) A school project.'],a:2}
+],ak:'1.C　2.A　3.B　4.D　5.C',
+exp:'1. 張先生是 "Night warden at a nature reserve"。<br>2. wakeful 意為「保持清醒、警覺的」。<br>3. "A waitress from the nearby restaurant" 試圖叫醒守衛。<br>4. 主任 "awarded him a special prize"。<br>5. "The news awakened public interest in wildlife protection"。'
+},
+u8i:{
+title:'The Championship Campaign — 冠軍之路',
+en:`<p>The national basketball <b>championship</b> was about to <b>commence</b>. Coach Li <b>commanded</b> his team with authority. He <b>implemented</b> a new training plan and <b>supplemented</b> it with <b>supplementary</b> video analysis. "No <b>complaints</b>," he said. "Be <b>compliant</b> and trust the process."</p>
+<p>A local business saw an opportunity for <b>commerce</b> and launched a <b>campaign</b> to sponsor the team. "Your team <b>complements</b> our brand perfectly," the sponsor <b>commented</b>. Coach Li <b>commended</b> the sponsor's generosity.</p>
+<p>The team's <b>compliance</b> with strict rules paid off. They <b>championed</b> every match and reached the finals. The celebration included <b>champagne</b> and cheers. "I must <b>compliment</b> every player," Coach Li said. "Hard work is the best <b>complement</b> to talent."</p>`,
+zh:`<p>全國籃球錦標賽即將開始。李教練以權威指揮團隊。他實施了新訓練計畫，並以補充的影片分析作為輔助。「不許抱怨，」他說。「順從指令，相信過程。」</p>
+<p>一家企業看到了商機，發起了贊助球隊的活動。「你們的球隊完美地補充了我們的品牌，」贊助商評論道。教練表揚了贊助商的慷慨。</p>
+<p>球隊遵守嚴格規定的成果得到了回報。他們在每場比賽中奪冠並進入決賽。慶祝活動包括香檳和歡呼。「我必須讚美每位球員，」李教練說。「努力是天賦最好的補充。」</p>`,
+words:'championship, commence, command, implement, supplement, supplementary, complaint, compliant, commerce, campaign, complement, comment, commend, compliance, champion, champagne, compliment',
+qs:[
+{s:'1. What was about to commence?',o:['(A) The national basketball championship.','(B) A cooking contest.','(C) A school exam.','(D) A music festival.'],a:0},
+{s:'2. What does "implement" mean?',o:['(A) To cancel a project.','(B) To put a plan into action.','(C) To criticize someone.','(D) To celebrate a victory.'],a:1},
+{s:'3. Why did the business launch a campaign?',o:['(A) To advertise a new product.','(B) To close the stadium.','(C) To sponsor the team as a commerce opportunity.','(D) To complain about the coach.'],a:2},
+{s:'4. What did Coach Li commend?',o:['(A) The players\' complaints.','(B) The referee\'s decisions.','(C) The fans\' behavior.','(D) The sponsor\'s generosity.'],a:3},
+{s:'5. What did compliance with rules lead to?',o:['(A) The team championed every match.','(B) The team lost the finals.','(C) The sponsor left.','(D) The coach resigned.'],a:0}
+],ak:'1.A　2.B　3.C　4.D　5.A',
+exp:'1. 即將開始的是 "The national basketball championship"。<br>2. implement 意為「執行、實施」。<br>3. 企業發起活動 "to sponsor the team as a commerce opportunity"。<br>4. 教練 "commended the sponsor\'s generosity"。<br>5. 遵守規定讓球隊 "championed every match"。'
+},
+u8ii:{
+title:'The City Council — 市議會',
+en:`<p>The city <b>council</b> held a meeting to discuss help for <b>destitute</b> families. <b>Counselor</b> Wang, a <b>conscientious</b> public servant, was <b>conscious</b> of the community's needs. "Our <b>conscience</b> must guide our decisions," she said.</p>
+<p>The <b>council</b> reached a <b>consensus</b>: they would <b>institute</b> a new welfare program. "Nothing can <b>substitute</b> for direct assistance," a member argued. The program would <b>constitute</b> the city's largest social initiative. A foreign <b>consul</b> offered international support.</p>
+<p>When accused of misusing funds, the <b>counselor</b> demanded <b>restitution</b> of her reputation. "I <b>counsel</b> transparency in all matters," she said. The investigation cleared her name. "Being <b>conscientious</b> means making decisions you're proud of," she told volunteers. "Let your <b>conscience</b> be your guide."</p>`,
+zh:`<p>市議會召開會議討論對貧困家庭的幫助。王議員是一位盡職的公僕，意識到社區的需求。「我們的良心必須引導決定，」她說。</p>
+<p>議會達成共識：設立新的福利計畫。「沒有什麼能代替直接援助，」一位成員爭辯。計畫將構成該市最大的社會倡議。一位外國領事提供了國際支持。</p>
+<p>當被指控濫用資金時，議員要求恢復名譽。「我建議在所有事務中保持透明，」她說。調查洗清了她的名聲。「盡責意味著做出讓你引以為傲的決定，」她告訴志工。「讓良心做你的指引。」</p>`,
+words:'council, destitute, counselor, conscientious, conscious, conscience, consensus, institute, substitute, constitute, consul, restitution, counsel',
+qs:[
+{s:'1. What did the council discuss?',o:['(A) Building a new park.','(B) Help for destitute families.','(C) Raising taxes.','(D) A school renovation.'],a:1},
+{s:'2. What does "consensus" mean?',o:['(A) A disagreement.','(B) A vote by one person.','(C) General agreement among a group.','(D) A legal document.'],a:2},
+{s:'3. What would the new program constitute?',o:['(A) The city\'s largest social initiative.','(B) A small neighborhood project.','(C) A foreign aid program.','(D) A school lunch plan.'],a:0},
+{s:'4. What did the counselor demand?',o:['(A) A higher salary.','(B) More vacation days.','(C) A new office.','(D) Restitution of her reputation.'],a:3},
+{s:'5. What was the counselor\'s advice?',o:['(A) Always follow the majority.','(B) Let your conscience be your guide.','(C) Substitute hard work with shortcuts.','(D) Never trust anyone.'],a:1}
+],ak:'1.B　2.C　3.A　4.D　5.B',
+exp:'1. 議會討論 "help for destitute families"。<br>2. consensus 意為「共識」。<br>3. 計畫 "would constitute the city\'s largest social initiative"。<br>4. 議員 "demanded restitution of her reputation"。<br>5. 她建議 "Let your conscience be your guide"。'
+},
+u8iib:{
+title:'The Business Contract — 商業合約',
+en:`<p>A large <b>corporation</b> <b>contacted</b> a small startup about a <b>cooperation</b> project. The startup's founder showed great <b>tact</b> during negotiations. The two companies signed a <b>contract</b> to <b>incorporate</b> green technology into their products.</p>
+<p>In <b>contrast</b> to the corporation's rigid approach, the startup was flexible and creative. A point of <b>contention</b> arose about profit sharing. "We must <b>contend</b> with this issue directly," the founder said.</p>
+<p>After weeks of discussion, both sides were <b>content</b> with the final agreement. The <b>cooperation</b> required each company to <b>incorporate</b> the other's strengths. "The <b>contrast</b> between our sizes is actually an advantage," the CEO said. "Your creativity and our resources make a powerful combination."</p>`,
+zh:`<p>一家大企業就合作專案聯繫了一家小新創公司。新創公司的創辦人在談判中展現了高度機敏。兩家公司簽署了合約，將綠色科技融入產品。</p>
+<p>與企業僵化的方法形成對比，新創公司靈活有創意。在利潤分配上出現了爭論點。「我們必須直接面對這個問題，」創辦人說。</p>
+<p>經過數週討論，雙方對最終協議感到滿意。合作要求每家公司融入對方的優勢。「我們規模的對比其實是優勢，」執行長說。「你們的創意和我們的資源構成強大的組合。」</p>`,
+words:'corporation, contact, cooperation, tact, contract, incorporate, contrast, contention, contend, content',
+qs:[
+{s:'1. What did the two companies sign?',o:['(A) A contract to incorporate green technology.','(B) A letter of complaint.','(C) A termination agreement.','(D) A school project plan.'],a:0},
+{s:'2. What does "tact" mean?',o:['(A) Physical strength.','(B) Skill in dealing with people sensitively.','(C) Technical knowledge.','(D) Financial expertise.'],a:1},
+{s:'3. What was the point of contention?',o:['(A) The company name.','(B) The office location.','(C) Profit sharing between the companies.','(D) The product color.'],a:2},
+{s:'4. How did the startup contrast with the corporation?',o:['(A) It was larger and richer.','(B) It was older and more established.','(C) It was more rigid.','(D) It was flexible and creative.'],a:3},
+{s:'5. What made both sides content?',o:['(A) One company dominated the other.','(B) They canceled the project.','(C) The final agreement incorporating each other\'s strengths.','(D) They hired new employees.'],a:2}
+],ak:'1.A　2.B　3.C　4.D　5.C',
+exp:'1. 兩家公司簽了 "a contract to incorporate green technology"。<br>2. tact 意為「機敏、圓滑」。<br>3. 爭論點是 "profit sharing between the companies"。<br>4. 新創公司 "was flexible and creative"，與企業形成對比。<br>5. 最終協議 "incorporating each other\'s strengths" 讓雙方滿意。'
+},
+u9i:{
+title:'Beyond Rivalry — 超越競爭',
+en:`<p>In competitive sports, the line between a <b>rival</b> and a <b>foe</b> can blur. Two tennis players, Mei and Lisa, had been <b>competitors</b> since childhood. Their <b>rivalry</b> was intense — each saw the other as her main <b>adversary</b>.</p>
+<p>Lisa's <b>temperament</b> was fiery; she often lost her <b>temper</b>. Mei, by <b>nature</b>, had a calm <b>disposition</b>. Despite their different <b>personalities</b>, both showed strong <b>character</b> and <b>individuality</b> on the court.</p>
+<p>Some fans treated them as <b>enemies</b> and <b>antagonists</b>. "We are <b>opponents</b>, not foes," Mei said. "I want to <b>avoid</b> turning competition into hatred. The <b>prevention</b> of hostility is everyone's responsibility." When Lisa was injured, Mei refused to seek <b>revenge</b>. Instead, she visited Lisa in the hospital. "Competition builds <b>character</b>," Mei smiled, "and I have no desire to <b>avenge</b> old defeats." It was clear that true sportsmanship could <b>prevent</b> rivalry from becoming enmity.</p>`,
+zh:`<p>在競技運動中，對手和仇人之間的界線可能模糊。Mei 和 Lisa 從小就是競爭者。她們的競爭關係非常激烈——每人都視對方為主要的對手。</p>
+<p>Lisa 的性格火熱；她常發脾氣。Mei 則天性沉穩，有著冷靜的性情。儘管個性不同，兩人都在球場上展現了堅強的品格和個人特質。</p>
+<p>一些球迷把她們當作仇敵和反派。「我們是對手，不是仇人，」Mei 說。「我想避免將競爭變成仇恨。預防敵意是每個人的責任。」當 Lisa 受傷時，Mei 拒絕尋求報復。相反，她到醫院探望 Lisa。「競爭塑造品格，」Mei 微笑著說，「我無意為過去的失敗復仇。」顯然，真正的運動精神能防止競爭變成敵意。</p>`,
+words:'rival, foe, competitor, rivalry, adversary, temperament, temper, nature, disposition, personality, character, individuality, enemy, antagonist, opponent, avoid, prevention, revenge, avenge, prevent',
+qs:[
+{s:'1. What was the relationship between Mei and Lisa?',o:['(A) Rivals and competitors since childhood.','(B) Best friends since school.','(C) Strangers who never met.','(D) Teacher and student.'],a:0},
+{s:'2. What does "temperament" mean?',o:['(A) A type of sport.','(B) A person\'s natural character or disposition.','(C) A weather condition.','(D) A musical instrument.'],a:1},
+{s:'3. How did their personalities differ?',o:['(A) Both were very calm.','(B) Both were very fiery.','(C) Mei was shy; Lisa was outgoing.','(D) Lisa was fiery; Mei was calm by nature.'],a:3},
+{s:'4. What did Mei want to prevent?',o:['(A) Lisa from playing tennis.','(B) Fans from watching games.','(C) Turning competition into hostility.','(D) Herself from winning.'],a:2},
+{s:'5. What did Mei do when Lisa was injured?',o:['(A) She visited Lisa in the hospital.','(B) She celebrated her rival\'s defeat.','(C) She refused to play.','(D) She demanded revenge.'],a:0}
+],ak:'1.A　2.B　3.D　4.C　5.A',
+exp:'1. Mei 和 Lisa 是 "rivals and competitors since childhood"。<br>2. temperament 意為「天性、性格」。<br>3. "Lisa was fiery; Mei was calm by nature"。<br>4. Mei 想 "avoid turning competition into hostility"。<br>5. Mei "visited Lisa in the hospital"。'
+},
+u9ii:{
+title:'Storm Chasers — 追風者',
+en:`<p>A team of meteorologists studied extreme weather: <b>typhoons</b>, <b>hurricanes</b>, <b>cyclones</b>, <b>tornadoes</b>, and <b>monsoons</b>. During a <b>gale</b> at sea, they witnessed a rare <b>waterspout</b> twisting above the waves.</p>
+<p>"Only <b>naive</b> people think storms are harmless," said Dr. Chen. "It would be <b>ignorant</b> to underestimate their power." He held a <b>valuable</b> weather instrument that was nearly <b>priceless</b> — one of only three in the world. "This tool is <b>invaluable</b> for our research," he explained.</p>
+<p>An <b>innocent</b> bystander asked, "Why chase dangerous storms?" Dr. Chen replied: "Without data, our predictions become <b>valueless</b>. Every piece of information we collect is <b>valued</b> by communities that depend on accurate forecasts." Even the smallest observation can be <b>invaluable</b>.</p>`,
+zh:`<p>一組氣象學家研究極端天氣：颱風、颶風、氣旋、龍捲風和季風。在海上的一場強風中，他們目睹了罕見的水龍捲在浪面上旋轉。</p>
+<p>「只有天真的人才認為風暴是無害的，」陳博士說。「低估其力量是無知的。」他手持一件珍貴的天氣儀器，幾乎是無價之寶——全世界僅三台。「這個工具對研究是無價的，」他解釋。</p>
+<p>一位無辜的旁觀者問：「為什麼追趕危險的風暴？」陳博士回答：「沒有數據，預測就變得毫無價值。我們收集的每條資訊都被依賴準確預報的社區所重視。」即使最小的觀察也可能是無價的。</p>`,
+words:'typhoon, hurricane, cyclone, tornado, monsoon, gale, waterspout, naive, ignorant, valuable, priceless, invaluable, innocent, valueless, valued',
+qs:[
+{s:'1. What did the team witness at sea?',o:['(A) A school of dolphins.','(B) A rare waterspout during a gale.','(C) A submarine surfacing.','(D) A rainbow after the storm.'],a:1},
+{s:'2. What does "naive" mean?',o:['(A) Lacking experience or worldly wisdom.','(B) Very intelligent.','(C) Extremely brave.','(D) Highly skilled.'],a:0},
+{s:'3. Why was the weather instrument priceless?',o:['(A) It was made of gold.','(B) It was very old.','(C) It was one of only three in the world.','(D) It was given by the government.'],a:2},
+{s:'4. When do predictions become valueless?',o:['(A) When the weather is calm.','(B) When scientists are naive.','(C) When instruments are old.','(D) When there is no data.'],a:3},
+{s:'5. What is the main message?',o:['(A) Storms should be avoided completely.','(B) Every small observation can be invaluable in science.','(C) Expensive instruments are unnecessary.','(D) Only naive people study weather.'],a:1}
+],ak:'1.B　2.A　3.C　4.D　5.B',
+exp:'1. 團隊目睹了 "a rare waterspout during a gale"。<br>2. naive 意為「天真的、缺乏經驗的」。<br>3. 儀器 "one of only three in the world" 所以無價。<br>4. "Without data, predictions become valueless"。<br>5. 主旨是 "every small observation can be invaluable"。'
+},
+u9iib:{
+title:'The Family Voyage — 家族航行',
+en:`<p>The Chen family planned a <b>cruise</b> to celebrate Grandmother's recovery from a long <b>illness</b>. She had been <b>sick</b> for months, suffering from a chronic <b>ailment</b>, but was finally no longer <b>ill</b>.</p>
+<p>"This <b>voyage</b> will be a wonderful <b>journey</b> for all of us," said Father. Their <b>relatives</b> joined from different cities. The <b>trip</b> strengthened their family <b>relationships</b> and revealed the <b>interrelationship</b> between love and healing.</p>
+<p>During an <b>excursion</b> to a small island, the children went on a guided <b>tour</b>. One cousin couldn't come and asked a friend to go as a <b>proxy</b>. "Nobody can <b>replace</b> or <b>substitute</b> for family," Grandmother said wisely. The <b>expedition</b>-style adventure excited everyone. Uncle described it as "not just a trip, but a <b>journey</b> of reconnection." The <b>relation</b> between family members grew stronger with every shared experience.</p>`,
+zh:`<p>陳家計畫了一趟郵輪旅行來慶祝奶奶從長期病痛中康復。她病了好幾個月，受慢性疾病之苦，但終於不再生病了。</p>
+<p>「這趟航行對我們所有人都會是美好的旅程，」爸爸說。親戚從不同城市趕來。旅行加強了家庭關係，揭示了愛與療癒之間的相互關係。</p>
+<p>在一次到小島的短途旅行中，孩子們參加了導覽。一位堂兄弟無法前來，請朋友作為代理人前往。「沒有人能取代家人，」奶奶睿智地說。探險式的冒險讓每個人都興奮。叔叔形容這「不僅是一趟旅行，而是一段重新連結的旅程。」家庭成員之間的關係隨著每次共同經歷而更加強固。</p>`,
+words:'cruise, illness, sick, ailment, ill, voyage, journey, relative, trip, relationship, interrelationship, excursion, tour, proxy, replace, substitute, expedition, relation',
+qs:[
+{s:'1. Why did the family plan a cruise?',o:['(A) To celebrate Grandmother\'s recovery from illness.','(B) To visit a foreign country.','(C) To attend a wedding.','(D) To go on a business trip.'],a:0},
+{s:'2. What does "ailment" mean?',o:['(A) A type of medicine.','(B) A travel plan.','(C) A disease or illness.','(D) A family gathering.'],a:2},
+{s:'3. What did the trip strengthen?',o:['(A) Their business connections.','(B) Family relationships.','(C) Their physical health.','(D) Their knowledge of geography.'],a:1},
+{s:'4. Why did one cousin send a proxy?',o:['(A) He was too busy working.','(B) He didn\'t like cruises.','(C) He was afraid of water.','(D) He couldn\'t come and asked a friend to go instead.'],a:3},
+{s:'5. What is the main theme?',o:['(A) Family bonds grow stronger through shared journeys.','(B) Cruises are the best type of vacation.','(C) Grandmothers should never travel.','(D) Proxies can replace family members.'],a:0}
+],ak:'1.A　2.C　3.B　4.D　5.A',
+exp:'1. 家人計畫郵輪 "to celebrate Grandmother\'s recovery from illness"。<br>2. ailment 意為「疾病」。<br>3. 旅行 "strengthened their family relationships"。<br>4. 堂兄弟 "couldn\'t come and asked a friend to go as a proxy"。<br>5. 主旨是家庭聯繫透過共同旅程而更堅固。'
+}
+};
+
+let rdBuilt={};
+function buildReading(){
+  const pg=document.getElementById('pg-reading');
+  if(rdBuilt[currentChId])return;
+  rdBuilt[currentChId]=true;
+  const data=READING_DATA[currentChId];
+  if(!data){pg.innerHTML='<div class="rd-intro">⏳ 本章節的閱讀測驗尚未開放，敬請期待！</div>';return;}
+  let h='<div class="rd-intro">📖 本章節閱讀測驗共 <strong>1</strong> 篇文章，<strong>5</strong> 題選擇題。<br>粗體底線單字皆為本章節字根字首單字。點「顯示翻譯」查看中文。</div>';
+  const p=data;
+  h+=`<div class="rd-card"><div class="rd-hdr"><div class="rd-num">📖</div><div class="rd-ttl">${p.title}</div></div>`;
+  h+=`<div class="rd-body"><div class="rd-en">${p.en}</div>`;
+  h+=`<button class="rd-toggle" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.nextElementSibling.classList.contains('show')?'📝 隱藏翻譯':'📝 顯示翻譯'">📝 顯示翻譯</button>`;
+  h+=`<div class="rd-zh">${p.zh}</div>`;
+  h+=`<div class="rd-words">📌 使用單字：<span>${p.words}</span></div></div>`;
+  h+=`<div class="rd-qs"><h4>Questions 1–5</h4>`;
+  p.qs.forEach((q,qi)=>{
+    h+=`<div class="rd-q" data-ans="${q.a}"><div class="rd-stem"><span class="rqn">${qi+1}.</span> ${q.s.replace(/^\d+\.\s*/,'')}</div><div class="rd-opts">`;
+    q.o.forEach((o,oi)=>{
+      h+=`<label class="rd-opt"><input type="radio" name="rq${qi}" value="${oi}"> ${o}</label>`;
+    });
+    h+=`</div></div>`;
+  });
+  h+=`</div></div>`;
+  h+=`<button class="rd-check" id="rdCheck" onclick="checkReading()">✅ 對答案</button>`;
+  h+=`<div class="rd-result" id="rdResult"><div class="rd-ricon" id="rdIcon"></div><div class="rd-rscore" id="rdScore"></div><div class="rd-rpct" id="rdPct"></div><div class="rd-rmsg" id="rdMsg"></div><button class="rd-reset" onclick="resetReading()">🔄 重新作答</button></div>`;
+  h+=`<div class="rd-key" id="rdKey"><h4>📋 詳解</h4>`;
+  h+=`<div class="rd-arow"><span class="rd-at">Answer Key</span><span class="rd-aa">${p.ak}</span></div>`;
+  h+=`<div class="rd-aexp">${p.exp}</div>`;
+  h+=`</div>`;
+  pg.innerHTML=h;
+}
+
+function checkReading(){
+  const qs=document.querySelectorAll('#pg-reading .rd-q');
+  let correct=0;
+  qs.forEach((q,i)=>{
+    const ans=parseInt(q.dataset.ans);
+    const sel=q.querySelector('input:checked');
+    q.querySelectorAll('.rd-opt').forEach((o,oi)=>{
+      o.classList.remove('ok','ng');
+      if(oi===ans)o.classList.add('ok');
+    });
+    if(sel){
+      const v=parseInt(sel.value);
+      if(v===ans)correct++;
+      else sel.closest('.rd-opt').classList.add('ng');
+    }
+    q.querySelectorAll('input').forEach(inp=>inp.disabled=true);
+  });
+  const total=qs.length,pct=Math.round(correct/total*100);
+  document.getElementById('rdIcon').textContent=pct>=80?'🏆':pct>=60?'🌟':pct>=40?'💪':'📖';
+  document.getElementById('rdScore').textContent=correct+' / '+total;
+  document.getElementById('rdPct').textContent='正確率 '+pct+'%';
+  document.getElementById('rdMsg').textContent=pct>=80?'太厲害了！閱讀能力超強！':pct>=60?'表現優秀！繼續保持！':pct>=40?'還不錯，再加把勁！':'多讀幾遍文章，下次會更好！';
+  document.getElementById('rdResult').classList.add('show');
+  document.getElementById('rdKey').classList.add('show');
+  document.getElementById('rdCheck').disabled=true;
+}
+
+function resetReading(){
+  rdBuilt={};buildReading();
 }
 
 /* ══════ PASSWORD GATE ══════ */
